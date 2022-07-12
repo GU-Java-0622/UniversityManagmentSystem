@@ -1,0 +1,12 @@
+.footer-start{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.content-footer{
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
+  font-size: 1.2em;
+  color: chocolate;
+  font-weight:lighter ;
+}

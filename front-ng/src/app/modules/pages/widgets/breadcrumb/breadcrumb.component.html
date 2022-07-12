@@ -1,0 +1,5 @@
+<nav class="breadcrumbs">
+  <ng-container *ngFor="let breadcrumb of (breadcrumbs$ | async); let last = last" >
+    <a [href]="breadcrumb.url" class="breadcrumbs__item" [ngClass]="{'is-active':last}">{{ breadcrumb.label }}</a>
+  </ng-container>
+</nav>

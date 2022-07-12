@@ -1,0 +1,54 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  Черная Каракатица
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img
+      class="avatar mat-elevation-z8"
+      src="../../../../../assets/images/male-profile.png"
+    />
+
+    <h4 class="name">Алексей Гриценко</h4>
+    <p class="designation">Администратор</p>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" [routerLink]="['./users']">
+      <mat-icon>group</mat-icon>
+      <span>Пользователи</span>
+    </button>
+    <button mat-button class="menu-button" [routerLink]="['./roles']">
+      <mat-icon>accessibility_new</mat-icon>
+      <span>Роли</span>
+    </button>
+    <button mat-button class="menu-button" [routerLink]="['./faculties']">
+      <mat-icon>business</mat-icon>
+      <span>Факультеты</span>
+    </button>
+    <button mat-button class="menu-button" [routerLink]="['./news']">
+      <mat-icon>format_align_justify</mat-icon>
+      <span>Новости</span>
+    </button>
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/profile">
+      <mat-icon>person</mat-icon>
+      <span>Профиль</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <app-breadcrumb></app-breadcrumb>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

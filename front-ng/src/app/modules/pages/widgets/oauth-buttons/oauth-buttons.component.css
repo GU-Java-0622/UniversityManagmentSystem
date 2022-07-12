@@ -1,0 +1,25 @@
+.button {
+  width:50px;
+  height: 50px;
+  border-radius:100%;
+}
+.button:hover{
+  cursor: pointer;
+}
+.oath-button{
+  max-width: 180px;
+  margin: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.yandex{
+  background: url("../../../../../assets/images/yandex.png") no-repeat center center;
+  margin-right: 5px;
+}
+.mailru{
+  background: url("../../../../../assets/images/mailru.png") no-repeat center center;
+  margin-right: 5px;
+}
+.gmail{
+  background: url("../../../../../assets/images/gmail.png") no-repeat center center;
+}

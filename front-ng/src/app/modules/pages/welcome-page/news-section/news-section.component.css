@@ -1,0 +1,25 @@
+.container-news{
+  margin: 0 auto;
+  max-width: 1000px;
+
+}
+.title{
+  margin-top: 30px;
+ display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.title h1{
+  color: chocolate;
+  font-weight: bold;
+  font-size: 2em;
+}
+.string-news{
+  display: flex;
+  justify-content: space-around;
+}
+.example-card {
+  margin-top: 20px;
+  max-width: 450px;
+  margin-bottom: 8px;
+}

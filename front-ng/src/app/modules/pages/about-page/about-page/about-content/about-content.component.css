@@ -1,0 +1,28 @@
+.container-about{
+  margin-top: 10px;
+  background-color: bisque;
+  display: flex;
+  justify-content: space-around;
+  font-family: 'Raleway', sans-serif;
+}
+.content-about{
+  width: 1100px;
+  margin-bottom: 20px;
+}
+.about-command{
+  margin-left: 20px;
+
+}
+.about-command-title{
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.about-text{
+  text-indent: 11px;
+  font-size: 1rem;
+}
+.about-text a{
+  text-decoration: underline;
+}
+

@@ -1,0 +1,18 @@
+<header>
+  <div class="header">
+    <div class="logo">
+      <a  [routerLink]="['']" class="logo-text"><img src="assets/images/logo-icon.png" alt="" />Черная Kаракатица</a>
+    </div>
+    <div class="menu">
+      <div class="menu-item">
+        <a [routerLink]="['/welcome']" >Главная</a>
+      </div>
+      <div class="menu-item">
+        <a [routerLink]="['/about']" >О проекте</a>
+      </div>
+      <div class="menu-item">
+        <a (click)="openLoginDialog()" >Войти</a>
+      </div>
+    </div>
+  </div>
+</header>

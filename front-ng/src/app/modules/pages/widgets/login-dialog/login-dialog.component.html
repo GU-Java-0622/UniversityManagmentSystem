@@ -1,0 +1,32 @@
+<div class="container">
+<h1 mat-dialog-title>Авторизация</h1>
+<div mat-dialog-content>
+  <form>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput placeholder="Введите email">
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Введите пароль</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+  </form>
+</div>
+<div mat-dialog-actions class="action-button">
+  <button mat-raised-button (click)="onSubmit()">OK</button>
+  <button mat-raised-button mat-dialog-close>Закрыть</button>
+</div>
+<mat-divider></mat-divider>
+  <div class="form-footer">
+  <app-oauth-buttons></app-oauth-buttons>
+</div>
+</div>

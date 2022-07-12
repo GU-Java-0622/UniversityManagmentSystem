@@ -1,0 +1,18 @@
+h1{
+  text-align: center;
+}
+.form-container{
+  display: flex;
+  justify-content: space-between;
+}
+.left-side{
+  margin-right: 20px;
+}
+.form-footer{
+  display: flex;
+  justify-content: space-around;
+}
+.action-button{
+  margin-bottom: 5px;
+}
+

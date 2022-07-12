@@ -1,0 +1,40 @@
+
+.header{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  height: 10vh;
+}
+.logo-text{
+  color: black;
+  font-size: 2em;
+}
+.logo-text img{
+  margin-right: 5px;
+}
+.menu{
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5em;
+}
+.menu-item{
+  padding: 0.5em;
+  vertical-align: middle;
+  text-align: center;
+}
+.menu-item:hover{
+  cursor: pointer;
+}
+.menu-item a{
+  color: chocolate;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.menu-item-act{
+  background-color: coral;
+}
+.menu-item:hover{
+  background-color: blanchedalmond;
+}

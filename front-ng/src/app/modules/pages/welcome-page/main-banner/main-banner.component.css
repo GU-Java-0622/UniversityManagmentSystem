@@ -1,0 +1,39 @@
+.main-banner{
+  width: 100%;
+  background-color: bisque;
+  height: 500px;
+  display: flex;
+  justify-content: space-around;
+}
+.main-banner-view{
+  min-width: 1100px;
+  background: url(../../../../../assets/images/banner.png) no-repeat right;
+  background-size: contain;
+  z-index: 0;
+}
+.main-banner-left{
+
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+
+}
+.banner-title{
+  margin-top: 5vh;
+  width: 40vw;
+  color: chocolate;
+  font: italic 3em "Fira Sans", serif;
+}
+
+.banner-title-bottom{
+  font-size: 3ex;
+  font-weight: lighter;
+}
+.banner-buttons button{
+  margin-top: 2vh;
+  margin-right: 4px;
+  height: 7vh;
+  min-width: 5vw;
+  font: italic 1.5em "Fira Sans", serif;
+  background-color: orange;
+}
