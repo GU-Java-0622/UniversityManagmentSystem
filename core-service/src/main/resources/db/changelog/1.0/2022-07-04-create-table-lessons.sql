@@ -5,3 +5,10 @@ CREATE TABLE lessons
     duration TIME WITHOUT TIME ZONE,
     CONSTRAINT pk_lessons PRIMARY KEY (id)
 );
+
+insert into lessons(id, theme, duration)
+values (1,'Math1','00:45:00'),
+       (2,'Math2','00:45:00'),
+       (3,'Math3','00:45:00'),
+       (4,'Math4','00:45:00'),
+       (5,'Math5','00:45:00');
