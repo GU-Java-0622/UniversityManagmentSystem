@@ -13,7 +13,7 @@ create table learning_programmes_lessons
     learning_programme_id BIGINT NOT NULL
         constraint fk_learning_programmes_lessons_on_learning_programmes references learning_programmes(id),
     lesson_id             BIGINT not null
-        constraint fk_learning_programmes_lessons_on_lessons references lessons(id)
+        constraint fk_learning_programmes_lessons_on_lessons references lessonTemplates(id)
 );
 
 insert into learning_programmes(id, title, status, created_at, deprecated_at)
