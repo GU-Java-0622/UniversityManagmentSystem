@@ -4,6 +4,11 @@ h1{
 .action-button{
   margin-bottom: 5px;
 }
+.invalid-feedback{
+  text-align: center;
+  color: white;
+  margin-bottom: 5px;
+}
 
 
 

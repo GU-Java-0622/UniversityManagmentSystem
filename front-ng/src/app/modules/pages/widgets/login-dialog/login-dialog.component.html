@@ -1,28 +1,38 @@
 <div class="container">
 <h1 mat-dialog-title>Авторизация</h1>
 <div mat-dialog-content>
-  <form>
+  <form id="login_form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input
-          matInput placeholder="Введите email">
+          matInput placeholder="Введите email"
+          [(ngModel)]="email" formControlName="emailControl">
         <mat-icon matSuffix>email</mat-icon>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Введите пароль</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" formControlName="passwordControl">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
     </p>
+    <div *ngIf="submitted && f['emailControl'].errors" class="invalid-feedback">
+      <div *ngIf="f['emailControl'].errors['required']">Логин обязательное поле</div>
+    </div>
+    <div *ngIf="submitted && f['passwordControl'].errors" class="invalid-feedback">
+      <div *ngIf="f['passwordControl'].errors['required']">Пароль обязателен</div>
+    </div>
+    <div *ngIf="submitted && statusCode" class="invalid-feedback">
+      <div *ngIf="statusCode==401">Неверный email или пароль</div>
+    </div>
   </form>
 </div>
 <div mat-dialog-actions class="action-button">
-  <button mat-raised-button (click)="onSubmit()">OK</button>
+  <button mat-raised-button type="submit">OK</button>
   <button mat-raised-button mat-dialog-close>Закрыть</button>
 </div>
 <mat-divider></mat-divider>

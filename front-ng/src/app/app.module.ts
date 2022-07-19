@@ -18,7 +18,7 @@ import { RegisterationDialogComponent } from './modules/pages/widgets/registerat
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptorService} from "./intercepters/auth-interceptor.service";
 import {MatInputModule} from '@angular/material/input';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule } from '@angular/common/http';
 import { OauthButtonsComponent } from './modules/pages/widgets/oauth-buttons/oauth-buttons.component';
@@ -50,7 +50,8 @@ import { AboutContentComponent } from './modules/pages/about-page/about-page/abo
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
