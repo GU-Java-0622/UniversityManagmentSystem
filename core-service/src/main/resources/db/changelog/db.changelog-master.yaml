@@ -1,5 +1,9 @@
 databaseChangeLog:
   - include:
+      file: db/changelog/1.0/2022-06-22-create-tables.sql
+  - include:
+      file: db/changelog/1.0/2022-07-04-create-table-persons.sql
+  - include:
       file: db/changelog/1.0/2022-07-04-create-table-groups.sql
   - include:
       file: db/changelog/1.0/2022-07-04-create-table-lessons.sql
