@@ -1,6 +1,6 @@
-package ru.geekbrains.com.dto;
+package ru.geekbrains.auth.payload.request;
 
-import ru.geekbrains.com.entity.ProfileStatus;
+import web.entity.UserStatus;
 
 import java.util.Set;
 
@@ -11,7 +11,7 @@ public class ProfileGetAllDtoRequest {
     private Boolean directSort;// по возрастанию или убыванию
     private String searchField;//поле по которому что то ищем
     private String searchValue;// что ищем в этом поле
-    private Set<ProfileStatus> status;
+    private Set<UserStatus> status;
     public Integer getPage() {
         return page;
     }
@@ -60,11 +60,11 @@ public class ProfileGetAllDtoRequest {
         this.searchValue = searchValue;
     }
 
-    public Set<ProfileStatus> getStatus() {
+    public Set<UserStatus> getStatus() {
         return status;
     }
 
-    public void setStatus(Set<ProfileStatus> status) {
+    public void setStatus(Set<UserStatus> status) {
         this.status = status;
     }
 }

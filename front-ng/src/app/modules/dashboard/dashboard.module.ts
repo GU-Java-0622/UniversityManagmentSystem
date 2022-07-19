@@ -13,6 +13,11 @@ import { RolesViewComponent } from './page/roles-view/roles-view.component';
 import { FacultiesViewComponent } from './page/faculties-view/faculties-view.component';
 import { ProfileViewComponent } from './page/profile-view/profile-view.component';
 import { NewsViewComponent } from './page/news-view/news-view.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -34,6 +39,11 @@ import { NewsViewComponent } from './page/news-view/news-view.component';
     MatDividerModule,
     MatButtonModule,
     MatToolbarModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatInputModule,
 
   ]
 })

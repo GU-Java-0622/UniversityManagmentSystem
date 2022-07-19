@@ -1,36 +1,33 @@
-package ru.geekbrains.com.service;
+package ru.geekbrains.auth.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.com.dto.ProfileDto;
-import ru.geekbrains.com.dto.ProfileGetAllDtoRequest;
-import ru.geekbrains.com.dto.ProfileGetAllDtoResponse;
-import ru.geekbrains.com.entity.Profile;
-import ru.geekbrains.com.entity.ProfileStatus;
-import ru.geekbrains.com.integration.IntegrationAuthService;
-import ru.geekbrains.com.repositories.ProfileRepository;
-import ru.geekbrains.com.repositories.specification.ProfileSpecification;
-import ru.geekbrains.com.validators.FieldNameChecker;
+import ru.geekbrains.auth.entityes.User;
+import ru.geekbrains.auth.payload.request.ProfileGetAllDtoRequest;
+import ru.geekbrains.auth.payload.response.ProfileDto;
+import ru.geekbrains.auth.payload.response.ProfileGetAllDtoResponse;
+import ru.geekbrains.auth.repositories.UserRepository;
+import ru.geekbrains.auth.repositories.specification.ProfileSpecification;
+import web.entity.UserStatus;
+import web.validators.FieldNameChecker;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 @Service
 public class ProfileServiceImpl implements ProfileService{
-    private final String CHANGE_STATUS_QUERY ="UPDATE Profile  set status=:status where id=:id";
-    private final String GET_PROFILE ="SELECT new ru.geekbrains.com.dto.ProfileDto(p.id,p.firstname,p.surname,p.lastname) from Profile as p" +
+    private final String CHANGE_STATUS_QUERY ="UPDATE User  set status=:status where id=:id";
+    private final String GET_PROFILE ="SELECT new ru.geekbrains.auth.payload.response.ProfileDto(p.id,p.firstname,p.surname,p.middlename,p.email) from User as p" +
             " where p.id=:id";
-    private final ProfileRepository profileRepository;
+    private final UserRepository profileRepository;
 
-    private final IntegrationAuthService authService;
     private final EntityManager entityManager;
 
-    public ProfileServiceImpl(ProfileRepository profileRepository, IntegrationAuthService authService, EntityManager entityManager) {
-        this.profileRepository = profileRepository;
-        this.authService = authService;
+    public ProfileServiceImpl(UserRepository userRepository, EntityManager entityManager) {
+        this.profileRepository = userRepository;
         this.entityManager = entityManager;
     }
 
@@ -45,7 +42,7 @@ public class ProfileServiceImpl implements ProfileService{
             direction = Sort.Direction.DESC;
         }
         Sort sort;
-        String field = FieldNameChecker.checkFieldName(Profile.class,param.getSortField());
+        String field = FieldNameChecker.checkFieldName(User.class,param.getSortField());
         if (field!=null){
             sort = Sort.by(direction,param.getSortField());
         }else {
@@ -53,7 +50,7 @@ public class ProfileServiceImpl implements ProfileService{
         }
 
         /*Добавляем спецификацию исходя из параметров запроса*/
-        Specification<Profile> spec;
+        Specification<User> spec;
         /*Если строка запроа пуста то спецификацию не добавляем*/
         if (param.getSearchValue()!=null){
             if(param.getSearchField().equals("id")){
@@ -64,13 +61,13 @@ public class ProfileServiceImpl implements ProfileService{
         }else{
             spec = Specification.where(null);
         }
-        Specification<Profile> specStatus = Specification.where(ProfileSpecification.statusValue(param.getStatus()));
-        Page<Profile> pageable = profileRepository.findAll(spec.and(specStatus), PageRequest.of(param.getPage()-1, param.getItemInPage(),sort));
+        Specification<User> specStatus = Specification.where(ProfileSpecification.statusValue(param.getStatus()));
+        Page<User> pageable = profileRepository.findAll(spec.and(specStatus), PageRequest.of(param.getPage()-1, param.getItemInPage(),sort));
         return pageable.map(ProfileGetAllDtoResponse::new);
     }
 
     @Override
-    public void changeStatus(Long id, ProfileStatus status) {
+    public void changeStatus(Long id, UserStatus status) {
         Query query = entityManager.createQuery(CHANGE_STATUS_QUERY);
         query.setParameter("status",status);
         query.setParameter("id",id);
@@ -81,8 +78,6 @@ public class ProfileServiceImpl implements ProfileService{
     public ProfileDto getProfileById(Long id) {
         Query query = entityManager.createQuery(GET_PROFILE);
         query.setParameter("id",id);
-        ProfileDto profileDto = (ProfileDto) query.getSingleResult();
-        profileDto.setEmail(authService.getEmailById(id));
-        return profileDto;
+        return (ProfileDto) query.getSingleResult();
     }
 }

@@ -1,5 +1,7 @@
 package ru.geekbrains.auth.entityes;
 
+import web.entity.UserStatus;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -28,10 +30,10 @@ public class User {
     @Size(max = 40)
     private String surname;
 
-    @Column(name = "lastname")
+    @Column(name = "middlename")
     @NotBlank
     @Size(max = 40)
-    private String lastname;
+    private String middlename;
 
     @Column(name = "password")
     @NotBlank
@@ -54,10 +56,10 @@ public class User {
     public User() {
     }
 
-    public User(String firstname, String surname, String lastname, String password, String email, UserStatus status) {
+    public User(String firstname, String surname, String middlename, String password, String email, UserStatus status) {
         this.firstname = firstname;
         this.surname = surname;
-        this.lastname = lastname;
+        this.middlename = middlename;
         this.password = password;
         this.email = email;
         this.status = status;
@@ -87,12 +89,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getMiddlename() {
+        return middlename;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setMiddlename(String lastname) {
+        this.middlename = lastname;
     }
 
     public String getPassword() {

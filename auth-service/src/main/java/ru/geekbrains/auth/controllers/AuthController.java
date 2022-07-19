@@ -23,6 +23,8 @@ import ru.geekbrains.auth.repositories.UserRepository;
 import ru.geekbrains.auth.security.jwt.JwtUtils;
 import ru.geekbrains.auth.security.services.RefreshTokenService;
 import ru.geekbrains.auth.security.services.UserDetailsImpl;
+import web.entity.ERole;
+import web.entity.UserStatus;
 
 import javax.security.auth.message.AuthException;
 import javax.validation.Valid;
