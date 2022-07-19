@@ -1,34 +1,46 @@
 package com.karalexsandr.coreservice.entity;
 
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
-
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "groups")
 @Getter
 @Setter
+@ToString
+@RequiredArgsConstructor
+@Table(name = "groups")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "title")
     private String title;
 
-    @ManyToOne
-    @JoinColumn(name="facultity_id")
-    private Faculty faculty;
+    @OneToMany
+    @JoinColumn(name = "person_id")
+    private Set<Person> personSet;
 
-    @OneToMany(mappedBy = "group")
-    private List<Person> students;
+    @OneToOne
+    @JoinColumn(name = "teacher_id")
+    private Person teacher;
 
-    @Column(name = "created_at")
-    private LocalDateTime createAt;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Group group = (Group) o;
+        return id != null && Objects.equals(id, group.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 }

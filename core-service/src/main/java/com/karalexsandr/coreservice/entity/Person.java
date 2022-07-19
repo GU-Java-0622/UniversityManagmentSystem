@@ -1,29 +1,44 @@
 package com.karalexsandr.coreservice.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.Hibernate;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Objects;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "persons")
 @Getter
 @Setter
+@ToString
+@RequiredArgsConstructor
+@Table(name = "persons")
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "user_id")
+    private Long userId;
 
-    @ManyToOne
-    @JoinColumn(name = "group_id")
-    private Group group;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @OneToMany(mappedBy = "teacher")
-    private List<ActiveCourse> activeCourses;
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "surname")
+    private String surname;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Person persons = (Person) o;
+        return userId != null && Objects.equals(userId, persons.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
