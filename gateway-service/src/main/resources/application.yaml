@@ -17,11 +17,15 @@ spring:
       routes:
         - id: core-service
           uri: http://localhost:8181
+#          Включить для сборки docker-compose
+#          uri: http://core-service:8181
           predicates:
           - Path=/core/**
 
         - id: auth-service
           uri: http://localhost:8188
+#          Включить для сборки docker-compose
+#          uri: http://auth-service:8188
           predicates:
             - Path=/auth/**
           filters:

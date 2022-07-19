@@ -15,4 +15,11 @@ ALTER TABLE schedules
     ADD CONSTRAINT FK_SCHEDULES_ON_LEARNING_PROGRAMME FOREIGN KEY (learning_programme_id) REFERENCES learning_programmes (id);
 
 ALTER TABLE schedules
-    ADD CONSTRAINT FK_SCHEDULES_ON_LESSON FOREIGN KEY (lesson_id) REFERENCES lessons (id);
+    ADD CONSTRAINT FK_SCHEDULES_ON_LESSON FOREIGN KEY (lesson_id) REFERENCES lessonTemplates (id);
+
+insert into schedules (id, group_id, learning_programme_id, lesson_id, started_at)
+values  (1, 1, 1, 1, '2022-07-13 16:44:10.000000'),
+        (2, 1, 1, 3, '2022-07-13 16:45:53.000000'),
+        (3, 2, 3, 5, '2022-07-13 16:46:05.000000'),
+        (4, 3, 2, 2, '2022-07-13 16:46:17.000000'),
+        (5, 3, 2, 4, '2022-07-13 16:46:24.000000');
