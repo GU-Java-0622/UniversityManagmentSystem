@@ -10,7 +10,6 @@
         <module>front-service</module>
         <module>gateway-service</module>
         <module>additionally-service</module>
-		<module>commons</module>
     </modules>
 
 	<parent>

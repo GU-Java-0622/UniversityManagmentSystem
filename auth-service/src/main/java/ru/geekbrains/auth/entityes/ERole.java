@@ -1,4 +1,4 @@
-package web.entity;
+package ru.geekbrains.auth.entityes;
 
 public enum ERole {
     ROLE_ADMIN,

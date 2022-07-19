@@ -1,40 +1,40 @@
-package ru.geekbrains.auth.payload.response;
+package ru.geekbrains.com.dto;
 
 
-import ru.geekbrains.auth.entityes.User;
-import web.entity.UserStatus;
+import ru.geekbrains.com.entity.ProfileStatus;
+import ru.geekbrains.com.entity.Profile;
 
 public class ProfileGetAllDtoResponse {
     private Long id;
     private String firstname;
     private String surname;
     private String lastname;
-    private UserStatus status;
+    private ProfileStatus status;
     private boolean isEmailVerified =false;
 
     public ProfileGetAllDtoResponse() {
     }
 
-    public ProfileGetAllDtoResponse(Long id, String firstname, String surname, String lastname, UserStatus status) {
+    public ProfileGetAllDtoResponse(Long id, String firstname, String surname, String lastname, ProfileStatus status) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
         this.lastname = lastname;
         this.status = status;
     }
-    public ProfileGetAllDtoResponse(User profile) {
+    public ProfileGetAllDtoResponse(Profile profile) {
         this.id = profile.getId();
         this.firstname = profile.getFirstname();
         this.surname = profile.getSurname();
-        this.lastname = profile.getMiddlename();
+        this.lastname = profile.getLastname();
         this.status = profile.getStatus();
     }
 
-    public UserStatus getStatus() {
+    public ProfileStatus getStatus() {
         return status;
     }
 
-    public void setStatus(UserStatus status) {
+    public void setStatus(ProfileStatus status) {
         this.status = status;
     }
 

@@ -24,7 +24,7 @@ databaseChangeLog:
                   name: surname
                   type: VARCHAR(36)
               - column:
-                  name: middlename
+                  name: lastname
                   type: VARCHAR(36)
               - column:
                   constraints:
@@ -85,7 +85,7 @@ databaseChangeLog:
                   name: surname
                   value: "Adminov"
               - column:
-                  name: middlename
+                  name: lastname
                   value: "Adminovich"
               - column:
                   name: password
@@ -110,7 +110,7 @@ databaseChangeLog:
                   name: surname
                   value: "Studentov"
               - column:
-                  name: middlename
+                  name: lastname
                   value: "Studentovich"
               - column:
                   name: password
@@ -135,7 +135,7 @@ databaseChangeLog:
                   name: surname
                   value: "Teacherov"
               - column:
-                  name: middlename
+                  name: lastname
                   value: "Teacherovich"
               - column:
                   name: password
