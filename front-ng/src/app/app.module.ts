@@ -37,7 +37,7 @@ import { AboutContentComponent } from './modules/pages/about-page/about-page/abo
     RegisterationDialogComponent,
     OauthButtonsComponent,
     AboutPageComponent,
-    AboutContentComponent,
+    AboutContentComponent
   ],
   imports: [
     BrowserModule,

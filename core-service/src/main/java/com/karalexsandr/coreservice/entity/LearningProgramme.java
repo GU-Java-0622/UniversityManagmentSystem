@@ -2,8 +2,11 @@ package com.karalexsandr.coreservice.entity;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,8 +15,8 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(name = "faculties")
-public class Faculty {
+@Table(name = "learning_programmes")
+public class LearningProgramme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -23,18 +26,26 @@ public class Faculty {
     private String title;
 
     @OneToMany
-    private List<Group> groupList;
+    @JoinColumn(name = "lesson_id")
+    private List<Lesson> lessonList;
 
-    @OneToOne
-    @JoinColumn(name = "learning_programme_id")
-    private LearningProgramme learningProgramme;
+    @Enumerated(EnumType.STRING)
+    private StatusEnum status;
+
+    @CreationTimestamp
+    @Column(name = "create_at")
+    private LocalDateTime createAt;
+
+    @UpdateTimestamp
+    @Column(name = "deprecated_at")
+    private LocalDateTime deprecatedUp;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Faculty faculty = (Faculty) o;
-        return id != null && Objects.equals(id, faculty.id);
+        LearningProgramme that = (LearningProgramme) o;
+        return id != null && Objects.equals(id, that.id);
     }
 
     @Override
