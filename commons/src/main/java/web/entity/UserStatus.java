@@ -1,4 +1,4 @@
-package ru.geekbrains.auth.entityes;
+package web.entity;
 
 public enum UserStatus {
     ACTIVE,

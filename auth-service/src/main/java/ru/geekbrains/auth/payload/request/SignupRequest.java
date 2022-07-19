@@ -1,8 +1,7 @@
 package ru.geekbrains.auth.payload.request;
 
-import ru.geekbrains.auth.entityes.UserStatus;
+import web.entity.UserStatus;
 
-import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

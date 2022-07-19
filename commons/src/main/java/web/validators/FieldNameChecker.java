@@ -1,4 +1,5 @@
-package ru.geekbrains.com.validators;
+package web.validators;
+
 
 import javax.persistence.Column;
 import java.lang.reflect.Field;

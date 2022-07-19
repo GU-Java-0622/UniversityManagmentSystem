@@ -1,21 +1,22 @@
-package ru.geekbrains.com.dto;
+package ru.geekbrains.auth.payload.response;
 
 
 public class ProfileDto {
     private Long id;
     private String firstname;
     private String surname;
-    private String lastname;
+    private String middlename;
     private String email;
 
     public ProfileDto() {
     }
 
-    public ProfileDto(Long id, String firstname, String surname, String lastname) {
+    public ProfileDto(Long id, String firstname, String surname, String middlename, String email) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
-        this.lastname = lastname;
+        this.middlename = middlename;
+        this.email =email;
     }
 
     public Long getId() {
@@ -42,12 +43,12 @@ public class ProfileDto {
         this.surname = surname;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getMiddlename() {
+        return middlename;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setMiddlename(String middlename) {
+        this.middlename = middlename;
     }
 
     public String getEmail() {
