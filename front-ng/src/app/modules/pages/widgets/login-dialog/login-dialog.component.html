@@ -20,19 +20,19 @@
         </button>
       </mat-form-field>
     </p>
-    <div *ngIf="submitted && f['emailControl'].errors" class="invalid-feedback">
-      <div *ngIf="f['emailControl'].errors['required']">Логин обязательное поле</div>
+    <div *ngIf="submitted && emailError" class="invalid-feedback">
+      <div>Email введен неправильно или не введен</div>
     </div>
-    <div *ngIf="submitted && f['passwordControl'].errors" class="invalid-feedback">
-      <div *ngIf="f['passwordControl'].errors['required']">Пароль обязателен</div>
+    <div *ngIf="submitted && passwordError" class="invalid-feedback">
+      <div >Пароль обязателен</div>
     </div>
-    <div *ngIf="submitted && statusCode" class="invalid-feedback">
-      <div *ngIf="statusCode==401">Неверный email или пароль</div>
+    <div *ngIf="submitted && errorMessage.length>1" class="invalid-feedback">
+      <div>{{errorMessage}}</div>
     </div>
   </form>
 </div>
 <div mat-dialog-actions class="action-button">
-  <button mat-raised-button type="submit">OK</button>
+  <button mat-raised-button (click)="onSubmit()">OK</button>
   <button mat-raised-button mat-dialog-close>Закрыть</button>
 </div>
 <mat-divider></mat-divider>

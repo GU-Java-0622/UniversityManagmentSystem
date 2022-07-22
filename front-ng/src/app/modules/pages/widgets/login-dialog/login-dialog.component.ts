@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../../../../services/auth.service";
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -17,6 +17,8 @@ export class LoginDialogComponent implements OnInit {
   email:string|null=null;
   password:string|null=null;
   submitted = false;
+  emailError = false;
+  passwordError= false;
   isLoginFailed = false;
   errorMessage = '';
   statusCode:number|undefined;
@@ -35,16 +37,29 @@ export class LoginDialogComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.form.invalid) {
-      console.log(this.form.invalid)
+    this.errorMessage ='';
+    if(this.email===null||this.email.length<3){
+      this.emailError= true;
       return;
     }
-    this.dialogRef.close();
-    this.router.navigate(['/dashboard']);
+    if(this.password===null||this.password.length<1){
+      this.passwordError= true;
+      return;
+    }
+    if (this.form.invalid) {
+      this.emailError= true;
+      return;
+    }
+    this.auth.login(this.email,this.password).subscribe((res:any)=>{
+      console.log(res)
+      this.dialogRef.close();
+      this.router.navigate(['/dashboard']);
+    },(err:any)=>{
+      this.errorMessage = err.message;
+      return;
+    })
+
   }
 
-  get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
-  }
 
 }
