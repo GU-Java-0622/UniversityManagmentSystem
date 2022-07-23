@@ -72,6 +72,32 @@ databaseChangeLog:
                   name: role_id
                   type: BIGINT
             tableName: user_roles
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: id
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: token
+                  type: VARCHAR(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: expiry_date
+                  type: date
+            tableName: refreshtoken
         - insert:
             tableName: users
             columns:
@@ -110,6 +136,7 @@ databaseChangeLog:
                   name: surname
                   value: "Studentov"
               - column:
+                  name: middlename
                   name: middlename
                   value: "Studentovich"
               - column:
