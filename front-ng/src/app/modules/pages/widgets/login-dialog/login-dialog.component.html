@@ -1,24 +1,34 @@
 <div class="container">
 <h1 mat-dialog-title>Авторизация</h1>
 <div mat-dialog-content>
-  <form>
+  <form id="login_form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input
-          matInput placeholder="Введите email">
+          matInput placeholder="Введите email"
+          [(ngModel)]="email" formControlName="emailControl">
         <mat-icon matSuffix>email</mat-icon>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Введите пароль</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" formControlName="passwordControl">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
     </p>
+    <div *ngIf="submitted && emailError" class="invalid-feedback">
+      <div>Email введен неправильно или не введен</div>
+    </div>
+    <div *ngIf="submitted && passwordError" class="invalid-feedback">
+      <div >Пароль обязателен</div>
+    </div>
+    <div *ngIf="submitted && errorMessage.length>1" class="invalid-feedback">
+      <div>{{errorMessage}}</div>
+    </div>
   </form>
 </div>
 <div mat-dialog-actions class="action-button">
