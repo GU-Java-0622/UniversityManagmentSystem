@@ -73,7 +73,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@Valid @RequestBody LoginRequest loginRequest) throws AuthException {
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
@@ -107,7 +107,7 @@ public class AuthController {
 
 
         // Create new user's account
-        User user = new User(signUpRequest.getFirstname(), signUpRequest.getSurname(), signUpRequest.getLastname(),
+        User user = new User(signUpRequest.getFirstname(), signUpRequest.getSurname(), signUpRequest.getMiddlename(),
                 encoder.encode(signUpRequest.getPassword()), signUpRequest.getEmail(), UserStatus.ACTIVE);
 
         Set<String> strRoles = signUpRequest.getRole();
