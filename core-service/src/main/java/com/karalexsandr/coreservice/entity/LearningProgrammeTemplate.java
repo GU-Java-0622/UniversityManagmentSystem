@@ -1,22 +1,20 @@
 package com.karalexsandr.coreservice.entity;
 
-
-
 import lombok.*;
+
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 
-
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "faculties")
+@Table(name = "learning_programmes_template")
 @Entity
 @Getter
 @Setter
-public class Faculty {
+public class LearningProgrammeTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -25,11 +23,8 @@ public class Faculty {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "faculty")
-    private List<Group> groups;
-
-    @ManyToMany(mappedBy = "faculties")
-    private List<CourseTemplate> cours;
+    @OneToMany(mappedBy = "programme")
+    private List<LessonTemplate> lessonTemplates;
 
     @Column(name = "created_at")
     private LocalDateTime createAt;

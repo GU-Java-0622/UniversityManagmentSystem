@@ -6,7 +6,7 @@ import java.time.Instant;
 @Entity(name = "refreshtoken")
 public class RefreshToken {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
