@@ -10,20 +10,25 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "groups_template")
 @Entity
-@Table(name = "persons")
 @Getter
 @Setter
-public class Person {
+public class CourseTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "group_id")
-    private Group group;
+    @OneToMany(mappedBy = "programme")
+    private List<LessonTemplate> lessonTemplates;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "courseTemplate")
     private List<ActiveCourse> activeCourses;
+    @ManyToMany
+    @JoinTable(name = "cource_facultiy",
+            joinColumns = @JoinColumn(name = "cource_id"),
+            inverseJoinColumns = @JoinColumn(name = "faculty_id") )
+    private List<Faculty> faculties;
+
 }
