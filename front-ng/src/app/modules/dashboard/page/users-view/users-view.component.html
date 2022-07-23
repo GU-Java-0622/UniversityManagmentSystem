@@ -1,1 +1,102 @@
-<p>users-view works!</p>
+<div class="users-container">
+  <div class="users-title">
+    Учетные записи пользователей
+  </div>
+  <div class="users-filters">
+    <details>
+      <summary>
+        Фильтры
+      </summary>
+      <form id="search_form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="group_in_form">
+          <div class="left_side">
+            <div class="form_string">
+              <div class="form_item">
+                <mat-form-field appearance="fill">
+                  <mat-label>Сортировка по полю:</mat-label>
+                  <mat-select [(ngModel)]="selectedFieldValue" formControlName="fieldSortControl">
+                    <mat-option *ngFor="let field of fieldValue" [value]="field.id">
+                      {{field.value}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form_item">
+                <mat-form-field appearance="fill">
+                  <mat-label>Направление сортировки:</mat-label>
+                  <mat-select [(ngModel)]="selectedSortDirection" formControlName="checkBoxSortedControl">
+                    <mat-option *ngFor="let sort of sortDirection" [value]="sort.value">
+                      {{sort.valueView}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form_string">
+              <div class="form_item">
+                <mat-form-field appearance="fill">
+                  <mat-label>Поиск по полю:</mat-label>
+                  <mat-select [(ngModel)]="selectedFieldSearch" formControlName="fieldSearchControl">
+                    <mat-option *ngFor="let field of fieldValue" [value]="field.id">
+                      {{field.value}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form_item">
+                <mat-form-field class="example-form-field" appearance="fill">
+                  <mat-label>Значение для поиска</mat-label>
+                  <input matInput type="text" [(ngModel)]="searchValue" formControlName="valueSearchControl">
+                  <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="status_select_box">
+            <span>Фильтр по статусу учетной записи</span>
+            <div class="status_select">
+              <p><mat-checkbox [(ngModel)]="checkBoxActive" formControlName="checkBoxActiveControl">Активные</mat-checkbox></p>
+              <p><mat-checkbox [(ngModel)]="checkBoxDeleted" formControlName="checkBoxDeletedControl">Удаленные</mat-checkbox></p>
+              <p><mat-checkbox [(ngModel)]="checkBoxBanned" formControlName="checkBoxBannedControl">Блокированные</mat-checkbox></p>
+            </div>
+          </div>
+        </div>
+        <button mat-raised-button color="primary" (click)="onReset()" class="button_form">Очистить</button>
+        <button mat-raised-button color="primary" class="button_form">Применить</button>
+      </form>
+    </details>
+  </div>
+  <div class="table-scroll">
+    <table id="header_table">
+      <thead>
+      <tr>
+        <th class="td_id">ID</th>
+        <th class="td_field">Фамилия</th>
+        <th class="td_field">Имя</th>
+        <th class="td_field">Отчество</th>
+        <th class="td_email">Email</th>
+        <th class="td_status">Статус</th>
+      </tr>
+      </thead>
+    </table>
+
+    <div class="table-scroll-body">
+      <table id="body-table">
+        <tbody>
+        <tr *ngFor="let item of usersArray" (click)="getUserById(item.id)">
+          <td class="td_id">{{item.id}}</td>
+          <td class="td_field">{{item.surname}}</td>
+          <td class="td_field">{{item.firstname}}</td>
+          <td class="td_field">{{item.lastname}}</td>
+          <td class="td_email">{{item.email}}</td>
+          <td class="td_status" *ngIf="item.status==='ACTIVE'">Активно</td>
+          <td class="td_status deleted" *ngIf="item.status==='DELETED'">Удалено</td>
+          <td class="td_status" *ngIf="item.status==='BANNED'">Заблокировано</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
