@@ -16,7 +16,6 @@ import java.util.List;
 @Setter
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -25,5 +24,5 @@ public class Person {
     private Group group;
 
     @OneToMany(mappedBy = "teacher")
-    private List<ActiveCourse> activeCourses;
+    private List<Stream> cours;
 }

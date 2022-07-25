@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "lessons")
+@Table(name = "lessons_template")
 @Entity
 @Getter
 @Setter
@@ -25,6 +25,6 @@ public class LessonTemplate {
     private LocalTime duration;
 
     @ManyToOne
-    @JoinColumn(name = "programme_id")
+    @JoinColumn(name = "programme_temolate_id")
     private LearningProgrammeTemplate programme;
 }

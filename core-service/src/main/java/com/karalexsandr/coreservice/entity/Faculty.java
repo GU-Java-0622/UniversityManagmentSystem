@@ -28,8 +28,8 @@ public class Faculty {
     @OneToMany(mappedBy = "faculty")
     private List<Group> groups;
 
-    @ManyToMany(mappedBy = "faculties")
-    private List<CourseTemplate> cours;
+    @OneToOne(mappedBy = "faculties")
+    private StreamTemplate streamTemplate;
 
     @Column(name = "created_at")
     private LocalDateTime createAt;
