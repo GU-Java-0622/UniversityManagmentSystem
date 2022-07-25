@@ -27,10 +27,10 @@ public class Stream {
     private StreamTemplate streamTemplate;
 
     @OneToMany(mappedBy = "stream")
-    private List<LearningProgramme> programmes;
+    private List<Course> programmes;
 
-    @Column(name = "started_at")
-    private LocalDate startedAt;
+    @Column(name = "created_at")
+    private LocalDate createdAt;
 
     @Enumerated(value = EnumType.STRING)
     private StatusStream statusStream;

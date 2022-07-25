@@ -26,5 +26,5 @@ public class Person {
     private List<Stream> stream;
 
     @OneToMany(mappedBy = "teacher")
-    private List<LearningProgramme> programmes;
+    private List<Course> programmes;
 }

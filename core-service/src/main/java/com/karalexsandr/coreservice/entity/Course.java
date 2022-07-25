@@ -10,11 +10,11 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "learning_programmes")
+@Table(name = "course")
 @Entity
 @Getter
 @Setter
-public class LearningProgramme {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -23,7 +23,7 @@ public class LearningProgramme {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "learningProgramme")
+    @OneToMany(mappedBy = "course")
     private List<Lesson> lessons;
 
     @ManyToOne

@@ -26,7 +26,7 @@ public class Lesson {
 
     @ManyToOne
     @JoinColumn(name = "learning_programm")
-    private LearningProgramme learningProgramme;
+    private Course course;
 
     @Column(name = "started_at")
     private LocalDateTime startedAt;
