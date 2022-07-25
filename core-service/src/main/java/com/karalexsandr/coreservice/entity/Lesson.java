@@ -38,7 +38,7 @@ public class Lesson {
     @Column(name = "finished_at")
     private LocalDateTime finishedAt;
 
-    @Column(name = "training manual")
+    @Column(name = "training_manual")
     private String trainingManualUri;
 
     @Column(name = "homework")

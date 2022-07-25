@@ -1,15 +1,17 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/1.0/2022-06-22-create-tables.sql
+      file: db/changelog/1.0/2022-07-04-create-table-course-template.sql
   - include:
-      file: db/changelog/1.0/2022-07-04-create-table-persons.sql
-  - include:
-      file: db/changelog/1.0/2022-07-04-create-table-groups.sql
-  - include:
-      file: db/changelog/1.0/2022-07-04-create-table-lessons.sql
-  - include:
-      file: db/changelog/1.0/2022-07-04-create-table-learning_programmes.sql
-  - include:
-      file: db/changelog/1.0/2022-07-04-create-table-schedules.sql
+      file: db/changelog/1.0/2022-07-04-create-table-lesson-template.sql
   - include:
       file: db/changelog/1.0/2022-07-04-create-table-faculties.sql
+  - include:
+      file: db/changelog/1.0/2022-07-04-create-table-stream-template.sql
+  - include:
+      file: db/changelog/1.0/2022-07-04-create-table-person.sql
+  - include:
+      file: db/changelog/1.0/2022-07-04-create-table-stream.sql
+  - include:
+      file: db/changelog/1.0/2022-07-04-create-table-course.sql
+  - include:
+      file: db/changelog/1.0/2022-07-04-create-table-lesson.sql

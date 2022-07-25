@@ -25,6 +25,6 @@ public class LessonTemplate {
     private LocalTime duration;
 
     @ManyToOne
-    @JoinColumn(name = "course_temolate_id")
+    @JoinColumn(name = "course_template_id")
     private CourseTemplate courseTemplate;
 }

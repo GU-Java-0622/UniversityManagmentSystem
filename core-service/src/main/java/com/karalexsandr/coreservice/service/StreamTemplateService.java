@@ -1,7 +1,7 @@
 package com.karalexsandr.coreservice.service;
 
-import com.karalexsandr.coreservice.entity.Person;
-import com.karalexsandr.coreservice.repository.PersonRepository;
+import com.karalexsandr.coreservice.entity.StreamTemplate;
+import com.karalexsandr.coreservice.repository.StreamTemplateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,14 +11,14 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class PersonService {
-    private final PersonRepository repository;
+public class StreamTemplateService {
+    private final StreamTemplateRepository repository;
 
-    public Page<Person> findAll(Pageable pageable){
+    public Page<StreamTemplate> findAll(Pageable pageable){
         return repository.findAll(pageable);
     }
 
-    public Optional<Person> findById(Long id){
+    public Optional<StreamTemplate> findById(Long id){
         return repository.findById(id);
     }
 }
