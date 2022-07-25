@@ -1,40 +1,44 @@
 package com.karalexsandr.coreservice.entity;
 
-import lombok.*;
-import org.hibernate.Hibernate;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalTime;
-import java.util.Objects;
+import java.time.LocalDateTime;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@Table(name = "lessons")
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
-@Table(name = "lessons")
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "theme")
-    private String theme;
+    @ManyToOne
+    @JoinColumn(name = "lessons_template_id")
+    private LessonTemplate lessonTemplate;
 
-    @Column(name = "duration")
-    private LocalTime duration;
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Lesson lesson = (Lesson) o;
-        return id != null && Objects.equals(id, lesson.id);
-    }
+    @Column(name = "day_of_the_lesson")
+    private LocalDateTime dayOfTheLesson;
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
+    @Column(name = "training manual")
+    private String trainingManualUri;
+
+    @Column(name = "homework")
+    private String homeWorkUri;
+
+    @Column(name = "is_active")
+    private boolean isActive;
+
+
 }

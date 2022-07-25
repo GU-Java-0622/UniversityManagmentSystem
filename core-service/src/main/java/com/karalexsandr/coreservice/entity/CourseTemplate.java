@@ -10,7 +10,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "groups_template")
+@Table(name = "course_template")
 @Entity
 @Getter
 @Setter
@@ -20,15 +20,12 @@ public class CourseTemplate {
     @Column(name = "id")
     private Long id;
 
-    @OneToMany(mappedBy = "programme")
+    @OneToMany(mappedBy = "courseTemplate")
     private List<LessonTemplate> lessonTemplates;
 
-    @OneToMany(mappedBy = "courseTemplate")
-    private List<ActiveCourse> activeCourses;
-    @ManyToMany
-    @JoinTable(name = "cource_facultiy",
-            joinColumns = @JoinColumn(name = "cource_id"),
-            inverseJoinColumns = @JoinColumn(name = "faculty_id") )
-    private List<Faculty> faculties;
+    @ManyToOne
+    @JoinColumn(name = "learning_programme_template_id")
+    private LearningProgrammeTemplate learningProgrammeTemplate;
+
 
 }

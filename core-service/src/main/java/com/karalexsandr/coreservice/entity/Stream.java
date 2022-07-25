@@ -6,24 +6,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "groups")
+@Table(name = "streams")
 @Getter
 @Setter
-public class Group {
+public class Stream {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "faculty_id")
-    private Faculty faculty;
+    @JoinColumn(name = "group_id")
+    private Group group;
 
-    @OneToMany(mappedBy = "group")
-    private List<Person> persons;
+    @OneToMany(mappedBy = "stream")
+    private List<LearningProgramme> learningProgrammes;
+
+    private LocalDate startAt;
 }

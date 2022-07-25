@@ -1,17 +1,17 @@
 package com.karalexsandr.coreservice.entity;
 
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "learning_programmes_template")
 @Entity
+@Table(name = "learning_programmes_template")
 @Getter
 @Setter
 public class LearningProgrammeTemplate {
@@ -23,10 +23,6 @@ public class LearningProgrammeTemplate {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "programme")
-    private List<LessonTemplate> lessonTemplates;
-
-    @Column(name = "created_at")
-    private LocalDateTime createAt;
-
+    @OneToMany(mappedBy = "learningProgrammeTemplate")
+    private List<CourseTemplate> courseTemplates;
 }

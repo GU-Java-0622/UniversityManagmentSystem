@@ -1,14 +1,16 @@
 package com.karalexsandr.coreservice.entity;
 
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "lessons")
+@Table(name = "lessons_template")
 @Entity
 @Getter
 @Setter
@@ -18,13 +20,13 @@ public class LessonTemplate {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "theme")
-    private String theme;
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "duration")
     private LocalTime duration;
 
     @ManyToOne
-    @JoinColumn(name = "programme_id")
-    private LearningProgrammeTemplate programme;
+    @JoinColumn(name = "course_template_id")
+    private CourseTemplate courseTemplate;
 }

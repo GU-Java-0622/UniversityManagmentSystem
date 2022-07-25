@@ -11,19 +11,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "groups")
+@Table(name = "faculties_template")
 @Getter
 @Setter
-public class Group {
+public class FacultyTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "faculty_id")
-    private Faculty faculty;
 
-    @OneToMany(mappedBy = "group")
-    private List<Person> persons;
+    @OneToMany
+    @JoinColumn(name = "learning_programme_templates_id")
+    private List<LearningProgrammeTemplate> learningProgrammeTemplates;
 }

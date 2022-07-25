@@ -1,19 +1,17 @@
 package com.karalexsandr.coreservice.entity;
 
-
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
-
-
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "faculties")
 @Entity
+@Table(name = "faculties")
 @Getter
 @Setter
 public class Faculty {
@@ -22,16 +20,14 @@ public class Faculty {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "title")
-    private String title;
+    @ManyToOne
+    @JoinColumn(name = "faculty_template_id")
+    private FacultyTemplate facultyTemplate;
 
     @OneToMany(mappedBy = "faculty")
     private List<Group> groups;
 
-    @ManyToMany(mappedBy = "faculties")
-    private List<CourseTemplate> cours;
-
-    @Column(name = "created_at")
-    private LocalDateTime createAt;
-
+    @OneToMany
+    @JoinColumn(name = "learning_programme_id")
+    private List<LearningProgramme> learningProgrammes;
 }
