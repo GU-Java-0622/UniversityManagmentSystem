@@ -27,7 +27,7 @@ public class StreamTemplate {
     @JoinTable(name = "programme_template_facultiy",
             joinColumns = @JoinColumn(name = "programme_template_id"),
             inverseJoinColumns = @JoinColumn(name = "faculty_id") )
-    private List<CourseTemplate> programmeTemplates;
+    private List<CourseTemplate> courseTemplates;
 
     @ManyToOne
     @JoinColumn(name="facultity_id")

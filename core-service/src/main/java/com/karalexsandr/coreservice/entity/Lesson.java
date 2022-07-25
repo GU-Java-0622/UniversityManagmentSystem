@@ -24,16 +24,14 @@ public class Lesson {
     @JoinColumn(name="lesson_template_id")
     private LessonTemplate lessonTemplate;
 
+    @Column(name = "theme")
+    private String theme;
     @ManyToOne
     @JoinColumn(name = "learning_programm")
     private Course course;
 
     @Column(name = "started_at")
     private LocalDateTime startedAt;
-
-    @ManyToOne
-    @JoinColumn(name="cource_id")
-    private Stream stream;
 
     @Column(name = "finished_at")
     private LocalDateTime finishedAt;
