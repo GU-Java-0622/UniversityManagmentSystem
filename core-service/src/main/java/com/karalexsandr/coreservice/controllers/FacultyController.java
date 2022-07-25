@@ -1,6 +1,6 @@
-package com.karalexsandr.coreservice.entity.controllers;
+package com.karalexsandr.coreservice.controllers;
 
-import com.karalexsandr.coreservice.entity.services.FacultyService;
+import com.karalexsandr.coreservice.services.FacultyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

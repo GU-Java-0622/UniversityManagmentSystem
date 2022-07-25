@@ -1,8 +1,8 @@
-package com.karalexsandr.coreservice.entity.controllers;
+package com.karalexsandr.coreservice.controllers;
 
 import com.karalexsandr.coreservice.dto.request.AddStudentToStreamDto;
 import com.karalexsandr.coreservice.dto.request.StreamCreateRequestDto;
-import com.karalexsandr.coreservice.entity.services.active.StreamService;
+import com.karalexsandr.coreservice.services.active.StreamService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

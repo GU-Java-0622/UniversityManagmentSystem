@@ -1,4 +1,4 @@
-package com.karalexsandr.coreservice.entity.services.template;
+package com.karalexsandr.coreservice.services.template;
 
 import com.karalexsandr.coreservice.entity.CourseTemplate;
 import com.karalexsandr.coreservice.repository.CourseTemplateRepository;

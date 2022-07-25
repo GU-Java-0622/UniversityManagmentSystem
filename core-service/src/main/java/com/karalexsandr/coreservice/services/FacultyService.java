@@ -1,4 +1,4 @@
-package com.karalexsandr.coreservice.entity.services;
+package com.karalexsandr.coreservice.services;
 
 import com.karalexsandr.coreservice.entity.Faculty;
 import com.karalexsandr.coreservice.repository.FacultyRepository;

@@ -1,4 +1,4 @@
-package com.karalexsandr.coreservice.entity.services.active;
+package com.karalexsandr.coreservice.services.active;
 
 import com.karalexsandr.coreservice.entity.Course;
 import com.karalexsandr.coreservice.entity.CourseTemplate;

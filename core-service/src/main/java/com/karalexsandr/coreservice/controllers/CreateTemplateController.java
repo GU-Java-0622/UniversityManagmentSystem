@@ -1,9 +1,9 @@
-package com.karalexsandr.coreservice.entity.controllers;
+package com.karalexsandr.coreservice.controllers;
 
 import com.karalexsandr.coreservice.dto.request.LessonTemplateCreateDto;
-import com.karalexsandr.coreservice.entity.services.template.CourseTemplateService;
-import com.karalexsandr.coreservice.entity.services.template.LessonTemplateService;
-import com.karalexsandr.coreservice.entity.services.template.StreamTemplateService;
+import com.karalexsandr.coreservice.services.template.CourseTemplateService;
+import com.karalexsandr.coreservice.services.template.LessonTemplateService;
+import com.karalexsandr.coreservice.services.template.StreamTemplateService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

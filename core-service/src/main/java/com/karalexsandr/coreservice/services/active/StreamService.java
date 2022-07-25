@@ -1,12 +1,12 @@
-package com.karalexsandr.coreservice.entity.services.active;
+package com.karalexsandr.coreservice.services.active;
 
 import com.karalexsandr.coreservice.dto.request.AddStudentToStreamDto;
 import com.karalexsandr.coreservice.dto.request.StreamCreateRequestDto;
 import com.karalexsandr.coreservice.entity.StatusStream;
 import com.karalexsandr.coreservice.entity.Stream;
 import com.karalexsandr.coreservice.entity.StreamTemplate;
-import com.karalexsandr.coreservice.entity.services.PersonService;
-import com.karalexsandr.coreservice.entity.services.template.StreamTemplateService;
+import com.karalexsandr.coreservice.services.PersonService;
+import com.karalexsandr.coreservice.services.template.StreamTemplateService;
 import com.karalexsandr.coreservice.repository.StreamRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
