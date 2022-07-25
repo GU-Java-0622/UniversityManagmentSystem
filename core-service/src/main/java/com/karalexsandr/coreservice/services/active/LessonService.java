@@ -1,5 +1,6 @@
 package com.karalexsandr.coreservice.services.active;
 
+import com.karalexsandr.coreservice.entity.Course;
 import com.karalexsandr.coreservice.entity.CourseTemplate;
 import com.karalexsandr.coreservice.entity.Lesson;
 import com.karalexsandr.coreservice.entity.LessonTemplate;
@@ -34,5 +35,9 @@ public class LessonService {
             lessons.add(lesson);
         }
         return lessons;
+    }
+
+    public List<Lesson> getNotReadyLesson(List<Course> courses){
+        return repository.getLessonByCourseInAndStartedAtIsNull(courses);
     }
 }

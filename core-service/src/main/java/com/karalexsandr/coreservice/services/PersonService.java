@@ -16,4 +16,8 @@ public class PersonService {
     public Person findPersonById(Long id){
         return repository.findById(id).orElseThrow(()->new ResourceNotFoundException("Не найден студент с id: "+id));
     }
+
+    public Person getById(Long id){
+        return repository.getReferenceById(id);
+    }
 }
