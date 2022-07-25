@@ -28,4 +28,8 @@ public class LearningProgramme {
 
     @ManyToOne
     private Stream stream;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person teacher;
 }

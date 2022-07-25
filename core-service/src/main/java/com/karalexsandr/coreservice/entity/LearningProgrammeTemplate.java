@@ -29,4 +29,7 @@ public class LearningProgrammeTemplate {
     @Column(name = "created_at")
     private LocalDateTime createAt;
 
+    @ManyToMany(mappedBy = "programmeTemplates")
+    private List<StreamTemplate> streamTemplates;
+
 }

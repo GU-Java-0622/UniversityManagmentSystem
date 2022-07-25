@@ -43,4 +43,7 @@ public class Lesson {
 
     @Column(name = "homework")
     private String homeWorkUri;
+
+    @Column(name = "is_finished")
+    private boolean isFinished;
 }

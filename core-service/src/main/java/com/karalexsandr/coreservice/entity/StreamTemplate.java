@@ -31,7 +31,8 @@ public class StreamTemplate {
 
     @OneToMany(mappedBy = "streamTemplate")
     private List<Stream> streams;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name="facultity_id")
     private Faculty faculties;
 
 }

@@ -26,10 +26,10 @@ public class Faculty {
     private String title;
 
     @OneToMany(mappedBy = "faculty")
-    private List<Group> groups;
+    private List<Stream> streams;
 
-    @OneToOne(mappedBy = "faculties")
-    private StreamTemplate streamTemplate;
+    @OneToMany(mappedBy = "faculties")
+    private List<StreamTemplate> streamTemplate;
 
     @Column(name = "created_at")
     private LocalDateTime createAt;

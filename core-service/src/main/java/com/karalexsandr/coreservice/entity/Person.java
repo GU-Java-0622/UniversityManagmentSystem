@@ -19,10 +19,12 @@ public class Person {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "group_id")
-    private Group group;
+    @ManyToMany
+    @JoinTable(name = "person_stream",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "stream_id") )
+    private List<Stream> stream;
 
     @OneToMany(mappedBy = "teacher")
-    private List<Stream> cours;
+    private List<LearningProgramme> programmes;
 }

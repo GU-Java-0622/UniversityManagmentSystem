@@ -25,13 +25,6 @@ public class Stream {
     @ManyToOne
     @JoinColumn(name = "stream_template_id")
     private StreamTemplate streamTemplate;
-    @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person teacher;
-
-    @OneToOne
-    @JoinColumn(name = "group_id")
-    private Group group;
 
     @OneToMany(mappedBy = "stream")
     private List<LearningProgramme> programmes;
@@ -39,9 +32,13 @@ public class Stream {
     @Column(name = "started_at")
     private LocalDate startedAt;
 
-    @Column(name = "finished_at")
-    private LocalDate finishedAt;
-
     @Enumerated(value = EnumType.STRING)
     private StatusStream statusStream;
+
+    @ManyToOne
+    @JoinColumn(name="facultity_id")
+    private Faculty faculty;
+
+    @ManyToMany(mappedBy = "stream")
+    private List<Person> students;
 }
