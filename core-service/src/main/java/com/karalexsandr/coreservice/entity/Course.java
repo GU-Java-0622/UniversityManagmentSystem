@@ -23,6 +23,10 @@ public class Course {
     @Column(name = "title")
     private String title;
 
+    @ManyToOne
+    @JoinColumn(name = "course_template_id")
+    private CourseTemplate courseTemplate;
+
     @OneToMany(mappedBy = "course")
     private List<Lesson> lessons;
 

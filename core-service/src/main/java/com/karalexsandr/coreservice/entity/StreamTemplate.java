@@ -29,8 +29,6 @@ public class StreamTemplate {
             inverseJoinColumns = @JoinColumn(name = "faculty_id") )
     private List<CourseTemplate> programmeTemplates;
 
-    @OneToMany(mappedBy = "streamTemplate")
-    private List<Stream> streams;
     @ManyToOne
     @JoinColumn(name="facultity_id")
     private Faculty faculties;
