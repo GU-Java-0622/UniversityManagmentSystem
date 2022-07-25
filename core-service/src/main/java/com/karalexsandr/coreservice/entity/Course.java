@@ -6,32 +6,34 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "course")
 @Entity
-@Table(name = "active_course")
 @Getter
 @Setter
-public class ActiveCourse {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "title")
+    private String title;
+
     @ManyToOne
-    @JoinColumn(name = "cource_template_id")
+    @JoinColumn(name = "course_template_id")
     private CourseTemplate courseTemplate;
+
+    @OneToMany(mappedBy = "course")
+    private List<Lesson> lessons;
+
+    @ManyToOne
+    private Stream stream;
+
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person teacher;
-
-    @Column(name = "started_at")
-    private LocalDateTime startedAt;
-
-    @Column(name = "finished_at")
-    private LocalDateTime finishedAt;
-
 }

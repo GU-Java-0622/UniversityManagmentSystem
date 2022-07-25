@@ -1,16 +1,16 @@
 package com.karalexsandr.coreservice.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "groups_template")
+@Table(name = "cource_template")
 @Entity
 @Getter
 @Setter
@@ -20,15 +20,16 @@ public class CourseTemplate {
     @Column(name = "id")
     private Long id;
 
-    @OneToMany(mappedBy = "programme")
-    private List<LessonTemplate> lessonTemplates;
+    @Column(name = "title")
+    private String title;
 
     @OneToMany(mappedBy = "courseTemplate")
-    private List<ActiveCourse> activeCourses;
-    @ManyToMany
-    @JoinTable(name = "cource_facultiy",
-            joinColumns = @JoinColumn(name = "cource_id"),
-            inverseJoinColumns = @JoinColumn(name = "faculty_id") )
-    private List<Faculty> faculties;
+    private List<LessonTemplate> lessonTemplates;
+
+    @Column(name = "created_at")
+    private LocalDateTime createAt;
+
+    @ManyToMany(mappedBy = "programmeTemplates")
+    private List<StreamTemplate> streamTemplates;
 
 }
