@@ -6,17 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cource_template")
+@Table(name = "stream_template")
 @Entity
 @Getter
 @Setter
-public class CourseTemplate {
+public class StreamTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -25,13 +23,14 @@ public class CourseTemplate {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "courseTemplate")
-    private List<LessonTemplate> lessonTemplates;
+    @ManyToMany
+    @JoinTable(name = "programme_template_facultiy",
+            joinColumns = @JoinColumn(name = "programme_template_id"),
+            inverseJoinColumns = @JoinColumn(name = "faculty_id") )
+    private List<CourseTemplate> courseTemplates;
 
-    @Column(name = "created_at")
-    private LocalDateTime createAt;
-
-    @ManyToMany(mappedBy = "courseTemplates")
-    private List<StreamTemplate> streamTemplates;
+    @ManyToOne
+    @JoinColumn(name="facultity_id")
+    private Faculty faculties;
 
 }

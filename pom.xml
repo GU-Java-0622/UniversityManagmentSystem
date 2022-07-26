@@ -19,8 +19,9 @@
         <version>2.6.1</version>
         <relativePath/>
     </parent>
-    <groupId>ru.geekbrains</groupId>
-    <artifactId>testrepo</artifactId>
+
+    <groupId>ru.geekbrains.ums</groupId>
+    <artifactId>UMS</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>UniversityManagmentSystem</name>
 
@@ -49,14 +50,5 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

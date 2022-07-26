@@ -1,8 +1,10 @@
 package com.karalexsandr.coreservice.entity;
 
 
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -26,10 +28,10 @@ public class Faculty {
     private String title;
 
     @OneToMany(mappedBy = "faculty")
-    private List<Group> groups;
+    private List<Stream> streams;
 
-    @ManyToMany(mappedBy = "faculties")
-    private List<CourseTemplate> cours;
+    @OneToMany(mappedBy = "faculties")
+    private List<StreamTemplate> streamTemplate;
 
     @Column(name = "created_at")
     private LocalDateTime createAt;
