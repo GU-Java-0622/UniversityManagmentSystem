@@ -20,7 +20,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>ru.geekbrains</groupId>
+    <groupId>ru.geekbrains.ums</groupId>
     <artifactId>UMS</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>UniversityManagmentSystem</name>
