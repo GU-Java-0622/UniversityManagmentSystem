@@ -27,7 +27,7 @@ public class Stream {
     private StreamTemplate streamTemplate;
 
     @OneToMany(mappedBy = "stream")
-    private List<Course> programmes;
+    private List<Course> course;
 
     @Column(name = "created_at")
     private LocalDate createdAt;
