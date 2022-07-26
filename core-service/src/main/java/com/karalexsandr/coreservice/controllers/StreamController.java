@@ -6,7 +6,7 @@ import com.karalexsandr.coreservice.services.active.StreamService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+
 @RestController
 @RequestMapping("api/v1/stream")
 public class StreamController {
