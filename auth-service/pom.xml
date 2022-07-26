@@ -3,12 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <artifactId>auth-service</artifactId>
     <packaging>jar</packaging>
 
 <!--    <parent>-->
-<!--        <groupId>ru.geekbrains</groupId>-->
-<!--        <artifactId>UMS</artifactId>-->
+<!--        <groupId>ru.geekbrains.ums</groupId>-->
+<!--        <artifactId>auth-service</artifactId>-->
 <!--        <version>0.0.1-SNAPSHOT</version>-->
 <!--        <relativePath/>-->
 <!--    </parent>-->
@@ -22,7 +21,8 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ru.gekbrains</groupId>
+    <groupId>ru.gekbrains.ums</groupId>
+    <artifactId>auth-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
