@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../../../../services/auth.service";
 import { FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UserAppService} from "../../../../services/user-app.service";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class LoginDialogComponent implements OnInit {
   errorMessage = '';
   statusCode:number|undefined;
 
-  constructor(private formBuilder: FormBuilder,private auth: AuthService,private router: Router,public dialogRef: MatDialogRef<LoginDialogComponent>) {
+  constructor(private user: UserAppService,private formBuilder: FormBuilder,private auth: AuthService,private router: Router,public dialogRef: MatDialogRef<LoginDialogComponent>) {
     this.form = this.formBuilder.group({
       emailControl:[Validators.required, Validators.email],
       passwordControl:[Validators.required]
@@ -52,6 +53,7 @@ export class LoginDialogComponent implements OnInit {
     }
     this.auth.login(this.email,this.password).subscribe((res:any)=>{
       console.log(res)
+      this.user.parseResponse(res);
       this.dialogRef.close();
       this.router.navigate(['/dashboard']);
     },(err:any)=>{

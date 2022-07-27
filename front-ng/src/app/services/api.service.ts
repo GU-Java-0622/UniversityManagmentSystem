@@ -9,20 +9,16 @@ export class ApiService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
    private API_ROOT="http://localhost:5555/"
-   private _loginApi = 'api/v1/auth/login';/*+*/
+   private _loginApi = 'auth/api/v1/auth/login';/*+*/
    private _register = 'auth/api/v1/auth//signup';/*+*/
-   private _getAllUser ='api/v1/profile/get_all';/*+*/
+   private _getAllUser ='auth/api/v1/profile/get_all';/*+*/
    private _getProfileById = 'auth/api/v1/profile/profile/';/*+*/
-   private _getRolesByUser = 'auth/api/v1/roles/user_roles/'
    private _updateOrSave= 'auth/api/v1/users/update'
 
   get getAllUser(): string {
     return this.API_ROOT+this._getAllUser;
   }
 
-  get getRolesByUser(): string {
-    return this.API_ROOT+this._getRolesByUser;
-  }
 
   get httpOptions(): { headers: HttpHeaders } {
     return this._httpOptions;

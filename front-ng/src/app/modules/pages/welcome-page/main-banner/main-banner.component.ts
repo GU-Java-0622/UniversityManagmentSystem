@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {RegisterationDialogComponent} from "../../widgets/registeration-dialog/registeration-dialog.component";
+import {RegistrationDialogComponent} from "../../widgets/registeration-dialog/registration-dialog.component";
 
 @Component({
   selector: 'app-main-banner',
@@ -15,6 +15,6 @@ export class MainBannerComponent implements OnInit {
   }
 
   openRegistrationDialog() {
-    this.registrationDialog.open(RegisterationDialogComponent);
+    this.registrationDialog.open(RegistrationDialogComponent);
   }
 }
