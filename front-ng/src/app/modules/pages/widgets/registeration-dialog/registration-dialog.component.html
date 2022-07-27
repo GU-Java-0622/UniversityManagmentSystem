@@ -1,7 +1,7 @@
 <div class="container">
   <h1 mat-dialog-title>Регистрация</h1>
   <div mat-dialog-content >
-    <form>
+    <form >
       <div class="form-container">
         <div class="left-side">
           <p>
@@ -17,7 +17,7 @@
             <mat-form-field appearance="outline">
               <mat-label>Отчетсво</mat-label>
               <input
-                matInput placeholder="Введите отчество">
+                matInput placeholder="Введите отчество" [formControl]="middlenameControl">
               <mat-icon matSuffix>person_pin</mat-icon>
             </mat-form-field>
           </p>
@@ -67,9 +67,9 @@
           </mat-form-field>
         </p>
       </div>
-
+      <mat-error *ngIf="errorReg">{{errorMessage}}</mat-error>
       <div mat-dialog-actions class="action-button">
-        <button mat-raised-button >OK</button>
+        <button mat-raised-button (click)="onSubmit()">OK</button>
         <button mat-raised-button mat-dialog-close>Закрыть</button>
       </div>
       <mat-divider></mat-divider>

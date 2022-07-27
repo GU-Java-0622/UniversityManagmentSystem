@@ -10,7 +10,6 @@ export class UserAppService {
   private email:string|null =null;
   private id:number|null =null;
   private refreshToken:string|null=null;
-  private roles:Set<Authorities>| null=null;
   constructor() {
     }
 
@@ -50,10 +49,10 @@ export class UserAppService {
     return tok;
   }
 
-  public getRole():Set<Authorities>| null{
+  public getRole():Set<string>| null{
     let token = UserAppService.parseJwt(<string>window.localStorage.getItem(TOKEN_KEY));
     if (token){
-      return new Set<Authorities>(token.roles);
+      return new Set<string>(token.roles);
     }
     return null;
   }
