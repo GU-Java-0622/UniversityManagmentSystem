@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -28,10 +30,15 @@ public class CourseTemplate {
     @OneToMany(mappedBy = "courseTemplate")
     private List<LessonTemplate> lessonTemplates;
 
-    @Column(name = "created_at")
-    private LocalDateTime createAt;
-
     @ManyToMany(mappedBy = "courseTemplates")
     private List<StreamTemplate> streamTemplates;
+
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "update_at")
+    private LocalDateTime updatedAt;
 
 }

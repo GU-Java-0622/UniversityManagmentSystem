@@ -1,20 +1,20 @@
 package com.karalexsandr.coreservice.services;
 
+import com.karalexsandr.coreservice.dto.request.FacultyDto;
 import com.karalexsandr.coreservice.entity.Faculty;
 import com.karalexsandr.coreservice.repository.FacultyRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class FacultyService {
     private final FacultyRepository repository;
 
-    public FacultyService(FacultyRepository repository) {
-        this.repository = repository;
-    }
 
-    public void createFaculty(String title){
+    public void createFaculty(FacultyDto facultyDto){
         Faculty faculty =new Faculty();
-        faculty.setTitle(title);
+        faculty.setTitle(facultyDto.getTitle());
         repository.save(faculty);
     }
 

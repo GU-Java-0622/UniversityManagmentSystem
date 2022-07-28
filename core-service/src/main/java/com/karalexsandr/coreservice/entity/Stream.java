@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -29,8 +32,6 @@ public class Stream {
     @OneToMany(mappedBy = "stream")
     private List<Course> course;
 
-    @Column(name = "created_at")
-    private LocalDate createdAt;
 
     @Enumerated(value = EnumType.STRING)
     private StatusStream statusStream;
@@ -41,4 +42,12 @@ public class Stream {
 
     @ManyToMany(mappedBy = "stream")
     private List<Person> students;
+
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "update_at")
+    private LocalDateTime updatedAt;
 }
