@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `users`
     `id`        bigint       NOT NULL AUTO_INCREMENT,
     `firstname` varchar(36)  NOT NULL,
     `surname`   varchar(36)  NOT NULL,
-    `lastname`  varchar(36) DEFAULT NULL,
+    middlename  varchar(36) DEFAULT NULL,
     `password`  varchar(100) NOT NULL,
     `email`     varchar(36)  NOT NULL,
     `status`    varchar(36)  NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `user_roles`
 DROP TABLE IF EXISTS `refreshtoken`;
 CREATE TABLE `refreshtoken`
 (
-    `id`          bigint       NOT NULL,
+    `id`          bigint       NOT NULL AUTO_INCREMENT,
     `expiry_date` datetime     NOT NULL,
     `token`       varchar(255) NOT NULL,
     `user_id`     bigint DEFAULT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `refreshtoken`
     CONSTRAINT `FKa652xrdji49m4isx38pp4p80p` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 );
 
-INSERT INTO `users` (`id`, `firstname`, `surname`, `lastname`, `password`, `email`, `status`)
+INSERT INTO `users` (`id`, `firstname`, `surname`, middlename, `password`, `email`, `status`)
 VALUES (1, 'Admin', 'Adminov', 'Adminovich', '$2a$10$q7ReXzUuRwPtX9tHB9QrkunSjqFkkVmzeFU7vUa2a4vs6EfPxMfFG',
         'admin@admin.com', 'ACTIVE'),
        (2, 'Student', 'Studentov', 'Studentovich', '$2a$10$q7ReXzUuRwPtX9tHB9QrkunSjqFkkVmzeFU7vUa2a4vs6EfPxMfFG',
