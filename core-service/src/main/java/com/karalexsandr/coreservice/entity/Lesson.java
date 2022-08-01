@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -31,10 +34,10 @@ public class Lesson {
     private Course course;
 
     @Column(name = "started_at")
-    private LocalDateTime startedAt;
+    private LocalDate startedAt;
 
     @Column(name = "finished_at")
-    private LocalDateTime finishedAt;
+    private LocalDate finishedAt;
 
     @Column(name = "training_manual")
     private String trainingManualUri;
@@ -44,4 +47,12 @@ public class Lesson {
 
     @Column(name = "is_finished")
     private boolean isFinished;
+
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "update_at")
+    private LocalDateTime updatedAt;
 }
