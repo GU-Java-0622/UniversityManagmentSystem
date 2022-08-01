@@ -21,3 +21,10 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
     enabled: false
+
+integrations:
+  auth-service:
+    url: http://localhost:5555/auth
+    connect: 2000
+    read: 10000
+    write: 2000
