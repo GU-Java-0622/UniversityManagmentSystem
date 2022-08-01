@@ -1,5 +1,5 @@
 export enum Authorities{
-  ADMIN_USER='ROLE_ADMIN',
-  TEACHER_USER='ROLE_TEACHER',
-  STUDENT_USER='ROLE_STUDENT'
+  ROLE_ADMIN = 'Администратор',
+  ROLE_TEACHER = 'Учитель',
+  ROLE_STUDENT = 'Студент'
 }

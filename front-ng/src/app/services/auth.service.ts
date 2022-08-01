@@ -17,4 +17,14 @@ export class AuthService {
       password
     }, this.api.httpOptions);
   }
+
+  registration(firstname:string, surname:string, middlename:string, email:string, password:string):Observable<any> {
+    return this.http.post(this.api.register,{
+      firstname,
+      surname,
+      middlename,
+      email,
+      password
+    })
+  }
 }
