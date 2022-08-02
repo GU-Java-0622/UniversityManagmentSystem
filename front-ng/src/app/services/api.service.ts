@@ -10,7 +10,7 @@ export class ApiService {
   };
    private API_ROOT="http://localhost:5555/"
    private _loginApi = 'auth/api/v1/auth/login';/*+*/
-   private _register = 'auth/api/v1/auth//signup';/*+*/
+   private _register = 'auth/api/v1/auth/signup';/*+*/
    private _getAllUser ='auth/api/v1/profile/get_all';/*+*/
    private _getProfileById = 'auth/api/v1/profile/profile/';/*+*/
    private _updateOrSave= 'auth/api/v1/users/update'
