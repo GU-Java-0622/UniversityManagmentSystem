@@ -6,11 +6,16 @@ import com.karalexsandr.coreservice.repository.FacultyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class FacultyService {
     private final FacultyRepository repository;
 
+public List<Faculty> findAll(){
+    return repository.findAll();
+}
 
     public void createFaculty(FacultyDto facultyDto){
         Faculty faculty =new Faculty();

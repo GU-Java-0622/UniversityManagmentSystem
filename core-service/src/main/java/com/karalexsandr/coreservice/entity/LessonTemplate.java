@@ -1,6 +1,7 @@
 package com.karalexsandr.coreservice.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,8 +36,10 @@ public class LessonTemplate {
 
     @Column(name = "homework")
     private String homeWorkUri;
+
     @ManyToOne
     @JoinColumn(name = "course_template_id")
+    @JsonBackReference
     private CourseTemplate courseTemplate;
 
     @CreationTimestamp
