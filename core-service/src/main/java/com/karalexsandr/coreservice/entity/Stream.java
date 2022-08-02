@@ -1,5 +1,6 @@
 package com.karalexsandr.coreservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,7 @@ public class Stream {
     private StreamTemplate streamTemplate;
 
     @OneToMany(mappedBy = "stream")
+    @JsonBackReference
     private List<Course> course;
 
 

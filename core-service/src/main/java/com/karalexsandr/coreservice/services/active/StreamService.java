@@ -59,4 +59,8 @@ public class StreamService {
         }
         repository.startedStream(StatusStream.ACTIVE,streamId);
     }
+
+    public List<Stream> findAll() {
+        return repository.findAll();
+    }
 }

@@ -28,6 +28,9 @@ public class CourseService {
     private final PersonService personService;
     private final AuthServiceIntegration authServiceIntegration;
 
+    public List<Course> findAll(){
+        return repository.findAll();
+    }
 
     @Transactional
     public List<Course> createCoursesForStreamTemplate(StreamTemplate streamTemplate) {

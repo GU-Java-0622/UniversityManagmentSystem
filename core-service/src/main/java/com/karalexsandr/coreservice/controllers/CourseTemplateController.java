@@ -1,11 +1,11 @@
 package com.karalexsandr.coreservice.controllers;
 
+import com.karalexsandr.coreservice.entity.CourseTemplate;
 import com.karalexsandr.coreservice.services.template.CourseTemplateService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,5 +16,10 @@ public class CourseTemplateController {
     @PostMapping
     public void createCourseTemplate(@RequestBody String title, @RequestBody Long streamId){
         courseTemplateService.createCourseTemplate(title,streamId);
+    }
+
+    @GetMapping
+    public List<CourseTemplate> findAll(){
+        return courseTemplateService.findAll();
     }
 }
