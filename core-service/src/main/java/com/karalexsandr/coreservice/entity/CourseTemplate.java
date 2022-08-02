@@ -14,7 +14,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cource_template")
+@Table(name = "course_template")
 @Entity
 @Getter
 @Setter
