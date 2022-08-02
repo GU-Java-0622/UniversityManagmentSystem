@@ -1,20 +1,22 @@
 package com.karalexsandr.coreservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cource_template")
+@Table(name = "course_template")
 @Entity
 @Getter
 @Setter
@@ -27,10 +29,13 @@ public class CourseTemplate {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "courseTemplate")
+    @OneToMany(mappedBy = "courseTemplate",fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<LessonTemplate> lessonTemplates;
 
     @ManyToMany(mappedBy = "courseTemplates")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonManagedReference
     private List<StreamTemplate> streamTemplates;
 
     @CreationTimestamp

@@ -13,12 +13,17 @@ import java.util.List;
 import java.util.Set;
 
 
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/faculties")
 public class FacultyController {
     private final FacultyService facultyService;
 
+    @GetMapping
+    public List<Faculty> findAll(){
+        return facultyService.findAll();
+    }
 
     @PostMapping
     public void createFaculty(@RequestBody FacultyDto facultyDto,@RequestHeader("roles") Set<ERole> roles){

@@ -6,6 +6,8 @@ import com.karalexsandr.coreservice.repository.LessonTemplateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LessonTemplateService {
@@ -20,4 +22,9 @@ public class LessonTemplateService {
         lessonTemplate.setCourseTemplate(courseTemplateService.getCourseTemplateById(dto.getCourseTemplateId()));
         repository.save(lessonTemplate);
     }
+
+    public List<LessonTemplate> findAll(){
+        return repository.findAll();
+    }
+
 }

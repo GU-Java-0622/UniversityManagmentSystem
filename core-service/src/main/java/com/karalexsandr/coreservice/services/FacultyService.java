@@ -12,11 +12,15 @@ import javax.persistence.Query;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Service
 @RequiredArgsConstructor
 public class FacultyService {
     private final FacultyRepository repository;
 
+public List<Faculty> findAll(){
+    return repository.findAll();
+}
 
     public void createFaculty(FacultyDto facultyDto){
         Faculty faculty =new Faculty();

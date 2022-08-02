@@ -1,5 +1,7 @@
 server:
   port: 8181
+  servlet:
+    context-path: /web-core
 
 spring:
   datasource:
@@ -20,7 +22,7 @@ spring:
 
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
-    enabled: false
+    enabled: true
 
 integrations:
   auth-service:

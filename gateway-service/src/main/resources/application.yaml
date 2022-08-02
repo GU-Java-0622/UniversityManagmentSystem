@@ -24,6 +24,8 @@ spring:
           filters:
             - StripPrefix=1
             - JwtAuthFilter
+            - PrefixPath=/web-core
+
 
         - id: auth-service
           uri: http://localhost:8188

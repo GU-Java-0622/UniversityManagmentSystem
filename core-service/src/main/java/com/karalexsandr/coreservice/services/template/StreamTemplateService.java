@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import web.exception.ResourceNotFoundException;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class StreamTemplateService {
@@ -27,5 +29,9 @@ public class StreamTemplateService {
 
     public StreamTemplate findById(Long id){
         return repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Не найден шаблон для потока с id:"+id));
+    }
+
+    public List<StreamTemplate> findAll() {
+        return repository.findAll();
     }
 }

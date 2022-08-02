@@ -8,9 +8,13 @@ databaseChangeLog:
   - include:
       file: db/changelog/1.0/2022-07-04-create-table-stream-template.sql
   - include:
+      file: db/changelog/1.0/2022-07-04-create-table-programme_template_faculties.sql
+  - include:
       file: db/changelog/1.0/2022-07-04-create-table-person.sql
   - include:
       file: db/changelog/1.0/2022-07-04-create-table-stream.sql
+  - include:
+      file: db/changelog/1.0/2022-07-04-create-table-person-stream.sql
   - include:
       file: db/changelog/1.0/2022-07-04-create-table-course.sql
   - include:
