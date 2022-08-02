@@ -21,6 +21,9 @@ spring:
 #          uri: http://core-service:8181
           predicates:
           - Path=/core/**
+          filters:
+          - StripPrefix=1
+          - PrefixPath=/web-core
 
         - id: auth-service
           uri: http://localhost:8188
