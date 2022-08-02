@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+
 @Component
 public class JwtAuthFilter extends AbstractGatewayFilterFactory<JwtAuthFilter.Config> {
 
@@ -21,7 +22,7 @@ public class JwtAuthFilter extends AbstractGatewayFilterFactory<JwtAuthFilter.Co
     }
 
     @Override
-    public GatewayFilter apply(Config config) {
+    public GatewayFilter apply(Config config ) {
         return (exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
             if (!isAuthMissing(request)) {
@@ -60,8 +61,10 @@ public class JwtAuthFilter extends AbstractGatewayFilterFactory<JwtAuthFilter.Co
 
     private void populateRequestWithHeaders(ServerWebExchange exchange, String token) {
         Claims claims = jwtUtil.getAllClaimsFromToken(token);
+        claims.entrySet().forEach(System.out::println);
         exchange.getRequest().mutate()
                 .header("sub", claims.getSubject())
+                .header("roles",claims.get("roles").toString())
                 .build();
     }
 }
