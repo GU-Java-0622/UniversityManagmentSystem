@@ -14,6 +14,8 @@ export class ApiService {
    private _getAllUser ='auth/api/v1/profile/get_all';/*+*/
    private _getProfileById = 'auth/api/v1/profile/profile/';/*+*/
    private _updateOrSave= 'auth/api/v1/users/update'
+    private _FacultyGetAll = 'core/api/v1/faculties/get_all_faculty'
+
 
   get getAllUser(): string {
     return this.API_ROOT+this._getAllUser;
@@ -39,5 +41,9 @@ export class ApiService {
 
   get updateOrSave(): string {
     return this.API_ROOT+this._updateOrSave;
+  }
+
+  get FacultyGetAll(): string {
+    return this.API_ROOT+this._FacultyGetAll;
   }
 }

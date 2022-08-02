@@ -33,14 +33,18 @@ public class ProfileController {
 
     /*Администратор смотрит профиль другого человека*/
     @GetMapping("/get_profile/{id}")
-    public ProfileDto getProfileById(@PathVariable Long id){
-
+    public ProfileDto getProfileById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
+        HashSet<ERole> neededRole = new HashSet<>();
+        neededRole.add(ERole.ROLE_ADMIN);
+        RoleChecker.roleCheck(roles,neededRole);
         return profileService.getProfileById(id);
     }
 
     @PostMapping("/get_all")
-    public Page<ProfileGetAllDtoResponse> getAllUsersWithFilters(@RequestBody ProfileGetAllDtoRequest param, @RequestHeader Map<String, String> headers) {
-        headers.entrySet().forEach(System.out::println);
+    public Page<ProfileGetAllDtoResponse> getAllUsersWithFilters(@RequestBody ProfileGetAllDtoRequest param, @RequestHeader("roles") Set<ERole> roles) {
+        HashSet<ERole> neededRole = new HashSet<>();
+        neededRole.add(ERole.ROLE_ADMIN);
+        RoleChecker.roleCheck(roles,neededRole);
         return profileService.getAllUsers(param);
     }
 
