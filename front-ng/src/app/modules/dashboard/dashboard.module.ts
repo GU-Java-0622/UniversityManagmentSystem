@@ -21,6 +21,7 @@ import {MatInputModule} from "@angular/material/input";
 
 
 
+
 @NgModule({
   declarations: [
     DashboardViewComponent,
@@ -45,6 +46,7 @@ import {MatInputModule} from "@angular/material/input";
     MatCheckboxModule,
     MatInputModule,
 
-  ]
+  ],
+  bootstrap: [DashboardViewComponent]
 })
 export class DashboardModule { }

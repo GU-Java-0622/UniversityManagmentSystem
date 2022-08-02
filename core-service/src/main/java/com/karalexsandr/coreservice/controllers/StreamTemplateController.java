@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/streams")
+@RequestMapping("api/v1/stream_template")
 public class StreamTemplateController {
     private final StreamTemplateService streamTemplateService;
 
