@@ -31,10 +31,6 @@ export class UserDataService {
     return this.http.get(this.api.getProfileById+id);
   }
 
-  public getRoleByUserId(id: string | null){
-    return this.http.get(this.api.getRolesByUser+id);
-  }
-
   public saveOrUpdateUser(id: string | undefined | null, surname: (string | (((control: AbstractControl) => (ValidationErrors | null)) | ValidatorFn)[])[], firstname: (string | (((control: AbstractControl) => (ValidationErrors | null)) | ValidatorFn)[])[], lastname: string[],
                           email: (string | ((control: AbstractControl) => (ValidationErrors | null))[])[], phoneNumber: (string | (((control: AbstractControl) => (ValidationErrors | null)) | ValidatorFn)[])[], status: string, roles: number[]):Observable<any> {
     const userDetails={

@@ -5,35 +5,34 @@ import com.karalexsandr.coreservice.entity.CourseTemplate;
 import com.karalexsandr.coreservice.entity.Lesson;
 import com.karalexsandr.coreservice.entity.LessonTemplate;
 import com.karalexsandr.coreservice.repository.LessonRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class LessonService {
     private final LessonRepository repository;
 
 
-    public LessonService(LessonRepository repository) {
-        this.repository = repository;
-    }
-
     @Transactional
     public List<Lesson> createLessonsByCourseTemplate(CourseTemplate courseTemplate){
-        List<Lesson> lessons = new ArrayList<>();
-        List<LessonTemplate> lessonTemplates = courseTemplate.getLessonTemplates();
-        for(LessonTemplate lessonTemplate:lessonTemplates){
-            Lesson lesson = new Lesson();
-            lesson.setLessonTemplate(lessonTemplate);
-            lesson.setTheme(lessonTemplate.getTheme());
-            lesson.setTrainingManualUri(lessonTemplate.getTrainingManualUri());
-            lesson.setHomeWorkUri(lessonTemplate.getHomeWorkUri());
-            lesson.setFinished(false);
-            repository.save(lesson);
-            lessons.add(lesson);
-        }
+        List<Lesson> lessons = courseTemplate.getLessonTemplates().stream()
+                .map(lt ->{
+                    Lesson lesson = new Lesson();
+                    lesson.setLessonTemplate(lt);
+                    lesson.setTheme(lt.getTheme());
+                    lesson.setTrainingManualUri(lt.getTrainingManualUri());
+                    lesson.setHomeWorkUri(lt.getHomeWorkUri());
+                    lesson.setFinished(false);
+                    return lesson;
+                })
+                .collect(Collectors.toList());
+        repository.saveAll(lessons);
         return lessons;
     }
 

@@ -11,6 +11,8 @@ import web.entity.UserStatus;
 import web.exception.ForbiddenException;
 import web.security.RoleChecker;
 
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -31,36 +33,42 @@ public class ProfileController {
 
     /*Администратор смотрит профиль другого человека*/
     @GetMapping("/get_profile/{id}")
-    public ProfileDto getProfileById(@PathVariable Long id, @RequestHeader("role") Set<ERole> roles){
-        if (roles==null||!roles.contains(ERole.ROLE_ADMIN)){
-            throw new ForbiddenException("Access denied");
-        }
+    public ProfileDto getProfileById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
+        HashSet<ERole> neededRole = new HashSet<>();
+        neededRole.add(ERole.ROLE_ADMIN);
+        RoleChecker.roleCheck(roles,neededRole);
         return profileService.getProfileById(id);
     }
 
     @PostMapping("/get_all")
-    public Page<ProfileGetAllDtoResponse> getAllUsersWithFilters(@RequestBody ProfileGetAllDtoRequest param, @RequestHeader("role") Set<ERole> roles) {
-        if (roles==null||!roles.contains(ERole.ROLE_ADMIN)){
-            throw new ForbiddenException("Access denied");
-        }
+    public Page<ProfileGetAllDtoResponse> getAllUsersWithFilters(@RequestBody ProfileGetAllDtoRequest param, @RequestHeader("roles") Set<ERole> roles) {
+        HashSet<ERole> neededRole = new HashSet<>();
+        neededRole.add(ERole.ROLE_ADMIN);
+        RoleChecker.roleCheck(roles,neededRole);
         return profileService.getAllUsers(param);
     }
 
     @PutMapping("/delete/{id}")
-    public void deleteProfile(@PathVariable Long id, @RequestHeader("role") Set<ERole> roles ) {
-        RoleChecker.roleCheck(roles,ERole.ROLE_ADMIN);
+    public void deleteProfile(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles ) {
+        HashSet<ERole> neededRole = new HashSet<>();
+        neededRole.add(ERole.ROLE_ADMIN);
+        RoleChecker.roleCheck(roles,neededRole);
         profileService.changeStatus(id, UserStatus.DELETED);
     }
 
     @PutMapping("/banned/{id}")
-    public void bannedProfile(@PathVariable Long id, @RequestHeader("role") Set<ERole> roles) {
-        RoleChecker.roleCheck(roles,ERole.ROLE_ADMIN);
+    public void bannedProfile(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles) {
+        HashSet<ERole> neededRole = new HashSet<>();
+        neededRole.add(ERole.ROLE_ADMIN);
+        RoleChecker.roleCheck(roles,neededRole);
         profileService.changeStatus(id, UserStatus.BANNED);
     }
 
     @PutMapping("/active/{id}")
-    public void activeProfile(@PathVariable Long id, @RequestHeader("role") Set<ERole> roles) {
-        RoleChecker.roleCheck(roles,ERole.ROLE_ADMIN);
+    public void activeProfile(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles) {
+        HashSet<ERole> neededRole = new HashSet<>();
+        neededRole.add(ERole.ROLE_ADMIN);
+        RoleChecker.roleCheck(roles,neededRole);
         profileService.changeStatus(id, UserStatus.ACTIVE);
     }
 

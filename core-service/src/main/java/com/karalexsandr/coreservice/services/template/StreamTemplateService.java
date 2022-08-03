@@ -3,18 +3,18 @@ package com.karalexsandr.coreservice.services.template;
 import com.karalexsandr.coreservice.entity.StreamTemplate;
 import com.karalexsandr.coreservice.repository.StreamTemplateRepository;
 import com.karalexsandr.coreservice.services.FacultyService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import web.exception.ResourceNotFoundException;
 
+import java.util.List;
+
 @Service
+@RequiredArgsConstructor
 public class StreamTemplateService {
     private final FacultyService facultyService;
     private final StreamTemplateRepository repository;
 
-    public StreamTemplateService(FacultyService facultyService, StreamTemplateRepository repository) {
-        this.facultyService = facultyService;
-        this.repository = repository;
-    }
 
     public void createStreamTemplate(String title, Long facultyId){
         StreamTemplate streamTemplate = new StreamTemplate();
@@ -29,5 +29,9 @@ public class StreamTemplateService {
 
     public StreamTemplate findById(Long id){
         return repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Не найден шаблон для потока с id:"+id));
+    }
+
+    public List<StreamTemplate> findAll() {
+        return repository.findAll();
     }
 }

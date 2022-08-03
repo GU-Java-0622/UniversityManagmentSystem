@@ -14,7 +14,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatDialogModule} from '@angular/material/dialog';
 import { LoginDialogComponent } from './modules/pages/widgets/login-dialog/login-dialog.component';
-import { RegisterationDialogComponent } from './modules/pages/widgets/registeration-dialog/registeration-dialog.component';
+import { RegistrationDialogComponent } from './modules/pages/widgets/registeration-dialog/registration-dialog.component';
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptorService} from "./intercepters/auth-interceptor.service";
 import {MatInputModule} from '@angular/material/input';
@@ -34,7 +34,7 @@ import { AboutContentComponent } from './modules/pages/about-page/about-page/abo
     NewsSectionComponent,
     FooterComponent,
     LoginDialogComponent,
-    RegisterationDialogComponent,
+    RegistrationDialogComponent,
     OauthButtonsComponent,
     AboutPageComponent,
     AboutContentComponent

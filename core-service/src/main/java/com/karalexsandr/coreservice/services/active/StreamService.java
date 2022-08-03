@@ -10,6 +10,7 @@ import com.karalexsandr.coreservice.exception.StreamNotReadyException;
 import com.karalexsandr.coreservice.repository.StreamRepository;
 import com.karalexsandr.coreservice.services.PersonService;
 import com.karalexsandr.coreservice.services.template.StreamTemplateService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.exception.ResourceNotFoundException;
@@ -18,22 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class StreamService {
     private final StreamRepository repository;
     private final StreamTemplateService streamTemplateService;
     private final CourseService courseService;
-
     private final PersonService personService;
-
     private final LessonService lessonService;
 
-    public StreamService(StreamRepository repository, StreamTemplateService streamTemplateService, CourseService courseService, PersonService personService, LessonService lessonService) {
-        this.repository = repository;
-        this.streamTemplateService = streamTemplateService;
-        this.courseService = courseService;
-        this.personService = personService;
-        this.lessonService = lessonService;
-    }
 
     @Transactional
     public void createStream(StreamCreateRequestDto dto){
@@ -65,5 +58,9 @@ public class StreamService {
             throw new StreamNotReadyException(errorMessage);
         }
         repository.startedStream(StatusStream.ACTIVE,streamId);
+    }
+
+    public List<Stream> findAll() {
+        return repository.findAll();
     }
 }

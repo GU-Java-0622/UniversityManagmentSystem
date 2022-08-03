@@ -4,23 +4,25 @@ package ru.geekbrains.auth.payload.response;
 import ru.geekbrains.auth.entityes.User;
 import web.entity.UserStatus;
 
+
 public class ProfileGetAllDtoResponse {
     private Long id;
     private String firstname;
     private String surname;
     private String lastname;
     private UserStatus status;
-    private boolean isEmailVerified =false;
+    private String email;
 
     public ProfileGetAllDtoResponse() {
     }
 
-    public ProfileGetAllDtoResponse(Long id, String firstname, String surname, String lastname, UserStatus status) {
+    public ProfileGetAllDtoResponse(Long id, String firstname, String surname, String lastname, UserStatus status, String email) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
         this.lastname = lastname;
         this.status = status;
+        this.email = email;
     }
     public ProfileGetAllDtoResponse(User profile) {
         this.id = profile.getId();
@@ -28,6 +30,7 @@ public class ProfileGetAllDtoResponse {
         this.surname = profile.getSurname();
         this.lastname = profile.getMiddlename();
         this.status = profile.getStatus();
+        this.email = profile.getEmail();
     }
 
     public UserStatus getStatus() {
@@ -38,9 +41,6 @@ public class ProfileGetAllDtoResponse {
         this.status = status;
     }
 
-    public void setEmailVerified(boolean emailVerified) {
-        isEmailVerified = emailVerified;
-    }
 
     public Long getId() {
         return id;
@@ -74,8 +74,11 @@ public class ProfileGetAllDtoResponse {
         this.lastname = lastname;
     }
 
-    public boolean isEmailVerified() {
-        return isEmailVerified;
+    public String getEmail() {
+        return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Authorities} from "./authorities";
 
 const TOKEN_KEY = 'auth-token';
 
@@ -6,7 +7,9 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root'
 })
 export class UserAppService {
-
+  private email:string|null =null;
+  private id:number|null =null;
+  private refreshToken:string|null=null;
   constructor() {
     }
 
@@ -52,6 +55,11 @@ export class UserAppService {
       return new Set<string>(token.roles);
     }
     return null;
+  }
+  public parseResponse(res:any):void{
+    this.email = res.email;
+    this.id = res.id;
+    this.saveToken(res.token);
   }
 
 

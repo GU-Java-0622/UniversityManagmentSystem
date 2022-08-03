@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
 
 
 @Component({
@@ -8,9 +9,12 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 })
 export class DashboardViewComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
+
   }
 
 }

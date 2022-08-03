@@ -18,10 +18,11 @@ export class AuthInterceptorService implements HttpInterceptor{
     let tok:string;
     if (token != null) {
       tok = 'Bearer ' + token;
+      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, tok) });
+      return next.handle(authReq);
     }else {
-      tok='';
+      return next.handle(req);
     }
-    authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, tok) });
-    return next.handle(authReq);
+
   }
 }

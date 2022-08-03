@@ -1,22 +1,23 @@
 <div class="container">
   <h1 mat-dialog-title>Регистрация</h1>
   <div mat-dialog-content >
-    <form>
+    <form >
       <div class="form-container">
         <div class="left-side">
           <p>
             <mat-form-field appearance="outline">
               <mat-label>Фамилия</mat-label>
               <input
-                matInput placeholder="Введите фамилию">
+                matInput placeholder="Введите фамилию" [formControl]="surnameControl" required>
               <mat-icon matSuffix>person_pin</mat-icon>
+              <mat-error *ngIf="surnameControl.invalid">{{getNameSurnameErrorMessage()}}</mat-error>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field appearance="outline">
               <mat-label>Отчетсво</mat-label>
               <input
-                matInput placeholder="Введите отчество">
+                matInput placeholder="Введите отчество" [formControl]="middlenameControl">
               <mat-icon matSuffix>person_pin</mat-icon>
             </mat-form-field>
           </p>
@@ -26,8 +27,9 @@
           <mat-form-field appearance="outline">
             <mat-label>Имя</mat-label>
             <input
-              matInput placeholder="Введите имя">
+              matInput placeholder="Введите имя" [formControl]="nameControl" required>
             <mat-icon matSuffix>person_pin</mat-icon>
+            <mat-error *ngIf="nameControl.invalid">{{getNameSurnameErrorMessage()}}</mat-error>
           </mat-form-field>
         </p>
       </div>
@@ -36,9 +38,9 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Введите email</mat-label>
-            <input matInput placeholder="pat@example.com" [formControl]="formControl" required>
+            <input matInput placeholder="pat@example.com" [formControl]="emailControl" required>
             <mat-icon matSuffix>mail</mat-icon>
-            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-error *ngIf="emailControl.invalid">{{getEmailErrorMessage()}}</mat-error>
           </mat-form-field>
         </p>
       <mat-divider></mat-divider>
@@ -46,30 +48,31 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Введите пароль</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordControl" required (input)="onPasswordInput()">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
+            <mat-error *ngIf="passwordControl.invalid">{{getPasswordErrorMessage()}}</mat-error>
+            <mat-error *ngIf="checkPasswordFail">Пароли не совпадают!</mat-error>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Повторите пароль</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordControl2" (input)="onPasswordInput()">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
+            <mat-error *ngIf="checkPasswordFail">Пароли не совпадают!</mat-error>
           </mat-form-field>
         </p>
       </div>
+      <mat-error *ngIf="errorReg">{{errorMessage}}</mat-error>
       <div mat-dialog-actions class="action-button">
-        <button mat-raised-button >OK</button>
+        <button mat-raised-button (click)="onSubmit()">OK</button>
         <button mat-raised-button mat-dialog-close>Закрыть</button>
       </div>
       <mat-divider></mat-divider>
-      <div class="form-footer">
-        <app-oauth-buttons></app-oauth-buttons>
-      </div>
     </form>
   </div>
 </div>

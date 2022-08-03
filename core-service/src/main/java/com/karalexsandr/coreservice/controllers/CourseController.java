@@ -1,26 +1,30 @@
 package com.karalexsandr.coreservice.controllers;
 
 import com.karalexsandr.coreservice.dto.request.CourseSetTeacherDto;
+import com.karalexsandr.coreservice.entity.Course;
 import com.karalexsandr.coreservice.services.active.CourseService;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
-@RequestMapping("api/v1/course")
+@RequiredArgsConstructor
+@RequestMapping("api/v1/courses")
 public class CourseController {
     private final CourseService courseService;
 
-    public CourseController(CourseService courseService) {
-        this.courseService = courseService;
+    @PatchMapping ("/{idCourse}/teacher/{idTeacher}")
+    public void setTeacher(@PathVariable Long idCourse, @PathVariable Long idTeacher){
+        courseService.setTeacher(idCourse,idTeacher);
     }
 
-    @PutMapping("/set_teacher")
-    public void setTeacher(@RequestBody CourseSetTeacherDto dto){
-        courseService.setTeacher(dto);
+    @GetMapping
+    public List<Course> findAll(){
+        return courseService.findAll();
     }
 
 }
