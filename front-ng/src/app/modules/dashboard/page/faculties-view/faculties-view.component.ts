@@ -7,6 +7,7 @@ import {AppDataRequestService} from "../../../../services/app-data-request.servi
   templateUrl: './faculties-view.component.html',
   styleUrls: ['./faculties-view.component.css']
 })
+
 export class FacultiesViewComponent implements OnInit {
   faculty: any[] = [];
 
@@ -15,8 +16,11 @@ export class FacultiesViewComponent implements OnInit {
   ngOnInit(): void {
     this.dataRequest.getAllFaculties().subscribe((res: any) => {
       console.log(res);
-      this.faculty = res.content;
+      this.faculty = res;
     })
   }
 
+  getTemplate(id:number) {
+
+  }
 }

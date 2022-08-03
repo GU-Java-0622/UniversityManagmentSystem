@@ -7,9 +7,10 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root'
 })
 export class UserAppService {
-  private email:string|null =null;
-  private id:number|null =null;
+  private _email:string|null =null;
+  private _id:number|null =null;
   private refreshToken:string|null=null;
+  private _role:Authorities[] = [];
   constructor() {
     }
 
@@ -49,20 +50,32 @@ export class UserAppService {
     return tok;
   }
 
-  public getRole():Set<string>| null{
-    let token = UserAppService.parseJwt(<string>window.localStorage.getItem(TOKEN_KEY));
-    if (token){
-      return new Set<string>(token.roles);
-    }
-    return null;
-  }
   public parseResponse(res:any):void{
-    this.email = res.email;
-    this.id = res.id;
+    this._email = res._email;
+    this._id = res._id;
+    let role = res.roles;
+    if(role){
+      for (let entry in role){
+        // @ts-ignore
+        this._role[entry]=Authorities[role[entry]];
+      }
+    }
+
     this.saveToken(res.token);
   }
 
 
+  get email(): string | null {
+    return this._email;
+  }
+
+  get id(): number | null {
+    return this._id;
+  }
+
+  get role(): Authorities[] | null {
+    return this._role;
+  }
 }
 
 

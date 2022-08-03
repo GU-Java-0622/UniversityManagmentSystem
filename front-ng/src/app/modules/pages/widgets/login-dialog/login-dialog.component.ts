@@ -52,7 +52,6 @@ export class LoginDialogComponent implements OnInit {
       return;
     }
     this.auth.login(this.email,this.password).subscribe((res:any)=>{
-      console.log(res)
       this.user.parseResponse(res);
       this.dialogRef.close();
       this.router.navigate(['/dashboard']);

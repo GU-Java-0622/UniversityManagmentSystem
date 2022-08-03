@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {UserAppService} from "../../../../services/user-app.service";
 
 
 
@@ -8,9 +9,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./dashboard-view.component.css']
 })
 export class DashboardViewComponent implements OnInit {
+  roleString:string='';
 
-  constructor() {
-
+  constructor(private user:UserAppService) {
+   // @ts-ignore
+    this.roleString=user.role.toString()
   }
 
   ngOnInit(): void {

@@ -20,7 +20,7 @@ export class UsersViewComponent implements OnInit {
     {id: 'id', value:'ID'},
     {id: 'surname', value:'Фамилия'},
     {id: 'firstname', value:'Имя'},
-    {id: 'lastname', value:'Отчество'},
+    {id: 'middlename', value:'Отчество'},
     {id: 'email', value:'Email'},
   ];
 
@@ -56,6 +56,7 @@ export class UsersViewComponent implements OnInit {
       checkBoxDeletedControl:[true],
       checkBoxBannedControl:[true]
     });
+
     this.statusSet.clear()
     this.statusSet.add('ACTIVE');
     this.statusSet.add('DELETED');

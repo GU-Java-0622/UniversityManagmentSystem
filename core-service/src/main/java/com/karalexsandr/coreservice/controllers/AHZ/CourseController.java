@@ -1,4 +1,4 @@
-package com.karalexsandr.coreservice.controllers;
+package com.karalexsandr.coreservice.controllers.AHZ;
 
 import com.karalexsandr.coreservice.dto.request.CourseCreateRequestDto;
 import com.karalexsandr.coreservice.dto.response.CourseResponseDto;

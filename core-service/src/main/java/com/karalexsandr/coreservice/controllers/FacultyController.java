@@ -2,6 +2,7 @@ package com.karalexsandr.coreservice.controllers;
 
 import com.karalexsandr.coreservice.dto.request.FacultyDto;
 import com.karalexsandr.coreservice.dto.response.FacultyResponseDto;
+import com.karalexsandr.coreservice.entity.Faculty;
 import com.karalexsandr.coreservice.services.FacultyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

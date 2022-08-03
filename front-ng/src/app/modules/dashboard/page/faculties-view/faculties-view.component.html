@@ -2,7 +2,53 @@
   <div class="faculty-header">
     Факультеты и потоки
   </div>
-  <div class="faculty-item" *ngFor="let item of faculty">
-
+  <div *ngFor="let item of faculty" class="table-scroll">
+    <div class="faculty-header">{{item.title}}</div>
+    <table class="header_table">
+      <thead>
+      <tr >
+        <th colspan="3">Активные потоки</th>
+      </tr>
+      <tr>
+        <th class="td_field">ID</th>
+        <th class="td_field">Статус</th>
+        <th class="td_field">Кол-во студентов</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="item.streams.length===0">
+          <td colspan="3">Активные потоки отсутствуют</td>
+        </tr>
+        <tr *ngFor="let active of item.streams">
+          <td class="td_field">{{active.id}}</td>
+          <td class="td_field">{{active.statusStream}}</td>
+          <td class="td_field">{{active.countOfStudents}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="header_table">
+      <thead>
+      <tr >
+        <th colspan="4">Шаблоны для создания потоков</th>
+      </tr>
+      <tr>
+        <th class="td_field">ID</th>
+        <th class="td_field">Название</th>
+        <th class="td_field">Дата создания</th>
+        <th class="td_field">Дата обновления</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="item.streamTemplate.length===0">
+        <td colspan="4">Шаблоны отсутствуют</td>
+      </tr>
+      <tr *ngFor="let template of item.streamTemplate" (click)="getTemplate(template.id)">
+        <td class="td_field">{{template.id}}</td>
+        <td class="td_field">{{template.title}}</td>
+        <td class="td_field">{{template.createdAt}}</td>
+        <td class="td_field">{{template.updatedAt}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
