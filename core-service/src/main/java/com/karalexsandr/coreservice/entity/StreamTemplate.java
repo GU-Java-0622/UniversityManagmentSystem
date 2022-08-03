@@ -31,12 +31,10 @@ public class StreamTemplate {
     @JoinTable(name = "programme_template_faculties",
             joinColumns = @JoinColumn(name = "programme_template_id"),
             inverseJoinColumns = @JoinColumn(name = "faculty_id") )
-    @JsonBackReference
     private List<CourseTemplate> courseTemplates;
 
     @ManyToOne
     @JoinColumn(name="facultity_id")
-    @JsonBackReference
     private Faculty faculties;
 
     @CreationTimestamp

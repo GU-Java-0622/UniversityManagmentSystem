@@ -39,7 +39,6 @@ public class LessonTemplate {
 
     @ManyToOne
     @JoinColumn(name = "course_template_id")
-    @JsonBackReference
     private CourseTemplate courseTemplate;
 
     @CreationTimestamp

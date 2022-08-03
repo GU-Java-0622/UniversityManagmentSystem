@@ -1,10 +1,14 @@
 package com.karalexsandr.coreservice.services.active;
 
+import com.karalexsandr.coreservice.dto.LessonDto;
+import com.karalexsandr.coreservice.dto.request.LessonCreateDto;
+import com.karalexsandr.coreservice.dto.response.LessonResponseDto;
 import com.karalexsandr.coreservice.entity.Course;
 import com.karalexsandr.coreservice.entity.CourseTemplate;
 import com.karalexsandr.coreservice.entity.Lesson;
 import com.karalexsandr.coreservice.entity.LessonTemplate;
 import com.karalexsandr.coreservice.repository.LessonRepository;
+import com.karalexsandr.coreservice.services.template.LessonTemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

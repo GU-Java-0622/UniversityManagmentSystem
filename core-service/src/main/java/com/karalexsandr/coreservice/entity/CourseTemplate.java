@@ -29,13 +29,10 @@ public class CourseTemplate {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "courseTemplate",fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "courseTemplate")
     private List<LessonTemplate> lessonTemplates;
 
     @ManyToMany(mappedBy = "courseTemplates")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JsonManagedReference
     private List<StreamTemplate> streamTemplates;
 
     @CreationTimestamp

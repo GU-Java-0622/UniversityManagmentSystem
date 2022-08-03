@@ -1,5 +1,6 @@
 package com.karalexsandr.coreservice.entity;
 
+import com.karalexsandr.coreservice.dto.LessonDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
