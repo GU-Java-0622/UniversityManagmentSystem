@@ -20,10 +20,7 @@ import java.util.Set;
 public class FacultyController {
     private final FacultyService facultyService;
 
-    @GetMapping
-    public List<Faculty> findAll(){
-        return facultyService.findAll();
-    }
+
 
     @PostMapping
     public void createFaculty(@RequestBody FacultyDto facultyDto,@RequestHeader("roles") Set<ERole> roles){

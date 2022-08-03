@@ -1,14 +1,13 @@
 package com.karalexsandr.coreservice.controllers;
 
-import com.karalexsandr.coreservice.dto.request.CourseSetTeacherDto;
-import com.karalexsandr.coreservice.entity.Course;
+import com.karalexsandr.coreservice.dto.request.CourseCreateRequestDto;
+import com.karalexsandr.coreservice.dto.response.CourseResponseDto;
 import com.karalexsandr.coreservice.services.active.CourseService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 
 @RestController
@@ -17,14 +16,19 @@ import java.util.List;
 public class CourseController {
     private final CourseService courseService;
 
-    @PatchMapping ("/{idCourse}/teacher/{idTeacher}")
-    public void setTeacher(@PathVariable Long idCourse, @PathVariable Long idTeacher){
-        courseService.setTeacher(idCourse,idTeacher);
+    @PatchMapping ("/{id}/teacher/{idTeacher}")
+    public void setTeacher(@PathVariable Long id, @PathVariable Long idTeacher){
+        courseService.setTeacher(id,idTeacher);
     }
 
     @GetMapping
-    public List<Course> findAll(){
-        return courseService.findAll();
+    public Page<CourseResponseDto> findAll(
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "5") Integer size) {
+        if (page < 1) {
+            page = 1;
+        }
+        return courseService.findAll(PageRequest.of(page-1, size));
     }
 
 }

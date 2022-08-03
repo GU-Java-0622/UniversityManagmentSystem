@@ -18,9 +18,6 @@ import java.util.stream.Collectors;
 public class FacultyService {
     private final FacultyRepository repository;
 
-public List<Faculty> findAll(){
-    return repository.findAll();
-}
 
     public void createFaculty(FacultyDto facultyDto){
         Faculty faculty =new Faculty();

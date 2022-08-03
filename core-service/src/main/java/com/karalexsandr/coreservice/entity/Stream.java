@@ -31,7 +31,6 @@ public class Stream {
     private StreamTemplate streamTemplate;
 
     @OneToMany(mappedBy = "stream")
-    @JsonBackReference
     private List<Course> course;
 
 

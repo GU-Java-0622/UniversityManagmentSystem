@@ -2,6 +2,7 @@ package com.karalexsandr.coreservice.integrations;
 
 import com.karalexsandr.coreservice.exception.AuthServiceIntegrationException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import web.entity.ProfileDto;
@@ -19,7 +20,7 @@ public class AuthServiceIntegration {
                 .header("id", String.valueOf(id))
                 .retrieve()
                 .onStatus(
-                        httpStatus -> httpStatus.is4xxClientError(),
+                        HttpStatus::is4xxClientError,
                         clientResponse ->clientResponse.bodyToMono(AuthServiceAppError.class).map(
                                 body->
                                 {
