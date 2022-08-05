@@ -9,7 +9,6 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { UsersViewComponent } from './page/users-view/users-view.component';
-import { RolesViewComponent } from './page/roles-view/roles-view.component';
 import { FacultiesViewComponent } from './page/faculties-view/faculties-view.component';
 import { ProfileViewComponent } from './page/profile-view/profile-view.component';
 import { NewsViewComponent } from './page/news-view/news-view.component';
@@ -18,6 +17,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatInputModule} from "@angular/material/input";
+import { FacultyByIdComponent } from './page/faculties-view/faculty-by-id/faculty-by-id.component';
+import { StreamTemplateViewComponent } from './page/stream-template-view/stream-template-view.component';
+import { StreamByIdViewComponent } from './page/faculties-view/faculty-by-id/stream-by-id-view/stream-by-id-view.component';
 
 
 
@@ -27,10 +29,12 @@ import {MatInputModule} from "@angular/material/input";
     DashboardViewComponent,
     BreadcrumbComponent,
     UsersViewComponent,
-    RolesViewComponent,
     FacultiesViewComponent,
     ProfileViewComponent,
-    NewsViewComponent
+    NewsViewComponent,
+    FacultyByIdComponent,
+    StreamTemplateViewComponent,
+    StreamByIdViewComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-package com.karalexsandr.coreservice.dto;
+package com.karalexsandr.coreservice.dto.AHZ;
 
 import com.karalexsandr.coreservice.entity.Course;
 import lombok.Data;

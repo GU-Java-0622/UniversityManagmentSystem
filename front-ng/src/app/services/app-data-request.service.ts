@@ -13,4 +13,23 @@ export class AppDataRequestService {
   getAllFaculties(): Observable<any>{
     return this.http.get(this.api.FacultyGetAll);
   }
+
+  createFaculty(title:string): Observable<any>{
+    const body={
+      title:title
+    }
+    return this.http.post(this.api.FacultyCreate,body);
+  }
+
+  getFacultyById(id:number):Observable<any>{
+    return this.http.get(this.api.FacultyById+id)
+  }
+
+  createTemplate(title:string,id:number):Observable<any>{
+    const body={
+      title:title,
+      facultyId:id
+    }
+    return this.http.post(this.api.StreamTemplateCreate,body);
+  }
 }

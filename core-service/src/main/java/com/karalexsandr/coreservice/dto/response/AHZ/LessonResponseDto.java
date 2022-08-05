@@ -1,8 +1,8 @@
-package com.karalexsandr.coreservice.dto.response;
+package com.karalexsandr.coreservice.dto.response.AHZ;
 
 
-import com.karalexsandr.coreservice.dto.CourseDto;
-import com.karalexsandr.coreservice.dto.LessonTemplateDto;
+import com.karalexsandr.coreservice.dto.AHZ.CourseDto;
+import com.karalexsandr.coreservice.dto.AHZ.LessonTemplateDto;
 import com.karalexsandr.coreservice.entity.Lesson;
 import lombok.Data;
 import java.time.LocalDate;

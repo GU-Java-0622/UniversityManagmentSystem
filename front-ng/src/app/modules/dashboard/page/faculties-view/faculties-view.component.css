@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   font-size: 2.5em;
+  margin-bottom: 5vh;
 }
 .table-scroll table{
   width: 100%;
@@ -29,7 +30,6 @@
 .table-scroll-body{
   border-collapse: collapse;
   border-bottom: 1px solid grey;
-  height: 34vh;
   overflow-x: auto;
 }
 
@@ -87,9 +87,28 @@ td{
   padding-left: 1vh;
   width: 10rem;
 }
-
-#body-table tr:hover{
+.zero_array{
+  text-align: center;
+}
+.body-table tr:hover{
   opacity: 80%;
   font-size: 1.1rem;
+}
+.button_form{
+  margin-left: 40px;
+  margin-right: 40px;
+  background-color: bisque !important;
+  color: black;
+  height: 55px !important;
+}
+.form-body{
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+input{
+  width: 400px !important;
+  line-height: 1.2rem;
+  font-size: 1rem;
 }
 

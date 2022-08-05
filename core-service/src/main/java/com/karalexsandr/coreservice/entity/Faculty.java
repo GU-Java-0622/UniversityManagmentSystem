@@ -32,11 +32,11 @@ public class Faculty {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "faculty", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "faculty", fetch = FetchType.LAZY)
     private List<Stream> streams;
 
     @OneToMany(mappedBy = "faculties")
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @LazyCollection(LazyCollectionOption.TRUE)
     private List<StreamTemplate> streamTemplate;
 
     @CreationTimestamp

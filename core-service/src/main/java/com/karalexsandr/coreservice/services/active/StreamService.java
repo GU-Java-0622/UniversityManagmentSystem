@@ -1,8 +1,8 @@
 package com.karalexsandr.coreservice.services.active;
 
-import com.karalexsandr.coreservice.dto.request.AddStudentToStreamDto;
-import com.karalexsandr.coreservice.dto.request.StreamCreateRequestDto;
-import com.karalexsandr.coreservice.dto.response.StreamResponseDto;
+import com.karalexsandr.coreservice.dto.request.AHZ.AddStudentToStreamDto;
+import com.karalexsandr.coreservice.dto.request.AHZ.StreamCreateRequestDto;
+import com.karalexsandr.coreservice.dto.response.AHZ.StreamResponseDto;
 import com.karalexsandr.coreservice.entity.Course;
 import com.karalexsandr.coreservice.entity.StatusStream;
 import com.karalexsandr.coreservice.entity.Stream;
@@ -20,7 +20,6 @@ import web.exception.ResourceNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

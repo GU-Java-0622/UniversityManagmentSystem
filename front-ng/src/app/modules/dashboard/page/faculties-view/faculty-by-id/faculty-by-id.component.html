@@ -1,0 +1,88 @@
+<div class="faculty-container">
+  <div class="faculty-header">
+    Факультет: {{facultyResponse.title}}
+  </div>
+  <div>
+    Создан: {{facultyResponse.createdAt}}
+  </div>
+  <div>
+    Последние изменения: {{facultyResponse.updatedAt}}
+  </div>
+  <div class="table-scroll">
+    <div class="header">
+      Активные потоки
+    </div>
+    <table class="header_table">
+      <thead>
+      <tr>
+        <th class="td_id">ID</th>
+        <th class="td_field">Статус</th>
+        <th class="td_field">Количество студентов</th>
+        <th class="td_field">Дата создания</th>
+        <th class="td_field">Дата обновления</th>
+      </tr>
+      </thead>
+    </table>
+    <div class="table-scroll-body">
+      <table class="body-table">
+        <tbody>
+        <tr *ngIf="facultyResponse.streams&&facultyResponse.streams.length===0">
+          <td class="td_field zero_array" colspan="5">Активные потоки отсутствуют</td>
+        </tr>
+        <tr *ngFor="let item of facultyResponse.streams" (click)="getStreamById(item.id)">
+          <td class="td_id">{{item.id}}</td>
+          <td class="td_field">{{item.statusStream}}</td>
+          <td class="td_field">{{item.countStudents}}</td>
+          <td class="td_field">{{item.createdAt}}</td>
+          <td class="td_field">{{item.updatedAt}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <div class="header">
+      Шаблоны для создания потоков
+    </div>
+    <table class="header_table">
+      <thead>
+      <tr>
+        <th class="td_id">ID</th>
+        <th class="td_field">Наименование</th>
+        <th class="td_field">Дата создания</th>
+        <th class="td_field">Дата обновления</th>
+        <th class="td_field">Созданных потоков</th>
+      </tr>
+      </thead>
+    </table>
+    <div class="table-scroll-body">
+      <table class="body-table">
+        <tbody>
+        <tr *ngIf="facultyResponse.templates&&facultyResponse.templates.length===0">
+          <td class="td_field zero_array" colspan="5">Активные потоки отсутствуют</td>
+        </tr>
+        <tr *ngFor="let item of facultyResponse.templates" (click)="getTemplateById(item.id)">
+          <td class="td_id">{{item.id}}</td>
+          <td class="td_field">{{item.title}}</td>
+          <td class="td_field">{{item.createdAt}}</td>
+          <td class="td_field">{{item.updatedAt}}</td>
+          <td class="td_field">{{item.countCreatedStreams}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <form id="create_form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-body">
+        <button mat-raised-button class="button_form" type="submit">Создать новый шаблон</button>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Новый шаблон</mat-label>
+            <input
+              matInput placeholder="Введите наименование"
+              [(ngModel)]="titleNewTemplate" formControlName="titleControl">
+          </mat-form-field>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

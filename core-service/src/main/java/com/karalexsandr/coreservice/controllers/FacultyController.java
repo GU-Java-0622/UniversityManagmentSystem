@@ -1,8 +1,8 @@
 package com.karalexsandr.coreservice.controllers;
 
 import com.karalexsandr.coreservice.dto.request.FacultyDto;
+import com.karalexsandr.coreservice.dto.response.FacultyFullResponseDto;
 import com.karalexsandr.coreservice.dto.response.FacultyResponseDto;
-import com.karalexsandr.coreservice.entity.Faculty;
 import com.karalexsandr.coreservice.services.FacultyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +21,6 @@ import java.util.Set;
 public class FacultyController {
     private final FacultyService facultyService;
 
-
-
     @PostMapping
     public void createFaculty(@RequestBody FacultyDto facultyDto,@RequestHeader("roles") Set<ERole> roles){
         HashSet<ERole> neededRole = new HashSet<>();
@@ -37,6 +35,13 @@ public class FacultyController {
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
         return facultyService.getAll();
+    }
+    @GetMapping("/get_faculty/{id}")
+    public FacultyFullResponseDto getFacultyById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
+        HashSet<ERole> neededRole = new HashSet<>();
+        neededRole.add(ERole.ROLE_ADMIN);
+        RoleChecker.roleCheck(roles,neededRole);
+        return facultyService.getById(id);
     }
 }
 

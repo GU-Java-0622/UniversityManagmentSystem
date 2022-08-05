@@ -1,10 +1,10 @@
-package com.karalexsandr.coreservice.dto.response;
+package com.karalexsandr.coreservice.dto.response.AHZ;
 
 
-import com.karalexsandr.coreservice.dto.CourseDto;
-import com.karalexsandr.coreservice.dto.FacultyDto;
-import com.karalexsandr.coreservice.dto.PersonDto;
-import com.karalexsandr.coreservice.dto.StreamTemplateDto;
+import com.karalexsandr.coreservice.dto.AHZ.CourseDto;
+import com.karalexsandr.coreservice.dto.AHZ.PersonDto;
+import com.karalexsandr.coreservice.dto.AHZ.StreamTemplateDto;
+import com.karalexsandr.coreservice.dto.response.FacultyResponseDto;
 import com.karalexsandr.coreservice.entity.*;
 import lombok.Data;
 
@@ -17,7 +17,7 @@ public class StreamResponseDto {
     private StreamTemplateDto streamTemplate;
     private List<CourseDto> course;
     private StatusStream statusStream;
-    private FacultyDto faculty;
+    private FacultyResponseDto faculty;
     private List<PersonDto> students;
 
     public StreamResponseDto(Stream stream) {
@@ -25,7 +25,7 @@ public class StreamResponseDto {
         this.streamTemplate = new StreamTemplateDto(stream.getStreamTemplate());
         this.course = stream.getCourse().stream().map(CourseDto::new).collect(Collectors.toList());
         this.statusStream = stream.getStatusStream();
-        this.faculty = new FacultyDto(stream.getFaculty());
+        this.faculty = new FacultyResponseDto(stream.getFaculty());
         this.students = stream.getStudents().stream().map(PersonDto::new).collect(Collectors.toList());
     }
 

@@ -15,7 +15,22 @@ export class ApiService {
    private _getProfileById = 'auth/api/v1/profile/profile/';/*+*/
    private _updateOrSave= 'auth/api/v1/users/update'
     private _FacultyGetAll = 'core/api/v1/faculties/get_all_faculty'
+  private _FacultyCreate = 'core/api/v1/faculties'
+  private _FacultyById = 'core/api/v1/faculties/get_faculty/'
+  private _StreamTemplateCreate = 'core/api/v1/templates/streams'
 
+
+  get StreamTemplateCreate(): string {
+    return this.API_ROOT+this._StreamTemplateCreate;
+  }
+
+  get FacultyById(): string {
+    return this.API_ROOT+this._FacultyById;
+  }
+
+  get FacultyCreate(): string {
+    return this.API_ROOT+this._FacultyCreate;
+  }
 
   get getAllUser(): string {
     return this.API_ROOT+this._getAllUser;

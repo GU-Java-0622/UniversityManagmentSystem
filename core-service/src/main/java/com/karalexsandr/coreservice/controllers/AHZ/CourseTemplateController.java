@@ -1,16 +1,12 @@
 package com.karalexsandr.coreservice.controllers.AHZ;
 
-import com.karalexsandr.coreservice.dto.CourseTemplateDto;
-import com.karalexsandr.coreservice.dto.request.CourseTemplateCreateDto;
-import com.karalexsandr.coreservice.entity.CourseTemplate;
+import com.karalexsandr.coreservice.dto.AHZ.CourseTemplateDto;
+import com.karalexsandr.coreservice.dto.request.AHZ.CourseTemplateCreateDto;
 import com.karalexsandr.coreservice.services.template.CourseTemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

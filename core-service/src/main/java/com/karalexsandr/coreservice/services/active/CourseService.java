@@ -1,6 +1,6 @@
 package com.karalexsandr.coreservice.services.active;
 
-import com.karalexsandr.coreservice.dto.response.CourseResponseDto;
+import com.karalexsandr.coreservice.dto.response.AHZ.CourseResponseDto;
 import com.karalexsandr.coreservice.entity.*;
 import com.karalexsandr.coreservice.exception.CoreException;
 import com.karalexsandr.coreservice.repository.CourseRepository;

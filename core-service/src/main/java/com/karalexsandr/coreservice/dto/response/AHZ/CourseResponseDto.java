@@ -1,9 +1,9 @@
-package com.karalexsandr.coreservice.dto.response;
+package com.karalexsandr.coreservice.dto.response.AHZ;
 
-import com.karalexsandr.coreservice.dto.CourseTemplateDto;
-import com.karalexsandr.coreservice.dto.LessonDto;
-import com.karalexsandr.coreservice.dto.PersonDto;
-import com.karalexsandr.coreservice.dto.StreamDto;
+import com.karalexsandr.coreservice.dto.AHZ.CourseTemplateDto;
+import com.karalexsandr.coreservice.dto.AHZ.LessonDto;
+import com.karalexsandr.coreservice.dto.AHZ.PersonDto;
+import com.karalexsandr.coreservice.dto.AHZ.StreamDto;
 import com.karalexsandr.coreservice.entity.Course;
 import lombok.Data;
 import java.util.List;

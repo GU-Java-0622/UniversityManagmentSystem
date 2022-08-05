@@ -1,18 +1,13 @@
 package com.karalexsandr.coreservice.controllers.AHZ;
 
-import com.karalexsandr.coreservice.dto.CourseTemplateDto;
-import com.karalexsandr.coreservice.dto.request.AddStudentToStreamDto;
-import com.karalexsandr.coreservice.dto.request.StreamCreateRequestDto;
-import com.karalexsandr.coreservice.dto.response.StreamResponseDto;
-import com.karalexsandr.coreservice.entity.Stream;
+import com.karalexsandr.coreservice.dto.request.AHZ.AddStudentToStreamDto;
+import com.karalexsandr.coreservice.dto.request.AHZ.StreamCreateRequestDto;
+import com.karalexsandr.coreservice.dto.response.AHZ.StreamResponseDto;
 import com.karalexsandr.coreservice.services.active.StreamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController

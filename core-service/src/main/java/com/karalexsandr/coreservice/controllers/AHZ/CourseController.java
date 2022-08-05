@@ -1,7 +1,6 @@
 package com.karalexsandr.coreservice.controllers.AHZ;
 
-import com.karalexsandr.coreservice.dto.request.CourseCreateRequestDto;
-import com.karalexsandr.coreservice.dto.response.CourseResponseDto;
+import com.karalexsandr.coreservice.dto.response.AHZ.CourseResponseDto;
 import com.karalexsandr.coreservice.services.active.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

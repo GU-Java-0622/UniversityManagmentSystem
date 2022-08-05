@@ -1,6 +1,6 @@
 package com.karalexsandr.coreservice.services.template;
 
-import com.karalexsandr.coreservice.dto.StreamTemplateDto;
+import com.karalexsandr.coreservice.dto.AHZ.StreamTemplateDto;
 import com.karalexsandr.coreservice.dto.request.StreamTemplateCreateDto;
 import com.karalexsandr.coreservice.entity.StreamTemplate;
 import com.karalexsandr.coreservice.repository.StreamTemplateRepository;
@@ -10,8 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import web.exception.ResourceNotFoundException;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +33,4 @@ public class StreamTemplateService {
         return repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Не найден шаблон для потока с id:"+id));
     }
 
-    public Page<StreamTemplateDto> findAll(Pageable pageable) {
-        return repository.findAll(pageable).map(StreamTemplateDto::new);
-    }
 }
