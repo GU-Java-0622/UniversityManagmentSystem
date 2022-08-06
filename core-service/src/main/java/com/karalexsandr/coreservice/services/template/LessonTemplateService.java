@@ -1,12 +1,10 @@
 package com.karalexsandr.coreservice.services.template;
 
-import com.karalexsandr.coreservice.dto.AHZ.LessonTemplateDto;
+
 import com.karalexsandr.coreservice.dto.request.AHZ.LessonTemplateCreateDto;
 import com.karalexsandr.coreservice.entity.LessonTemplate;
 import com.karalexsandr.coreservice.repository.LessonTemplateRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,7 +22,4 @@ public class LessonTemplateService {
         repository.save(lessonTemplate);
     }
 
-    public Page<LessonTemplateDto> findAll(Pageable pageable){
-        return repository.findAll(pageable).map(LessonTemplateDto::new);
-    }
 }

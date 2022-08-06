@@ -1,13 +1,12 @@
 package com.karalexsandr.coreservice.services.template;
 
-import com.karalexsandr.coreservice.dto.AHZ.CourseTemplateDto;
-import com.karalexsandr.coreservice.dto.request.AHZ.CourseTemplateCreateDto;
+
+import com.karalexsandr.coreservice.dto.response.CourseTemplateResponseDto;
 import com.karalexsandr.coreservice.entity.CourseTemplate;
 import com.karalexsandr.coreservice.repository.CourseTemplateRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import web.exception.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -38,4 +37,8 @@ public class CourseTemplateService {
     }
 
 
+    public CourseTemplateResponseDto getCourseTemplateWithLessons (Long id){
+        return new CourseTemplateResponseDto(repository.findById(id).orElseThrow(()->
+                new ResourceNotFoundException("Не найден шаблон для курса с id:"+id)));
+    }
 }

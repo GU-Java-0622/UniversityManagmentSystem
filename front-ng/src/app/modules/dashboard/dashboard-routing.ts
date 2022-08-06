@@ -7,6 +7,9 @@ import {FacultiesViewComponent} from "./page/faculties-view/faculties-view.compo
 import {NewsViewComponent} from "./page/news-view/news-view.component";
 import {FacultyByIdComponent} from "./page/faculties-view/faculty-by-id/faculty-by-id.component";
 import {StreamTemplateViewComponent} from "./page/stream-template-view/stream-template-view.component";
+import {
+  CourseTemplateViewComponent
+} from "./page/stream-template-view/course-template-view/course-template-view.component";
 
 const dashboardRouting: Routes = [
   {
@@ -15,7 +18,7 @@ const dashboardRouting: Routes = [
     data: {breadcrumb: 'Главная'},
     children: [
       {
-        path: 'users',
+        path: '',
         data: {breadcrumb: 'Пользователи'},
         children: [
           {
@@ -46,8 +49,19 @@ const dashboardRouting: Routes = [
           },
           {
             path: 'template',
-            component: StreamTemplateViewComponent,
-            data: {breadcrumb: 'Шаблон'}
+            data: {breadcrumb: 'Шаблоны'},
+            children:[
+              {
+                path:'',
+                component: StreamTemplateViewComponent,
+                data: {breadcrumb: 'Шаблон потока'},
+              },
+              {
+                path: 'course_template',
+                component: CourseTemplateViewComponent,
+                data: {breadcrumb: 'Шаблон курса'},
+              }
+            ]
           },
         ]
       },

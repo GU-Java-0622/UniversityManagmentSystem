@@ -1,4 +1,4 @@
-package com.karalexsandr.coreservice.dto.request.AHZ;
+package com.karalexsandr.coreservice.dto.request;
 
 
 import lombok.Data;

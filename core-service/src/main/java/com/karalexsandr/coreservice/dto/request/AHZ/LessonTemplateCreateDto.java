@@ -4,6 +4,7 @@ package com.karalexsandr.coreservice.dto.request.AHZ;
 
 import lombok.Data;
 
+import java.time.Duration;
 import java.time.LocalTime;
 @Data
 public class LessonTemplateCreateDto {

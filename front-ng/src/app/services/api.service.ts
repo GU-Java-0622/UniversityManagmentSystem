@@ -21,6 +21,11 @@ export class ApiService {
   private _StreamTemplateById = 'core/api/v1/templates/streams/'
   private _StreamTemplateUpdateCourses = 'core/api/v1/templates/streams/update_courses'
   private _CreateCourseTemplate = 'core/api/v1/templates/courses'
+  private _GetCourseTemplate = 'core/api/v1/templates/courses/'
+
+  get GetCourseTemplate(): string {
+    return this.API_ROOT +this._GetCourseTemplate;
+  }
 
   get CreateCourseTemplate(): string {
     return this.API_ROOT +this._CreateCourseTemplate;

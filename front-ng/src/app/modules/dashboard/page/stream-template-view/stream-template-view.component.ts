@@ -40,7 +40,7 @@ export class StreamTemplateViewComponent implements OnInit {
   }
 
   getTemplateById(id: number) {
-
+    this.router.navigate(['dashboard/faculties/template/course_template'],{queryParams:{id}});
   }
 
   addToTable(elem: any) {
@@ -106,5 +106,9 @@ export class StreamTemplateViewComponent implements OnInit {
         })
       }
     })
+  }
+
+  startStream() {
+
   }
 }

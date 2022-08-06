@@ -48,10 +48,12 @@
     </div>
   </div>
   <div class="button_group" *ngIf="!isChanged">
+    <button mat-raised-button color="warn" (click)="startStream()" >Создать поток</button>
     <button mat-raised-button color="primary" (click)="saveChange()" disabled>Сохранить изменения</button>
     <button mat-raised-button color="primary" (click)="cancelChange()" disabled>Отменить изменения</button>
   </div>
   <div class="button_group" *ngIf="isChanged">
+    <button mat-raised-button color="warn" (click)="startStream()" disabled>Создать поток</button>
     <button mat-raised-button color="primary" (click)="saveChange()" >Сохранить изменения</button>
     <button mat-raised-button color="primary" (click)="cancelChange()" >Отменить изменения</button>
   </div>

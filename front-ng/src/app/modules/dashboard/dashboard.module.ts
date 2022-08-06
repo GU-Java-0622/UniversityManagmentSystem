@@ -20,6 +20,7 @@ import {MatInputModule} from "@angular/material/input";
 import { FacultyByIdComponent } from './page/faculties-view/faculty-by-id/faculty-by-id.component';
 import { StreamTemplateViewComponent } from './page/stream-template-view/stream-template-view.component';
 import { StreamByIdViewComponent } from './page/faculties-view/faculty-by-id/stream-by-id-view/stream-by-id-view.component';
+import { CourseTemplateViewComponent } from './page/stream-template-view/course-template-view/course-template-view.component';
 
 
 
@@ -34,7 +35,8 @@ import { StreamByIdViewComponent } from './page/faculties-view/faculty-by-id/str
     NewsViewComponent,
     FacultyByIdComponent,
     StreamTemplateViewComponent,
-    StreamByIdViewComponent
+    StreamByIdViewComponent,
+    CourseTemplateViewComponent
   ],
   imports: [
     CommonModule,

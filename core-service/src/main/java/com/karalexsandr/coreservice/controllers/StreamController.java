@@ -1,7 +1,7 @@
 package com.karalexsandr.coreservice.controllers;
 
 import com.karalexsandr.coreservice.dto.request.AHZ.AddStudentToStreamDto;
-import com.karalexsandr.coreservice.dto.request.AHZ.StreamCreateRequestDto;
+import com.karalexsandr.coreservice.dto.request.StreamCreateRequestDto;
 import com.karalexsandr.coreservice.services.active.StreamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package com.karalexsandr.coreservice.services.active;
 
 import com.karalexsandr.coreservice.dto.request.AHZ.AddStudentToStreamDto;
-import com.karalexsandr.coreservice.dto.request.AHZ.StreamCreateRequestDto;
+import com.karalexsandr.coreservice.dto.request.StreamCreateRequestDto;
 import com.karalexsandr.coreservice.entity.Course;
 import com.karalexsandr.coreservice.entity.StatusStream;
 import com.karalexsandr.coreservice.entity.Stream;

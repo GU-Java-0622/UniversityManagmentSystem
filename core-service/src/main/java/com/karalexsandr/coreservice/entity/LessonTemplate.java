@@ -47,4 +47,5 @@ public class LessonTemplate {
 
     @UpdateTimestamp
     @Column(name = "update_at")
-    private LocalDateTime updatedAt;}
+    private LocalDateTime updatedAt;
+}

@@ -1,13 +1,11 @@
 package com.karalexsandr.coreservice.services.active;
 
-import com.karalexsandr.coreservice.dto.response.AHZ.CourseResponseDto;
 import com.karalexsandr.coreservice.entity.*;
 import com.karalexsandr.coreservice.exception.CoreException;
 import com.karalexsandr.coreservice.repository.CourseRepository;
 import com.karalexsandr.coreservice.services.PersonService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -20,9 +18,6 @@ public class CourseService {
     private final LessonService lessonService;
     private final PersonService personService;
 
-    public Page<CourseResponseDto> findAll(Pageable pageable) {
-        return repository.findAll(pageable).map(CourseResponseDto::new);
-    }
 
     @Transactional
     public List<Course> createCoursesForStreamTemplate(StreamTemplate streamTemplate) {

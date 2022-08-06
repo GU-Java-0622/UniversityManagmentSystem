@@ -50,4 +50,7 @@ export class AppDataRequestService {
     }
     return  this.http.post(this.api.CreateCourseTemplate,body);
   }
+  getCourseTemplate(id:number):Observable<any>{
+    return this.http.get(this.api.GetCourseTemplate+id);
+  }
 }
