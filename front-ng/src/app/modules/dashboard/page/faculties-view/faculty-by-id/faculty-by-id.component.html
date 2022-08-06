@@ -59,7 +59,7 @@
       <table class="body-table">
         <tbody>
         <tr *ngIf="facultyResponse.templates&&facultyResponse.templates.length===0">
-          <td class="td_field zero_array" colspan="5">Активные потоки отсутствуют</td>
+          <td class="td_field zero_array" colspan="5">Шаблоны потоков отсутствуют</td>
         </tr>
         <tr *ngFor="let item of facultyResponse.templates" (click)="getTemplateById(item.id)">
           <td class="td_id">{{item.id}}</td>

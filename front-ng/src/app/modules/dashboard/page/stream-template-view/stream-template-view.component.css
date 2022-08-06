@@ -1,0 +1,9 @@
+.td_button{
+  width: 10rem;
+  padding-left: 5vh;
+}
+.button_group button{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 30px;
+}

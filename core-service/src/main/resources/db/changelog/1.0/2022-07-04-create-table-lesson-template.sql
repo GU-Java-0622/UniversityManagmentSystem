@@ -6,8 +6,8 @@ CREATE TABLE lessons_template
     training_manual    VARCHAR(255),
     homework           VARCHAR(255),
     course_template_id BIGINT,
-    created_at         TIMESTAMP WITHOUT TIME ZONE,
-    update_at          TIMESTAMP WITHOUT TIME ZONE,
+    created_at         TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
+    update_at          TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
     CONSTRAINT pk_lessons_template PRIMARY KEY (id)
 );
 

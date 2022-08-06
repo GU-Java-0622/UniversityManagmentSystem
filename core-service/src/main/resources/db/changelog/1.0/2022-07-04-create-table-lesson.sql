@@ -9,8 +9,8 @@ CREATE TABLE active_lesson
     training_manual    VARCHAR(255),
     homework           VARCHAR(255),
     is_finished        BOOLEAN,
-    created_at         TIMESTAMP WITHOUT TIME ZONE,
-    update_at          TIMESTAMP WITHOUT TIME ZONE,
+    created_at         TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
+    update_at          TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
     CONSTRAINT pk_active_lesson PRIMARY KEY (id)
 );
 

@@ -1,6 +1,6 @@
 package com.karalexsandr.coreservice.services;
 
-import com.karalexsandr.coreservice.dto.request.FacultyDto;
+import com.karalexsandr.coreservice.dto.request.FacultyCreateDto;
 import com.karalexsandr.coreservice.dto.response.FacultyFullResponseDto;
 import com.karalexsandr.coreservice.dto.response.FacultyResponseDto;
 import com.karalexsandr.coreservice.entity.Faculty;
@@ -20,9 +20,9 @@ public class FacultyService {
     private final FacultyRepository repository;
 
 
-    public void createFaculty(FacultyDto facultyDto){
+    public void createFaculty(FacultyCreateDto facultyCreateDto){
         Faculty faculty =new Faculty();
-        faculty.setTitle(facultyDto.getTitle());
+        faculty.setTitle(facultyCreateDto.getTitle());
         repository.save(faculty);
     }
 

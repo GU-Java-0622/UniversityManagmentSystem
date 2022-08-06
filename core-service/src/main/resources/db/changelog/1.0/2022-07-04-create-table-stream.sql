@@ -4,8 +4,8 @@ CREATE TABLE active_stream
     stream_template_id BIGINT,
     status_stream      VARCHAR(255),
     facultity_id       BIGINT,
-    created_at         TIMESTAMP WITHOUT TIME ZONE,
-    update_at          TIMESTAMP WITHOUT TIME ZONE,
+    created_at         TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
+    update_at          TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
     CONSTRAINT pk_active_stream PRIMARY KEY (id)
 );
 

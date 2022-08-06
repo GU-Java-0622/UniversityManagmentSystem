@@ -43,7 +43,7 @@ export class FacultyByIdComponent implements OnInit {
       return
     }
     if(this.id){
-      this.dataRequest.createTemplate(this.titleNewTemplate,this.id).subscribe((rez:any)=>{
+      this.dataRequest.createStreamTemplate(this.titleNewTemplate,this.id).subscribe((rez:any)=>{
         console.log(rez)
         if(this.id){
           this.data.getFacultyById(this.id).subscribe((res:any)=>{

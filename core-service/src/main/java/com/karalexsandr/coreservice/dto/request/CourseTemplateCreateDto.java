@@ -2,10 +2,7 @@ package com.karalexsandr.coreservice.dto.request;
 
 import lombok.Data;
 
-
-import java.util.List;
-
 @Data
-public class FacultyDto {
+public class CourseTemplateCreateDto {
     private String title;
 }

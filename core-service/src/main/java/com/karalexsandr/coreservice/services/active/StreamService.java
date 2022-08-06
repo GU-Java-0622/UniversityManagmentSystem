@@ -2,7 +2,6 @@ package com.karalexsandr.coreservice.services.active;
 
 import com.karalexsandr.coreservice.dto.request.AHZ.AddStudentToStreamDto;
 import com.karalexsandr.coreservice.dto.request.AHZ.StreamCreateRequestDto;
-import com.karalexsandr.coreservice.dto.response.AHZ.StreamResponseDto;
 import com.karalexsandr.coreservice.entity.Course;
 import com.karalexsandr.coreservice.entity.StatusStream;
 import com.karalexsandr.coreservice.entity.Stream;
@@ -12,8 +11,6 @@ import com.karalexsandr.coreservice.repository.StreamRepository;
 import com.karalexsandr.coreservice.services.PersonService;
 import com.karalexsandr.coreservice.services.template.StreamTemplateService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.exception.ResourceNotFoundException;
@@ -35,7 +32,7 @@ public class StreamService {
     public void createStream(StreamCreateRequestDto dto){
         Stream stream = new Stream();
         stream.setStatusStream(StatusStream.PLANNED);
-        StreamTemplate streamTemplate = streamTemplateService.findById(dto.getStreamTemplateId());
+        StreamTemplate streamTemplate = streamTemplateService.getStreamTemplateRefById(dto.getStreamTemplateId());
         stream.setFaculty(streamTemplate.getFaculties());
         stream.setStreamTemplate(streamTemplate);
         stream.setCourse(courseService.createCoursesForStreamTemplate(streamTemplate));
@@ -63,7 +60,4 @@ public class StreamService {
         repository.startedStream(StatusStream.ACTIVE,streamId);
     }
 
-    public Page<StreamResponseDto> findAll(Pageable pageable) {
-        return repository.findAll(pageable).map(StreamResponseDto::new);
-    }
 }

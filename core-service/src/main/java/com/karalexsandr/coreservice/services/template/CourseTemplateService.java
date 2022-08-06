@@ -9,24 +9,33 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CourseTemplateService {
     private final CourseTemplateRepository repository;
-    private final StreamTemplateService streamTemplateService;
 
-    public Page<CourseTemplateDto> findAll(Pageable pageable){
-        return repository.findAll(pageable).map(CourseTemplateDto::new);
+    public List<CourseTemplate> getCourseNotInStreamTemplate(List<Long> courseInStreamTemplate){
+        if (courseInStreamTemplate.isEmpty()){
+            return repository.findAll();
+        }
+        return repository.findAllByIdNotIn(courseInStreamTemplate);
     }
 
-    public void createCourseTemplate(CourseTemplateCreateDto courseTemplateCreateDto){
+    public List<CourseTemplate> getCourseTemplateIn(List<Long> courseIds){
+        return repository.findAllByIdIn(courseIds);
+    }
+
+    public void createCourseTemplate(String title){
         CourseTemplate courseTemplate = new CourseTemplate();
-        courseTemplate.setTitle(courseTemplateCreateDto.getTitle());
-        courseTemplate.getStreamTemplates().add(streamTemplateService.getStreamTemplateRefById(courseTemplateCreateDto.getStreamTemplateId()));
+        courseTemplate.setTitle(title);
         repository.save(courseTemplate);
     }
 
     public CourseTemplate getCourseTemplateById (Long id){
         return repository.getReferenceById(id);
     }
+
+
 }
