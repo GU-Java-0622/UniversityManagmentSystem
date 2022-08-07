@@ -25,6 +25,7 @@ import { OauthButtonsComponent } from './modules/pages/widgets/oauth-buttons/oau
 import { AboutPageComponent } from './modules/pages/about-page/about-page/about-page.component';
 import { AboutContentComponent } from './modules/pages/about-page/about-page/about-content/about-content.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,7 @@ import { AboutContentComponent } from './modules/pages/about-page/about-page/abo
     RegistrationDialogComponent,
     OauthButtonsComponent,
     AboutPageComponent,
-    AboutContentComponent
+    AboutContentComponent,
   ],
   imports: [
     BrowserModule,

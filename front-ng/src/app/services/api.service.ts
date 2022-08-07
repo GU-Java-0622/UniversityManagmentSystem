@@ -22,6 +22,17 @@ export class ApiService {
   private _StreamTemplateUpdateCourses = 'core/api/v1/templates/streams/update_courses'
   private _CreateCourseTemplate = 'core/api/v1/templates/courses'
   private _GetCourseTemplate = 'core/api/v1/templates/courses/'
+  private _DeleteLessonTemplate = 'core/api/v1/templates/lessons/delete/'
+  private _CreateLessonTemplate = 'core/api/v1/templates/lessons/create'
+
+
+  get DeleteLessonTemplate(): string {
+    return this.API_ROOT +this._DeleteLessonTemplate;
+  }
+
+  get CreateLessonTemplate(): string {
+    return this.API_ROOT +this._CreateLessonTemplate;
+  }
 
   get GetCourseTemplate(): string {
     return this.API_ROOT +this._GetCourseTemplate;

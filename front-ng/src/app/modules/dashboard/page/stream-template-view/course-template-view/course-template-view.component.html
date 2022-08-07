@@ -3,7 +3,8 @@
     Шаблон курса: {{courseResponse.title}}
   </div>
   <div>
-    <h3>Количество учебных часов: {{courseResponse.countLearningHours}} Количество уроков: {{courseResponse.countLessons}}</h3>
+    <h3>Количество учебных часов: {{courseResponse.countLearningHours}} Количество
+      уроков: {{courseResponse.countLessons}}</h3>
   </div>
   <div>
     Создан: {{courseResponse.createdAt}}
@@ -11,4 +12,89 @@
   <div>
     Последние изменения: {{courseResponse.updatedAt}}
   </div>
+  <table class="header_table">
+    <thead>
+    <tr>
+      <th class="td_id">ID</th>
+      <th class="td_field">Тема</th>
+      <th class="td_field">Методичка</th>
+      <th class="td_field">Дом задание</th>
+      <th class="td_field">Продолжительность</th>
+      <th class="td_field">Дата создания</th>
+      <th class="td_field">Дата обновления</th>
+      <th class="td_field">Удалить</th>
+    </tr>
+    </thead>
+  </table>
+  <div class="table-scroll-body">
+    <table class="body-table">
+      <tbody>
+      <tr *ngIf="templateLessonsInCourse.size===0">
+
+        <td class="td_zero zero_array" colspan="8">Курсы входящие в состав учебной программы отсутствуют</td>
+      </tr>
+      <tr *ngFor="let item of templateLessonsInCourse">
+        <td class="td_id">{{item.id}}</td>
+        <td class="td_field">{{item.theme}}</td>
+        <td class="td_field">{{item.trainingManualUri}}</td>
+        <td class="td_field">{{item.homeWorkUri}}</td>
+        <td class="td_field">{{item.duration}}</td>
+        <td class="td_field">{{item.createdAt}}</td>
+        <td class="td_field">{{item.updatedAt}}</td>
+        <td class="td_button">
+          <button mat-raised-button color="primary" (click)="deleteFromTable(item.id)">-</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="new_lesson">
+  <details>
+    <summary>
+      Новый урок
+    </summary>
+    <form id="create_form" [formGroup]="form" (ngSubmit)="createLessonTemplate()" class="for_lesson">
+      <div class="group_in_form">
+        <div class="left_side">
+          <div class="form_item">
+            <mat-form-field appearance="outline">
+              <mat-label>Тема урока</mat-label>
+              <input
+                matInput placeholder="Введите тему"
+                [(ngModel)]="themeNewTemplate" formControlName="themeControl">
+            </mat-form-field>
+          </div>
+          <div class="form_item">
+            <mat-form-field appearance="outline">
+              <mat-label>Продолжительность урока</mat-label>
+              <input type="time"
+                matInput placeholder="Введите продолжительность"
+                [(ngModel)]="durationLesson" formControlName="themeControl">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="left_side">
+          <div class="form_item">
+            <mat-form-field appearance="outline">
+              <mat-label>Методический материал</mat-label>
+              <input type="url"
+                matInput placeholder="Введите ссылку"
+                [(ngModel)]="trainingManualUri" formControlName="themeControl">
+            </mat-form-field>
+          </div>
+          <div class="form_item">
+            <mat-form-field appearance="outline">
+              <mat-label>Домашнее задание</mat-label>
+              <input type="url"
+                matInput placeholder="Введите ссылку"
+                [(ngModel)]="homeWorkUri" formControlName="themeControl">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+        <button mat-raised-button color="warn" (click)="onReset()" class="button_form">Очистить</button>
+        <button mat-raised-button color="primary" class="button_form">Создать</button>
+    </form>
+  </details>
 </div>

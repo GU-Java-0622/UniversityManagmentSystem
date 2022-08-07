@@ -6,7 +6,6 @@ import com.karalexsandr.coreservice.dto.request.StreamTemplateUpdateCoursesDto;
 import com.karalexsandr.coreservice.dto.response.StreamTemplateResponseDto;
 import com.karalexsandr.coreservice.services.template.StreamTemplateService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.web.bind.annotation.*;
 
 

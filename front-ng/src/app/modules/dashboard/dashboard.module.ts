@@ -21,6 +21,7 @@ import { FacultyByIdComponent } from './page/faculties-view/faculty-by-id/facult
 import { StreamTemplateViewComponent } from './page/stream-template-view/stream-template-view.component';
 import { StreamByIdViewComponent } from './page/faculties-view/faculty-by-id/stream-by-id-view/stream-by-id-view.component';
 import { CourseTemplateViewComponent } from './page/stream-template-view/course-template-view/course-template-view.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -38,21 +39,22 @@ import { CourseTemplateViewComponent } from './page/stream-template-view/course-
     StreamByIdViewComponent,
     CourseTemplateViewComponent
   ],
-  imports: [
-    CommonModule,
-    DashboardRouting,
-    MatSidenavModule,
-    MatIconModule,
-    MatDividerModule,
-    MatButtonModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatInputModule,
+    imports: [
+        CommonModule,
+        DashboardRouting,
+        MatSidenavModule,
+        MatIconModule,
+        MatDividerModule,
+        MatButtonModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatInputModule,
+        MatPaginatorModule,
 
-  ],
+    ],
   bootstrap: [DashboardViewComponent]
 })
 export class DashboardModule { }

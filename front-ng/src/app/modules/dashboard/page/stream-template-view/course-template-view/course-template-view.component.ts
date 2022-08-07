@@ -13,10 +13,16 @@ export class CourseTemplateViewComponent implements OnInit {
   courseResponse: any = '';
   templateLessonsInCourse: Set<any> = new Set<any>();
   form: FormGroup;
+
+  themeNewTemplate: string='';
+  durationLesson:string ='';
+  trainingManualUri:string='';
+  homeWorkUri:string='';
+
   constructor(private dataRequest: AppDataRequestService,private router:Router,private route: ActivatedRoute,private data:AppDataRequestService,private formBuilder: FormBuilder) {
     this.id = parseInt(<string>this.route.snapshot.queryParamMap.get('id'));
     this.form = this.formBuilder.group({
-      titleControl:[Validators.required]
+      themeControl:[Validators.required]
     })
     this.dataRequest.getCourseTemplate(this.id).subscribe((res:any)=>{
       console.log(res)
@@ -34,5 +40,44 @@ export class CourseTemplateViewComponent implements OnInit {
         this.templateLessonsInCourse.add(value)
       })
     }
+  }
+
+  deleteFromTable(id: number) {
+    this.dataRequest.deleteLessonTemplate(id).subscribe(()=>{
+      if(this.id){
+        this.dataRequest.getCourseTemplate(this.id).subscribe((res:any)=>{
+          this.templateLessonsInCourse.clear();
+          console.log(res)
+          this.updateTable(res)
+        })
+      }
+    })
+  }
+
+  createLessonTemplate() {
+    if(this.form.invalid){
+      return;
+    }
+    if(this.id) {
+      this.dataRequest.createLessonTemplate(this.themeNewTemplate,
+        this.durationLesson, this.id,
+        this.trainingManualUri, this.homeWorkUri).subscribe(()=>{
+        this.onReset();
+        if(this.id){
+          this.dataRequest.getCourseTemplate(this.id).subscribe((res:any)=>{
+            this.templateLessonsInCourse.clear();
+            console.log(res)
+            this.updateTable(res)
+          })
+        }
+      })
+    }
+  }
+
+  onReset() {
+    this.themeNewTemplate='';
+    this.durationLesson ='';
+    this.trainingManualUri='';
+    this.homeWorkUri=''
   }
 }

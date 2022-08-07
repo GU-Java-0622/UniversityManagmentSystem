@@ -4,7 +4,6 @@ import com.karalexsandr.coreservice.entity.CourseTemplate;
 import com.karalexsandr.coreservice.entity.LessonTemplate;
 import lombok.Data;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;

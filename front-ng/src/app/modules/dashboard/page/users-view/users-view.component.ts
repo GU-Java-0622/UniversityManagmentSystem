@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
 import {UserDataService} from "../../../../services/user-data.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {PageEvent} from "@angular/material/paginator";
 
 
 @Component({
@@ -32,6 +33,7 @@ export class UsersViewComponent implements OnInit {
 
 
   sizePage:number=10;
+  totalElements:number=0;
   statusSet = new Set<string>();
   usersArray: any[] = [];
   selectedFieldValue: string ='id';
@@ -39,7 +41,7 @@ export class UsersViewComponent implements OnInit {
   selectedFieldSearch: string='id';
   searchValue: string|null=null;
   totalPage: number | undefined;
-  currentPage: number | undefined;
+  currentPage: number=1;
   checkBoxActive:boolean=true;
   checkBoxDeleted: boolean=true
   checkBoxBanned: boolean=true
@@ -66,7 +68,8 @@ export class UsersViewComponent implements OnInit {
       console.log(res);
       this.usersArray = res.content;
       this.currentPage = res.currentPage;
-      this.totalPage = res.totalPage;
+      this.totalPage = res.totalPages;
+      this.totalElements = res.totalElements;
     });
   }
 
@@ -98,15 +101,23 @@ export class UsersViewComponent implements OnInit {
     if(this.form.value.checkBoxBannedControl){
       this.statusSet.add('BANNED');
     }
-    this.dataService.getAllUsersPaging(1,this.sizePage,this.selectedFieldValue,this.selectedSortDirection,
+
+    this.dataService.getAllUsersPaging(this.currentPage,this.sizePage,this.selectedFieldValue,this.selectedSortDirection,
       this.selectedFieldSearch,this.searchValue,this.statusSet).subscribe((res: any) => {
       this.usersArray = res.content;
       this.currentPage = res.currentPage;
-      this.totalPage = res.totalPage;
+      this.totalPage = res.totalPages;
+      this.totalElements = res.totalElements;
     });
   }
 
   getUserById(id:number) {
     this.router.navigate(['profile'],{relativeTo:this.route,queryParams:{id}});
+  }
+
+  pageEventFun(event:PageEvent){
+      this.currentPage =event.pageIndex+1;
+      this.sizePage = event.pageSize;
+      this.onSubmit();
   }
 }

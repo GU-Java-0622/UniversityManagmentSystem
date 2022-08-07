@@ -53,4 +53,23 @@ export class AppDataRequestService {
   getCourseTemplate(id:number):Observable<any>{
     return this.http.get(this.api.GetCourseTemplate+id);
   }
+
+  deleteLessonTemplate(id:number):Observable<any>{
+    return this.http.get(this.api.DeleteLessonTemplate+id);
+  }
+
+  createLessonTemplate(theme:string,duration:string,
+                       courseTemplateId:number,
+                       trainingManualUri:string,
+                       homeWorkUri:string):Observable<any>{
+    const body={
+      theme:theme,
+      courseTemplateId:courseTemplateId,
+      trainingManualUri:trainingManualUri,
+      homeWorkUri:homeWorkUri,
+      duration:duration
+    }
+    console.log(body)
+    return this.http.post(this.api.CreateLessonTemplate,body);
+  }
 }

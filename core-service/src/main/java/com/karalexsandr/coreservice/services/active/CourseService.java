@@ -1,13 +1,15 @@
 package com.karalexsandr.coreservice.services.active;
 
-import com.karalexsandr.coreservice.entity.*;
+import com.karalexsandr.coreservice.entity.Course;
+import com.karalexsandr.coreservice.entity.Person;
+import com.karalexsandr.coreservice.entity.StreamTemplate;
 import com.karalexsandr.coreservice.exception.CoreException;
 import com.karalexsandr.coreservice.repository.CourseRepository;
 import com.karalexsandr.coreservice.services.PersonService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
