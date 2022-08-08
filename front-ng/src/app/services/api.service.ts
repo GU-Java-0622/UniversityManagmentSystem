@@ -14,6 +14,7 @@ export class ApiService {
   private _getAllUser = 'auth/api/v1/profile/get_all';/*+*/
   private _getProfileById = 'auth/api/v1/profile/profile/';/*+*/
   private _updateOrSave = 'auth/api/v1/users/update'
+  private _GetUserInfo = 'auth/api/v1/users/get_user/'
   private _FacultyGetAll = 'core/api/v1/faculties/get_all_faculty'
   private _FacultyCreate = 'core/api/v1/faculties'
   private _FacultyById = 'core/api/v1/faculties/get_faculty/'
@@ -24,7 +25,31 @@ export class ApiService {
   private _GetCourseTemplate = 'core/api/v1/templates/courses/'
   private _DeleteLessonTemplate = 'core/api/v1/templates/lessons/delete/'
   private _CreateLessonTemplate = 'core/api/v1/templates/lessons/create'
+  private _CreateStream = 'core/api/v1/streams/'
+  private _GetStreamById =  'core/api/v1/streams/get_stream/'
+  private _GetTeachers = 'auth/api/v1/users/get_teachers'
+  private _GetStartedStreamById =  'core/api/v1/streams/started/'
 
+
+  get GetStartedStreamById(): string {
+    return this.API_ROOT +this._GetStartedStreamById;
+  }
+
+  get GetTeachers(): string {
+    return this.API_ROOT +this._GetTeachers;
+  }
+
+  get GetStreamById(): string {
+    return this.API_ROOT +this._GetStreamById;
+  }
+
+  get GetUserInfo(): string {
+    return this.API_ROOT +this._GetUserInfo;
+  }
+
+  get CreateStream(): string {
+    return this.API_ROOT +this._CreateStream;
+  }
 
   get DeleteLessonTemplate(): string {
     return this.API_ROOT +this._DeleteLessonTemplate;

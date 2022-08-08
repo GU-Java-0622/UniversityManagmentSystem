@@ -31,7 +31,7 @@ export class FacultyByIdComponent implements OnInit {
   }
 
   getStreamById(id:number) {
-
+    this.router.navigate(['dashboard/faculties/stream'],{queryParams:{id}});
   }
 
   getTemplateById(id:number) {

@@ -72,4 +72,23 @@ export class AppDataRequestService {
     console.log(body)
     return this.http.post(this.api.CreateLessonTemplate,body);
   }
+
+  createStream(id:number):Observable<any>{
+    const body = {
+      streamTemplateId:id
+    }
+    return this.http.post(this.api.CreateStream,body);
+  }
+
+  getStreamById(id:number):Observable<any>{
+    return this.http.get(this.api.GetStreamById+id);
+  }
+
+  getTeachers():Observable<any>{
+    return this.http.get(this.api.GetTeachers)
+  }
+
+  getStartedStream(id:number):Observable<any>{
+    return this.http.get(this.api.GetStartedStreamById+id)
+  }
 }

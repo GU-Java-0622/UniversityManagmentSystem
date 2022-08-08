@@ -19,6 +19,7 @@ public class FacultyFullResponseDto {
     private List<StreamDto> streams;
     private List<TemplateDto> templates;
 
+
     public FacultyFullResponseDto(Faculty faculty){
         this.id = faculty.getId();
         this.title = faculty.getTitle();
@@ -38,6 +39,7 @@ public class FacultyFullResponseDto {
 
         public StreamDto (Stream stream){
             this.id = stream.getId();
+            this.statusStream = stream.getStatusStream();
             this.createdAt = stream.getCreatedAt();
             this.updatedAt = stream.getUpdatedAt();
             this.countStudents = stream.getStudents().size();

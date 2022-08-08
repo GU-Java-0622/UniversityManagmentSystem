@@ -34,6 +34,7 @@ public class Course {
     private List<Lesson> lessons;
 
     @ManyToOne
+    @JoinColumn(name = "stream_id")
     private Stream stream;
 
     @ManyToOne
@@ -47,4 +48,5 @@ public class Course {
     @UpdateTimestamp
     @Column(name = "update_at")
     private LocalDateTime updatedAt;
+
 }

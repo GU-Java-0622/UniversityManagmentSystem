@@ -1,4 +1,4 @@
-package ru.geekbrains.auth.dto;
+package web.entity;
 
 import web.entity.UserStatus;
 
@@ -26,6 +26,7 @@ public class UserDto {
         this.middlename = middlename;
         this.email = email;
     }
+
 
     public Long getId() {
         return id;

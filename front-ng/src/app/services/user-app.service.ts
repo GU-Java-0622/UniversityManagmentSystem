@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Authorities} from "./authorities";
+import {Observable} from "rxjs";
 
 const TOKEN_KEY = 'auth-token';
 
@@ -52,7 +53,7 @@ export class UserAppService {
 
   public parseResponse(res:any):void{
     this._email = res._email;
-    this._id = res._id;
+    this._id = res.id;
     let role = res.roles;
     if(role){
       for (let entry in role){
@@ -63,6 +64,7 @@ export class UserAppService {
 
     this.saveToken(res.token);
   }
+
 
 
   get email(): string | null {

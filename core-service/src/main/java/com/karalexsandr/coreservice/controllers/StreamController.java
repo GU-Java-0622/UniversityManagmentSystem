@@ -1,5 +1,6 @@
 package com.karalexsandr.coreservice.controllers;
 
+import com.karalexsandr.coreservice.dto.response.StreamResponseDto;
 import com.karalexsandr.coreservice.dto.request.AHZ.AddStudentToStreamDto;
 import com.karalexsandr.coreservice.dto.request.StreamCreateRequestDto;
 import com.karalexsandr.coreservice.services.active.StreamService;
@@ -14,12 +15,13 @@ public class StreamController {
     private final StreamService streamService;
 
 
+    /*Возвращаем id созданного стрима*/
     @PostMapping
-    public void createStream(@RequestBody StreamCreateRequestDto dto){
-        streamService.createStream(dto);
+    public Long createStream(@RequestBody StreamCreateRequestDto dto){
+        return streamService.createStream(dto);
     }
 
-    @PutMapping("/started/{id}")
+    @GetMapping("/started/{id}")
     public void startedStream(@PathVariable Long id){
         streamService.startedStream(id);
     }
@@ -29,4 +31,8 @@ public class StreamController {
         streamService.addStudent(dto);
     }
 
+    @GetMapping("get_stream/{id}")
+    public StreamResponseDto getStream(@PathVariable Long id){
+       return streamService.getById(id);
+    }
 }

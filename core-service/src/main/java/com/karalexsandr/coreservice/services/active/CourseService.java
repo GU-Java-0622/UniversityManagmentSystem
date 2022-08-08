@@ -1,8 +1,6 @@
 package com.karalexsandr.coreservice.services.active;
 
-import com.karalexsandr.coreservice.entity.Course;
-import com.karalexsandr.coreservice.entity.Person;
-import com.karalexsandr.coreservice.entity.StreamTemplate;
+import com.karalexsandr.coreservice.entity.*;
 import com.karalexsandr.coreservice.exception.CoreException;
 import com.karalexsandr.coreservice.repository.CourseRepository;
 import com.karalexsandr.coreservice.services.PersonService;
@@ -23,17 +21,16 @@ public class CourseService {
 
     @Transactional
     public List<Course> createCoursesForStreamTemplate(StreamTemplate streamTemplate) {
-        List<Course> courses = streamTemplate.getCourseTemplates().stream()
+        return streamTemplate.getCourseTemplates().stream()
                 .map(ct -> {
                     Course course = new Course();
                     course.setTitle(ct.getTitle());
                     course.setCourseTemplate(ct);
-                    course.setLessons(lessonService.createLessonsByCourseTemplate(ct));
+                    repository.save(course);
+                    course.setLessons(lessonService.createLessonsByCourseTemplate(ct,course));
                     return course;
                 })
                 .collect(Collectors.toList());
-        repository.saveAll(courses);
-        return courses;
     }
 
     public void setTeacher(Long idCourse, Long idTeacher) {
@@ -42,5 +39,9 @@ public class CourseService {
         if (i == 0) {
             throw new CoreException("Не удалось припязать учителя с id: " + idTeacher);
         }
+    }
+    public void setStream(Course course, Stream stream){
+        course.setStream(stream);
+        repository.save(course);
     }
 }

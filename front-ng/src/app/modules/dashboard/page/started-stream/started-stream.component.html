@@ -1,0 +1,116 @@
+<div class="faculty-container">
+  <div class="faculty-header">
+    Поток факультета: {{streamResponse.facultyTitle}}
+  </div>
+  <div>
+    Создан на основе шаблона: {{streamResponse.templateTitle}}
+  </div>
+  <div>
+    Текущий статус: {{streamResponse.statusStream}}
+  </div>
+  <div>
+    <h2>Количество студентов: {{streamResponse.countOfStudents}}</h2>
+  </div>
+  <div>
+    Создан: {{streamResponse.createdAt}}
+  </div>
+  <div>
+    Последние изменения: {{streamResponse.updatedAt}}
+  </div>
+  <div class="table-scroll">
+    <div class="header">
+      <h2>Курсы входящие в учебную программу</h2>
+    </div>
+    <table class="header_table">
+      <thead>
+      <tr>
+        <th class="td_id">ID</th>
+        <th class="td_field">Наименование</th>
+        <th class="td_field">Кол-во уроков</th>
+        <th class="td_field">Учитель</th>
+      </tr>
+      </thead>
+    </table>
+    <div class="table-scroll-body">
+      <table class="body-table">
+        <tbody>
+        <tr *ngIf="courses.size===0">
+          <td class="td_field zero_array" colspan="5">Курсы входящие в состав учебной программы отсутствуют</td>
+        </tr>
+        <tr *ngFor="let item of courses">
+          <td class="td_id">{{item.id}}</td>
+          <td class="td_field">{{item.title}}</td>
+          <td class="td_field">{{item.countLesson}}</td>
+          <td class="td_field">{{item.teacher}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="table-scroll">
+    <div class="header">
+      <h2>Учителя которых можно назначить</h2>
+    </div>
+    <table class="header_table">
+      <thead>
+      <tr>
+        <th class="td_id">ID</th>
+        <th class="td_field">Фамилия</th>
+        <th class="td_field">Имя</th>
+        <th class="td_field">Отчество</th>
+        <th class="td_field">Email</th>
+      </tr>
+      </thead>
+    </table>
+    <div class="table-scroll-body">
+      <table class="body-table">
+        <tbody>
+        <tr *ngIf="teachers.size===0">
+          <td class="td_field zero_array" colspan="5">Учителей нет</td>
+        </tr>
+        <tr *ngFor="let item of teachers">
+          <td class="td_id">{{item.id}}</td>
+          <td class="td_field">{{item.surname}}</td>
+          <td class="td_field">{{item.firstname}}</td>
+          <td class="td_field">{{item.middlename}}</td>
+          <td class="td_field">{{item.email}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="table-scroll">
+    <div class="header">
+      <h2>Студенты поступившие на поток</h2>
+    </div>
+    <table class="header_table">
+      <thead>
+      <tr>
+        <th class="td_id">ID</th>
+        <th class="td_field">Фамилия</th>
+        <th class="td_field">Имя</th>
+        <th class="td_field">Отчество</th>
+        <th class="td_field">Email</th>
+      </tr>
+      </thead>
+    </table>
+    <div class="table-scroll-body">
+      <table class="body-table">
+        <tbody>
+        <tr *ngIf="studentsSet.size===0">
+          <td class="td_field zero_array" colspan="5">Еще пока нет студентов</td>
+        </tr>
+        <tr *ngFor="let item of studentsSet">
+          <td class="td_id">{{item.id}}</td>
+          <td class="td_field">{{item.surname}}</td>
+          <td class="td_field">{{item.firstname}}</td>
+          <td class="td_field">{{item.middlename}}</td>
+          <td class="td_field">{{item.email}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<button mat-raised-button color="warn" (click)="startedStream()" >Запустить поток</button>

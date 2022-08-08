@@ -18,7 +18,7 @@ public class LessonService {
 
 
     @Transactional
-    public List<Lesson> createLessonsByCourseTemplate(CourseTemplate courseTemplate){
+    public List<Lesson> createLessonsByCourseTemplate(CourseTemplate courseTemplate, Course course){
         List<Lesson> lessons = courseTemplate.getLessonTemplates().stream()
                 .map(lt ->{
                     Lesson lesson = new Lesson();
@@ -27,6 +27,7 @@ public class LessonService {
                     lesson.setTrainingManualUri(lt.getTrainingManualUri());
                     lesson.setHomeWorkUri(lt.getHomeWorkUri());
                     lesson.setFinished(false);
+                    lesson.setCourse(course);
                     return lesson;
                 })
                 .collect(Collectors.toList());
@@ -34,7 +35,4 @@ public class LessonService {
         return lessons;
     }
 
-    public List<Lesson> getNotReadyLesson(List<Course> courses){
-        return repository.getLessonByCourseInAndStartedAtIsNull(courses);
-    }
 }

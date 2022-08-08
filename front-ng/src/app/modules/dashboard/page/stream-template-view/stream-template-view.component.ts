@@ -16,6 +16,7 @@ export class StreamTemplateViewComponent implements OnInit {
   isChanged: boolean = false;
   form: FormGroup;
   titleNewTemplate: string = '';
+  isImposableCreateStream:boolean =true
 
   constructor(private dataRequest: AppDataRequestService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     this.id = parseInt(<string>this.route.snapshot.queryParamMap.get('id'));
@@ -25,6 +26,7 @@ export class StreamTemplateViewComponent implements OnInit {
     this.dataRequest.getStreamTemplate(this.id).subscribe((res: any) => {
       this.updateTable(res);
       this.isChanged = false;
+      this.isImposableCreateStream = this.templateInCourse.size <= 0;
     })
 
   }
@@ -37,6 +39,7 @@ export class StreamTemplateViewComponent implements OnInit {
     this.templateInCourse.delete(elem)
     this.templateNotInCourse.add(elem)
     this.isChanged = true;
+    this.isImposableCreateStream = this.templateInCourse.size <= 0;
   }
 
   getTemplateById(id: number) {
@@ -47,6 +50,7 @@ export class StreamTemplateViewComponent implements OnInit {
     this.templateInCourse.add(elem)
     this.templateNotInCourse.delete(elem)
     this.isChanged = true;
+    this.isImposableCreateStream = this.templateInCourse.size <= 0;
   }
 
   saveChange() {
@@ -74,6 +78,7 @@ export class StreamTemplateViewComponent implements OnInit {
       this.templateNotInCourse.add(value);
     });
     this.isChanged = false;
+    this.isImposableCreateStream = this.templateInCourse.size <= 0;
   }
 
   private updateTable(res: any) {
@@ -97,7 +102,7 @@ export class StreamTemplateViewComponent implements OnInit {
     if (this.form.invalid) {
       return
     }
-    this.dataRequest.createCourseTemplate(this.titleNewTemplate).subscribe((rez: any) => {
+    this.dataRequest.createCourseTemplate(this.titleNewTemplate).subscribe(() => {
       if (this.id) {
         this.dataRequest.getStreamTemplate(this.id).subscribe((res: any) => {
           this.updateTable(res);
@@ -108,7 +113,13 @@ export class StreamTemplateViewComponent implements OnInit {
     })
   }
 
-  startStream() {
+  createStream() {
+    if(this.id){
+      this.dataRequest.createStream(this.id).subscribe((res:any)=>{
+        const id=res
+        this.router.navigate(['dashboard/faculties/stream'],{queryParams:{id}});
+      })
+    }
 
   }
 }

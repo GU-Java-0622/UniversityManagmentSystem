@@ -10,6 +10,7 @@ import {StreamTemplateViewComponent} from "./page/stream-template-view/stream-te
 import {
   CourseTemplateViewComponent
 } from "./page/stream-template-view/course-template-view/course-template-view.component";
+import {StartedStreamComponent} from "./page/started-stream/started-stream.component";
 
 const dashboardRouting: Routes = [
   {
@@ -63,6 +64,11 @@ const dashboardRouting: Routes = [
               }
             ]
           },
+          {
+            path: 'stream',
+            component: StartedStreamComponent,
+            data: {breadcrumb: 'Поток'}
+          }
         ]
       },
       {

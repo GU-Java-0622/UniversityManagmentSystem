@@ -22,6 +22,7 @@ import { StreamTemplateViewComponent } from './page/stream-template-view/stream-
 import { StreamByIdViewComponent } from './page/faculties-view/faculty-by-id/stream-by-id-view/stream-by-id-view.component';
 import { CourseTemplateViewComponent } from './page/stream-template-view/course-template-view/course-template-view.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { StartedStreamComponent } from './page/started-stream/started-stream.component';
 
 
 
@@ -37,7 +38,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     FacultyByIdComponent,
     StreamTemplateViewComponent,
     StreamByIdViewComponent,
-    CourseTemplateViewComponent
+    CourseTemplateViewComponent,
+    StartedStreamComponent
   ],
     imports: [
         CommonModule,

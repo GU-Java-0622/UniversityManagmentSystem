@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AppDataRequestService} from "../../../../../../services/app-data-request.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-stream-by-id-view',
@@ -6,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stream-by-id-view.component.css']
 })
 export class StreamByIdViewComponent implements OnInit {
-
-  constructor() { }
+  id: number | null;
+  constructor(private dataRequest: AppDataRequestService,private router:Router,private route: ActivatedRoute,private data:AppDataRequestService,private formBuilder: FormBuilder) {
+    this.id = parseInt(<string>this.route.snapshot.queryParamMap.get('id'));
+  }
 
   ngOnInit(): void {
   }
