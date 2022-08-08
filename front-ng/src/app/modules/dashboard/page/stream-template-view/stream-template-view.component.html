@@ -1,0 +1,110 @@
+<div class="faculty-container">
+  <div class="faculty-header">
+    Шаблон: {{templateResponse.title}}
+  </div>
+  <div>
+    <h2>Для факультета: {{templateResponse.facultyTitle}}</h2>
+  </div>
+  <div>
+    Создан: {{templateResponse.createdAt}}
+  </div>
+  <div>
+    Последние изменения: {{templateResponse.updatedAt}}
+  </div>
+  <div class="table-scroll">
+    <div class="header">
+      <h2>Курсы входящие в учебную программу</h2>
+    </div>
+    <table class="header_table">
+      <thead>
+      <tr>
+        <th class="td_id">ID</th>
+        <th class="td_field">Наименование</th>
+        <th class="td_field">Кол-во уроков</th>
+        <th class="td_field">Дата создания</th>
+        <th class="td_field">Дата обновления</th>
+        <th class="td_field">Удалить</th>
+      </tr>
+      </thead>
+    </table>
+    <div class="table-scroll-body">
+      <table class="body-table">
+        <tbody>
+        <tr *ngIf="templateInCourse.size===0">
+          <td class="td_field zero_array" colspan="5">Курсы входящие в состав учебной программы отсутствуют</td>
+        </tr>
+        <tr *ngFor="let item of templateInCourse" (click)="getTemplateById(item.id)">
+          <td class="td_id">{{item.id}}</td>
+          <td class="td_field">{{item.title}}</td>
+          <td class="td_field">{{item.countLessons}}</td>
+          <td class="td_field">{{item.createdAt}}</td>
+          <td class="td_field">{{item.updatedAt}}</td>
+          <td class="td_button">
+            <button mat-raised-button color="primary" (click)="deleteFromTable(item)">-</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="button_group" *ngIf="!isChanged">
+    <button mat-raised-button color="warn" (click)="createStream()" [disabled]="isImposableCreateStream">Создать поток</button>
+    <button mat-raised-button color="primary" (click)="saveChange()" disabled>Сохранить изменения</button>
+    <button mat-raised-button color="primary" (click)="cancelChange()" disabled>Отменить изменения</button>
+  </div>
+  <div class="button_group" *ngIf="isChanged">
+    <button mat-raised-button color="warn" (click)="createStream()" disabled>Создать поток</button>
+    <button mat-raised-button color="primary" (click)="saveChange()" >Сохранить изменения</button>
+    <button mat-raised-button color="primary" (click)="cancelChange()" >Отменить изменения</button>
+  </div>
+  <div class="table-scroll">
+    <div class="header">
+      <h2>Курсы которые возможно добавить к учебной программе</h2>
+    </div>
+    <table class="header_table">
+      <thead>
+      <tr>
+        <th class="td_id">ID</th>
+        <th class="td_field">Наименование</th>
+        <th class="td_field">Кол-во уроков</th>
+        <th class="td_field">Дата создания</th>
+        <th class="td_field">Дата обновления</th>
+        <th class="td_field">Добавить</th>
+      </tr>
+      </thead>
+    </table>
+    <div class="table-scroll-body">
+      <table class="body-table">
+        <tbody>
+        <tr *ngIf="templateNotInCourse.size===0">
+          <td class="td_field zero_array" colspan="5">Другие курсы отсутствуют</td>
+        </tr>
+        <tr *ngFor="let item of templateNotInCourse" (click)="getTemplateById(item.id)">
+          <td class="td_id">{{item.id}}</td>
+          <td class="td_field">{{item.title}}</td>
+          <td class="td_field">{{item.countLessons}}</td>
+          <td class="td_field">{{item.createdAt}}</td>
+          <td class="td_field">{{item.updatedAt}}</td>
+          <td class="td_button">
+            <button mat-raised-button color="primary" (click)="addToTable(item)">+</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <form id="create_form" [formGroup]="form" (ngSubmit)="createCourseTemplate()">
+    <div class="form-body">
+      <button mat-raised-button class="button_form" type="submit">Создать новый курс</button>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Новый курс</mat-label>
+          <input
+            matInput placeholder="Введите наименование"
+            [(ngModel)]="titleNewTemplate" formControlName="titleControl">
+        </mat-form-field>
+      </p>
+    </div>
+  </form>
+</div>

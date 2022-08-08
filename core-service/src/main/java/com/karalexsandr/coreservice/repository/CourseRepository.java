@@ -10,4 +10,6 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     @Modifying
     @Query("update Course as s set s.teacher =?1 where s.id =?2")
     int setTeacher(Person person, Long id);
+
+
 }

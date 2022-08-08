@@ -4,10 +4,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import ru.geekbrains.auth.entityes.Role;
 import ru.geekbrains.auth.entityes.User;
+import web.entity.ERole;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
@@ -20,4 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
 
     @Query("select o from User o where o.id in (:id)")
     List<User> findAllUsersById(List<Long> id);
+
+
+    List<User> findAllByRolesContaining(Role role);
 }

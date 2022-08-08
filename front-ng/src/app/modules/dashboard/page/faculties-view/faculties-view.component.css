@@ -8,4 +8,111 @@
   display: flex;
   justify-content: center;
   font-size: 2.5em;
+  margin-bottom: 5vh;
 }
+.table-scroll table{
+  width: 100%;
+  table-layout: fixed;
+  border: none;
+}
+.table-scroll thead th{
+  border: none;
+  border-left: 1px solid #87CEFA;
+  border-right: 1px solid #87CEFA;
+}
+
+.header_table{
+  border-spacing: 0;
+}
+.header_table th{
+  height: 2.5rem;
+}
+.table-scroll-body{
+  border-collapse: collapse;
+  border-bottom: 1px solid grey;
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+thead{
+  font-weight: bold;
+  background: #87CEFA;
+  font-size: 1.1rem;
+}
+
+table tbody tr:nth-child(3n+1){
+  background: #f2fff5;
+}
+
+/* Строки 2,5,8... */
+table tbody tr:nth-child(3n+2){
+  background: #ffeaea;
+}
+
+/* Строки 3,6,9... */
+table tbody tr:nth-child(3n+3){
+  background: #eeecff;
+}
+tbody{
+  cursor: pointer;
+}
+
+
+td{
+  height: 3rem;
+}
+.td_id{
+  width: 5vh;
+  text-align: center;
+}
+.td_field{
+  max-width: 10rem;
+  padding-left: 1vh;
+  text-align: center;
+}
+.td_email{
+  width: 10rem;
+  padding-left: 1vh;
+}
+
+.td_phone{
+  padding-left: 1vh;
+  width: 10rem;
+}
+.zero_array{
+  text-align: center;
+}
+.body-table tr:hover{
+  opacity: 80%;
+  font-size: 1.1rem;
+}
+.button_form{
+  margin-left: 40px;
+  margin-right: 40px;
+  background-color: bisque !important;
+  color: black;
+  height: 55px !important;
+}
+.form-body{
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+input{
+  width: 400px !important;
+  line-height: 1.2rem;
+  font-size: 1rem;
+}
+.body-table{
+  margin-top: 10px;
+}
+

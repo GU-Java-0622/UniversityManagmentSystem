@@ -17,18 +17,14 @@
       src="../../../../../assets/images/male-profile.png"
     />
 
-    <h4 class="name">Алексей Гриценко</h4>
-    <p class="designation">Администратор</p>
+    <h4 class="name">{{fioString}}</h4>
+    <p class="designation">{{roleString}}</p>
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" [routerLink]="['./users']">
+    <button mat-button class="menu-button" [routerLink]="['./dashboard']">
       <mat-icon>group</mat-icon>
       <span>Пользователи</span>
-    </button>
-    <button mat-button class="menu-button" [routerLink]="['./roles']">
-      <mat-icon>accessibility_new</mat-icon>
-      <span>Роли</span>
     </button>
     <button mat-button class="menu-button" [routerLink]="['./faculties']">
       <mat-icon>business</mat-icon>
@@ -48,7 +44,9 @@
   <mat-sidenav-content>
     <div class="content mat-elevation-z8">
       <app-breadcrumb></app-breadcrumb>
-      <router-outlet></router-outlet>
+      <div class="router">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

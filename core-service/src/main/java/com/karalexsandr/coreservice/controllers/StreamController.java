@@ -1,18 +1,11 @@
 package com.karalexsandr.coreservice.controllers;
 
-import com.karalexsandr.coreservice.dto.CourseTemplateDto;
-import com.karalexsandr.coreservice.dto.request.AddStudentToStreamDto;
-import com.karalexsandr.coreservice.dto.request.StreamCreateRequestDto;
 import com.karalexsandr.coreservice.dto.response.StreamResponseDto;
-import com.karalexsandr.coreservice.entity.Stream;
+import com.karalexsandr.coreservice.dto.request.AHZ.AddStudentToStreamDto;
+import com.karalexsandr.coreservice.dto.request.StreamCreateRequestDto;
 import com.karalexsandr.coreservice.services.active.StreamService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController
@@ -22,12 +15,13 @@ public class StreamController {
     private final StreamService streamService;
 
 
+    /*Возвращаем id созданного стрима*/
     @PostMapping
-    public void createStream(@RequestBody StreamCreateRequestDto dto){
-        streamService.createStream(dto);
+    public Long createStream(@RequestBody StreamCreateRequestDto dto){
+        return streamService.createStream(dto);
     }
 
-    @PutMapping("/started/{id}")
+    @GetMapping("/started/{id}")
     public void startedStream(@PathVariable Long id){
         streamService.startedStream(id);
     }
@@ -37,13 +31,8 @@ public class StreamController {
         streamService.addStudent(dto);
     }
 
-    @GetMapping
-    public Page<StreamResponseDto> findAll(
-            @RequestParam(defaultValue = "1") Integer page,
-            @RequestParam(defaultValue = "5") Integer size) {
-        if (page < 1) {
-            page = 1;
-        }
-        return streamService.findAll(PageRequest.of(page-1, size));
+    @GetMapping("get_stream/{id}")
+    public StreamResponseDto getStream(@PathVariable Long id){
+       return streamService.getById(id);
     }
 }

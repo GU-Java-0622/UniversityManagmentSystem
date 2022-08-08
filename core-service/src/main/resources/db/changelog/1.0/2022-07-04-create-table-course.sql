@@ -5,8 +5,8 @@ CREATE TABLE course
     course_template_id BIGINT,
     stream_id          BIGINT,
     person_id          BIGINT,
-    created_at         TIMESTAMP WITHOUT TIME ZONE,
-    update_at          TIMESTAMP WITHOUT TIME ZONE,
+    created_at         TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
+    update_at          TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
     CONSTRAINT pk_course PRIMARY KEY (id)
 );
 

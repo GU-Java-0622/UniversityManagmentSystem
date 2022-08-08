@@ -1,6 +1,7 @@
 package com.karalexsandr.coreservice.controllers;
 
-import com.karalexsandr.coreservice.dto.request.FacultyDto;
+import com.karalexsandr.coreservice.dto.request.FacultyCreateDto;
+import com.karalexsandr.coreservice.dto.response.FacultyFullResponseDto;
 import com.karalexsandr.coreservice.dto.response.FacultyResponseDto;
 import com.karalexsandr.coreservice.services.FacultyService;
 import lombok.RequiredArgsConstructor;
@@ -20,14 +21,12 @@ import java.util.Set;
 public class FacultyController {
     private final FacultyService facultyService;
 
-
-
     @PostMapping
-    public void createFaculty(@RequestBody FacultyDto facultyDto,@RequestHeader("roles") Set<ERole> roles){
+    public void createFaculty(@RequestBody FacultyCreateDto facultyCreateDto, @RequestHeader("roles") Set<ERole> roles){
         HashSet<ERole> neededRole = new HashSet<>();
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
-        facultyService.createFaculty(facultyDto);
+        facultyService.createFaculty(facultyCreateDto);
     }
 
     @GetMapping("/get_all_faculty")
@@ -36,6 +35,13 @@ public class FacultyController {
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
         return facultyService.getAll();
+    }
+    @GetMapping("/get_faculty/{id}")
+    public FacultyFullResponseDto getFacultyById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
+        HashSet<ERole> neededRole = new HashSet<>();
+        neededRole.add(ERole.ROLE_ADMIN);
+        RoleChecker.roleCheck(roles,neededRole);
+        return facultyService.getById(id);
     }
 }
 

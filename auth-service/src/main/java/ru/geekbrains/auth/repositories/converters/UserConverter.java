@@ -1,7 +1,7 @@
 package ru.geekbrains.auth.repositories.converters;
 
 import org.springframework.stereotype.Component;
-import ru.geekbrains.auth.dto.UserDto;
+import web.entity.UserDto;
 import ru.geekbrains.auth.entityes.User;
 
 @Component

@@ -1,7 +1,6 @@
 package com.karalexsandr.coreservice.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,4 +46,5 @@ public class LessonTemplate {
 
     @UpdateTimestamp
     @Column(name = "update_at")
-    private LocalDateTime updatedAt;}
+    private LocalDateTime updatedAt;
+}

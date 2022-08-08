@@ -1,8 +1,8 @@
 CREATE TABLE persons
 (
     id         BIGINT NOT NULL,
-    created_at TIMESTAMP WITHOUT TIME ZONE,
-    update_at  TIMESTAMP WITHOUT TIME ZONE,
+    created_at TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
+    update_at  TIMESTAMP WITHOUT TIME ZONE default current_timestamp,
     CONSTRAINT pk_persons PRIMARY KEY (id)
 );
 

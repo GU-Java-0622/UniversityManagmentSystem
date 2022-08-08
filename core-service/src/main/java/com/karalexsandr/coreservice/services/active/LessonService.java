@@ -1,19 +1,13 @@
 package com.karalexsandr.coreservice.services.active;
 
-import com.karalexsandr.coreservice.dto.LessonDto;
-import com.karalexsandr.coreservice.dto.request.LessonCreateDto;
-import com.karalexsandr.coreservice.dto.response.LessonResponseDto;
 import com.karalexsandr.coreservice.entity.Course;
 import com.karalexsandr.coreservice.entity.CourseTemplate;
 import com.karalexsandr.coreservice.entity.Lesson;
-import com.karalexsandr.coreservice.entity.LessonTemplate;
 import com.karalexsandr.coreservice.repository.LessonRepository;
-import com.karalexsandr.coreservice.services.template.LessonTemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +18,7 @@ public class LessonService {
 
 
     @Transactional
-    public List<Lesson> createLessonsByCourseTemplate(CourseTemplate courseTemplate){
+    public List<Lesson> createLessonsByCourseTemplate(CourseTemplate courseTemplate, Course course){
         List<Lesson> lessons = courseTemplate.getLessonTemplates().stream()
                 .map(lt ->{
                     Lesson lesson = new Lesson();
@@ -33,6 +27,7 @@ public class LessonService {
                     lesson.setTrainingManualUri(lt.getTrainingManualUri());
                     lesson.setHomeWorkUri(lt.getHomeWorkUri());
                     lesson.setFinished(false);
+                    lesson.setCourse(course);
                     return lesson;
                 })
                 .collect(Collectors.toList());
@@ -40,7 +35,4 @@ public class LessonService {
         return lessons;
     }
 
-    public List<Lesson> getNotReadyLesson(List<Course> courses){
-        return repository.getLessonByCourseInAndStartedAtIsNull(courses);
-    }
 }

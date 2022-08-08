@@ -26,7 +26,7 @@ public class PersonService {
 
     public Person getStudentById(Long id){
         Person person = new Person();
-        ProfileDto profileDto = authServiceIntegration.getUserById(id);
+        ProfileDto profileDto = authServiceIntegration.getProfileById(id);
         if (profileDto!=null){
             if (profileDto.getRoles().contains(ERole.ROLE_STUDENT)){
                 person = repository.findById(id).orElseThrow(()->new ResourceNotFoundException("Не найден студент с id: "+id));;
@@ -39,7 +39,7 @@ public class PersonService {
     }
     public Person getTeacherById(Long id){
         Person person = new Person();
-        ProfileDto profileDto = authServiceIntegration.getUserById(id);
+        ProfileDto profileDto = authServiceIntegration.getProfileById(id);
         if (profileDto!=null){
             if (profileDto.getRoles().contains(ERole.ROLE_TEACHER)){
                 person = repository.getReferenceById(id);
@@ -52,7 +52,7 @@ public class PersonService {
     }
     public Person getAdminById(Long id){
         Person person = new Person();
-        ProfileDto profileDto = authServiceIntegration.getUserById(id);
+        ProfileDto profileDto = authServiceIntegration.getProfileById(id);
         if (profileDto!=null){
             if (profileDto.getRoles().contains(ERole.ROLE_ADMIN)){
                 person = repository.getReferenceById(id);
