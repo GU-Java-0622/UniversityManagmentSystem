@@ -11,8 +11,8 @@ export class ApiService {
   private API_ROOT = "http://localhost:5555/"
   private _loginApi = 'auth/api/v1/auth/login';/*+*/
   private _register = 'auth/api/v1/auth/signup';/*+*/
-  private _getAllUser = 'auth/api/v1/profile/find';/*+*/
-  private _getProfileById = 'auth/api/v1/profile/current/';/*+*/
+  private _getAllUser = 'auth/api/v1/profiles/find';/*+*/
+  private _getProfileById = 'auth/api/v1/profiles/current/';/*+*/
   private _updateOrSave = 'auth/api/v1/users/update'
   private _GetUserInfo = 'auth/api/v1/users/'
   private _FacultyGetAll = 'core/api/v1/faculties/get_all_faculty'
