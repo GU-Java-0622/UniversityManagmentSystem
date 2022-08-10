@@ -4,7 +4,7 @@ import org.springframework.data.domain.Page;
 import ru.geekbrains.auth.payload.request.ProfileGetAllDtoRequest;
 import ru.geekbrains.auth.payload.response.ProfileDto;
 import ru.geekbrains.auth.payload.response.ProfileGetAllDtoResponse;
-import web.entity.UserStatus;
+import ru.geekbrains.commons.entity.UserStatus;
 
 
 public interface ProfileService {
