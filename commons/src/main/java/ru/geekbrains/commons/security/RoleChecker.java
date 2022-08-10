@@ -13,12 +13,12 @@ public class RoleChecker {
 //    ToDo: 1. Убрать статику; 2. Добавить метод проверки на админство; 3. Сделать бином (сделано)
 
     /*Передаем все роли из заголовка и роль которая должна содержаться*/
-    public static void roleCheck(Set<ERole> haveRoles, Set<ERole> neededRole){
+    public void adminRoleCheck(Set<ERole> haveRoles){
         if (haveRoles==null){
             throw new ForbiddenException("Access denied");
         }
         /*Если хотя бы одна из ролей присутствует то все ок*/
-       if (Collections.disjoint(haveRoles,neededRole)){
+       if (!haveRoles.contains(ERole.ROLE_ADMIN)){
            throw new ForbiddenException("Access denied");
        }
     }

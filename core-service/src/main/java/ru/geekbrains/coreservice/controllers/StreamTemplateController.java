@@ -46,7 +46,7 @@ public class StreamTemplateController {
     }
 
     @Operation(
-            summary = "Запрос на обновление шаблона потока",
+            summary = "Запрос на обновление курсов в шаблоне потока",
             responses = {
                     @ApiResponse(
                             description = "Шаблон потока обновлен", responseCode = "200"

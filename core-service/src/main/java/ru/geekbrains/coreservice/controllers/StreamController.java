@@ -3,6 +3,7 @@ package ru.geekbrains.coreservice.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import ru.geekbrains.coreservice.dto.response.StreamCreateResponseDto;
 import ru.geekbrains.coreservice.dto.response.StreamResponseDto;
 import ru.geekbrains.coreservice.dto.request.AHZ.AddStudentToStreamDto;
 import ru.geekbrains.coreservice.dto.request.StreamCreateRequestDto;
@@ -28,8 +29,8 @@ public class StreamController {
         }
 )
     @PostMapping
-    public Long createStream(@RequestBody StreamCreateRequestDto dto){
-        return streamService.createStream(dto);
+    public StreamCreateResponseDto createStream(@RequestBody StreamCreateRequestDto dto){
+        return new StreamCreateResponseDto(streamService.createStream(dto));
     }
 
     @Operation(
