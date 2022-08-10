@@ -37,10 +37,11 @@ public class CourseService {
     }
 
     public void setTeacher(Long idCourse, Long idTeacher) {
+//      ToDo: Замечания на 1:57:15 (урок 8). Не доставать объект из базы, достать id учителя и курса и добавить метод в репозиторий
         Person person = personService.getTeacherById(idTeacher);
         int i = repository.setTeacher(person, idCourse);
         if (i == 0) {
-            throw new CoreException("Не удалось припязать учителя с id: " + idTeacher);
+            throw new CoreException("Не удалось привязать учителя с id: " + idTeacher);
         }
     }
     public void setStream(Course course, Stream stream){

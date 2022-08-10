@@ -1,5 +1,8 @@
 package ru.geekbrains.coreservice.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import ru.geekbrains.coreservice.dto.request.FacultyCreateDto;
 import ru.geekbrains.coreservice.dto.response.FacultyFullResponseDto;
 import ru.geekbrains.coreservice.dto.response.FacultyResponseDto;
@@ -18,9 +21,18 @@ import java.util.Set;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/faculties")
+@Tag(name = "Сервис работы с созданными факультетами", description = "Методы работы с созданными факультетами")
 public class FacultyController {
     private final FacultyService facultyService;
 
+    @Operation(
+            summary = "Запрос на создание факультета",
+            responses = {
+                    @ApiResponse(
+                            description = "Факультет создан", responseCode = "200"
+                    )
+            }
+    )
     @PostMapping
     public void createFaculty(@RequestBody FacultyCreateDto facultyCreateDto, @RequestHeader("roles") Set<ERole> roles){
         //      ToDo: Заменить на вызов бина RoleChecker
@@ -30,7 +42,15 @@ public class FacultyController {
         facultyService.createFaculty(facultyCreateDto);
     }
 
-    @GetMapping("/get_all_faculty")
+    @Operation(
+            summary = "Запрос на получение всех факультетов",
+            responses = {
+                    @ApiResponse(
+                            description = "Факультеты получены", responseCode = "200"
+                    )
+            }
+    )
+    @GetMapping
     public List<FacultyResponseDto> getAllFacultyStreamAndTemplate(@RequestHeader("roles") Set<ERole> roles){
         //      ToDo: Заменить на вызов бина RoleChecker
         HashSet<ERole> neededRole = new HashSet<>();
@@ -38,7 +58,16 @@ public class FacultyController {
         RoleChecker.roleCheck(roles,neededRole);
         return facultyService.getAll();
     }
-    @GetMapping("/get_faculty/{id}")
+
+    @Operation(
+            summary = "Запрос на получение факультета по ID",
+            responses = {
+                    @ApiResponse(
+                            description = "Факультет получен", responseCode = "200"
+                    )
+            }
+    )
+    @GetMapping("/{id}")
     public FacultyFullResponseDto getFacultyById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
         //      ToDo: Заменить на вызов бина RoleChecker
         HashSet<ERole> neededRole = new HashSet<>();

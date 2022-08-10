@@ -35,6 +35,7 @@ public class FacultyService {
 
     }
 
+    //ToDO: заменить на работу с оригинальной сущностью, а конвертацию на уровне контроллера
     public FacultyFullResponseDto getById(Long id) {
         return new FacultyFullResponseDto(repository.findById(id).orElseThrow(
                 ()->new ResourceNotFoundException("Не найден факультет с id: "+id)));

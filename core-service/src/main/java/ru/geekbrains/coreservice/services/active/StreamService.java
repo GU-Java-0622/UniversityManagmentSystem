@@ -58,7 +58,7 @@ public class StreamService {
 
     public StreamResponseDto getById(Long id) {
         Stream streamEntity = repository.findById(id).orElseThrow(()->new ResourceNotFoundException("Не найден поток с id: " +id));
-        System.out.println(streamEntity.getCourse().toString());
+//      ToDo: вынести код в конвертер и перенести преобразование на уровень контроллера
         StreamResponseDto dto = new StreamResponseDto(streamEntity);
         List<Long> teachersId =new ArrayList<>();
         streamEntity.getCourse().forEach(course->{
@@ -75,7 +75,6 @@ public class StreamService {
         if(!studentsId.isEmpty()){
             dto.setStudents(authServiceIntegration.getUserListById(studentsId).getUsers());
         }
-        System.out.println(dto);
         return dto;
     }
 }

@@ -3,6 +3,13 @@ server:
   servlet:
     context-path: /web-core
 
+springdoc:
+  swagger-ui:
+    path: /swagger/swagger-ui.html
+  api-docs:
+    path: /api/v1/api-docs
+
+
 spring:
   datasource:
     driver-class-name: org.h2.Driver
@@ -23,6 +30,7 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
     enabled: true
+
 
 integrations:
   auth-service:

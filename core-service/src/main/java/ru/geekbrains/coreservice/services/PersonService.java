@@ -24,6 +24,7 @@ public class PersonService {
         return repository.getReferenceById(id);
     }
 
+//    ToDo: Замечания на видео с 1 час : 53 минуты (урок 8). 3 метода соединить в один
     public Person getStudentById(Long id){
         Person person = new Person();
         ProfileDto profileDto = authServiceIntegration.getProfileById(id);

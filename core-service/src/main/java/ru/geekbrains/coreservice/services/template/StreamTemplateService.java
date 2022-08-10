@@ -47,6 +47,7 @@ public class StreamTemplateService {
                 .orElseThrow(()-> new ResourceNotFoundException("Не найден шаблон для потока с id:"+dto.getStreamTemplateId()));
         template.setCourseTemplates(courseTemplateService.getCourseTemplateIn(dto.getCoursesTemplateIds()));
         repository.save(template);
+        //      ToDo: вынести код в конвертер и перенести преобразование на уровень контроллера
         StreamTemplateResponseDto templateResponseDto = new StreamTemplateResponseDto(template);
         templateResponseDto.setCourseNotInTemplate(courseTemplateService.getCourseNotInStreamTemplate(templateResponseDto.getCourseTemplate()
                         .stream().map(StreamTemplateResponseDto.CourseTemplateDto::getId)
