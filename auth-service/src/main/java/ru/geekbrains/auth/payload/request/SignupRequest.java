@@ -1,6 +1,6 @@
 package ru.geekbrains.auth.payload.request;
 
-import web.entity.UserStatus;
+import ru.geekbrains.commons.entity.UserStatus;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

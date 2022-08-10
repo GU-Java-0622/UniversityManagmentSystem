@@ -109,7 +109,7 @@ databaseChangeLog:
                   value: "Admin"
               - column:
                   name: surname
-                  value: "Adminov"
+                  value: "Админов"
               - column:
                   name: middlename
                   value: "Adminovich"
@@ -134,7 +134,7 @@ databaseChangeLog:
                   value: "Student"
               - column:
                   name: surname
-                  value: "Studentov"
+                  value: "Иванов"
               - column:
                   name: middlename
                   value: "Studentovich"
@@ -159,7 +159,7 @@ databaseChangeLog:
                   value: "Teacher"
               - column:
                   name: surname
-                  value: "Teacherov"
+                  value: "Петров"
               - column:
                   name: middlename
                   value: "Teacherovich"
@@ -183,7 +183,7 @@ databaseChangeLog:
                   value: "Teacher2"
               - column:
                   name: surname
-                  value: "Teacherov2"
+                  value: "Сидоров"
               - column:
                   name: middlename
                   value: "Teacherovich2"
@@ -207,7 +207,7 @@ databaseChangeLog:
                   value: "Student_1"
               - column:
                   name: surname
-                  value: "Studentov_1"
+                  value: "Маслянников"
               - column:
                   name: middlename
                   value: "Studentovich_1"
@@ -231,7 +231,7 @@ databaseChangeLog:
                   value: "Student_2"
               - column:
                   name: surname
-                  value: "Studentov_2"
+                  value: "Мелков"
               - column:
                   name: middlename
                   value: "Studentovich_2"
@@ -255,7 +255,7 @@ databaseChangeLog:
                   value: "Student_3"
               - column:
                   name: surname
-                  value: "Studentov_3"
+                  value: "Карапузов"
               - column:
                   name: middlename
                   value: "Studentovich_3"
@@ -279,7 +279,7 @@ databaseChangeLog:
                   value: "Student_4"
               - column:
                   name: surname
-                  value: "Studentov_4"
+                  value: "Пасечный"
               - column:
                   name: middlename
                   value: "Studentovich_4"
@@ -303,7 +303,7 @@ databaseChangeLog:
                   value: "Student_5"
               - column:
                   name: surname
-                  value: "Studentov_5"
+                  value: "Вилков"
               - column:
                   name: middlename
                   value: "Studentovich_5"
@@ -327,7 +327,7 @@ databaseChangeLog:
                   value: "Student_6"
               - column:
                   name: surname
-                  value: "Studentov_6"
+                  value: "Жданов"
               - column:
                   name: middlename
                   value: "Studentovich_6"
@@ -351,7 +351,7 @@ databaseChangeLog:
                   value: "Student_7"
               - column:
                   name: surname
-                  value: "Studentov_7"
+                  value: "Монеткин"
               - column:
                   name: middlename
                   value: "Studentovich_7"
@@ -375,7 +375,7 @@ databaseChangeLog:
                   value: "Student_8"
               - column:
                   name: surname
-                  value: "Studentov_8"
+                  value: "Кружкин"
               - column:
                   name: middlename
                   value: "Studentovich_8"
@@ -399,7 +399,7 @@ databaseChangeLog:
                   value: "Student_9"
               - column:
                   name: surname
-                  value: "Studentov_9"
+                  value: "Ясный"
               - column:
                   name: middlename
                   value: "Studentovich_9"
@@ -423,7 +423,7 @@ databaseChangeLog:
                   value: "Student_10"
               - column:
                   name: surname
-                  value: "Studentov_10"
+                  value: "Желатинов"
               - column:
                   name: middlename
                   value: "Studentovich_10"
@@ -447,7 +447,7 @@ databaseChangeLog:
                   value: "Student_11"
               - column:
                   name: surname
-                  value: "Studentov_11"
+                  value: "Бобров"
               - column:
                   name: middlename
                   value: "Studentovich_11"
@@ -471,7 +471,7 @@ databaseChangeLog:
                   value: "Student_12"
               - column:
                   name: surname
-                  value: "Studentov_12"
+                  value: "Кузьмин"
               - column:
                   name: middlename
                   value: "Studentovich_12"
@@ -495,7 +495,7 @@ databaseChangeLog:
                   value: "Student_13"
               - column:
                   name: surname
-                  value: "Studentov_13"
+                  value: "Жуков"
               - column:
                   name: middlename
                   value: "Studentovich_13"
@@ -519,7 +519,7 @@ databaseChangeLog:
                   value: "Student_14"
               - column:
                   name: surname
-                  value: "Studentov_14"
+                  value: "Рокоссовский"
               - column:
                   name: middlename
                   value: "Studentovich_14"
@@ -543,7 +543,7 @@ databaseChangeLog:
                   value: "Student_15"
               - column:
                   name: surname
-                  value: "Studentov_15"
+                  value: "Склифасовский"
               - column:
                   name: middlename
                   value: "Studentovich_15"

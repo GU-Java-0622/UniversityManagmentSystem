@@ -11,10 +11,10 @@ export class ApiService {
   private API_ROOT = "http://localhost:5555/"
   private _loginApi = 'auth/api/v1/auth/login';/*+*/
   private _register = 'auth/api/v1/auth/signup';/*+*/
-  private _getAllUser = 'auth/api/v1/profile/get_all';/*+*/
-  private _getProfileById = 'auth/api/v1/profile/profile/';/*+*/
+  private _getAllUser = 'auth/api/v1/profile/find';/*+*/
+  private _getProfileById = 'auth/api/v1/profile/current/';/*+*/
   private _updateOrSave = 'auth/api/v1/users/update'
-  private _GetUserInfo = 'auth/api/v1/users/get_user/'
+  private _GetUserInfo = 'auth/api/v1/users/'
   private _FacultyGetAll = 'core/api/v1/faculties/get_all_faculty'
   private _FacultyCreate = 'core/api/v1/faculties'
   private _FacultyById = 'core/api/v1/faculties/get_faculty/'
@@ -27,7 +27,7 @@ export class ApiService {
   private _CreateLessonTemplate = 'core/api/v1/templates/lessons/create'
   private _CreateStream = 'core/api/v1/streams/'
   private _GetStreamById =  'core/api/v1/streams/get_stream/'
-  private _GetTeachers = 'auth/api/v1/users/get_teachers'
+  private _GetTeachers = 'auth/api/v1/users/teachers'
   private _GetStartedStreamById =  'core/api/v1/streams/started/'
 
 

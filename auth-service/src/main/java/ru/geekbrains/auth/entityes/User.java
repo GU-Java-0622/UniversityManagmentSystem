@@ -1,6 +1,6 @@
 package ru.geekbrains.auth.entityes;
 
-import web.entity.UserStatus;
+import ru.geekbrains.commons.entity.UserStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

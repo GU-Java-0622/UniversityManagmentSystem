@@ -11,8 +11,8 @@ import ru.geekbrains.auth.payload.response.ProfileDto;
 import ru.geekbrains.auth.payload.response.ProfileGetAllDtoResponse;
 import ru.geekbrains.auth.repositories.UserRepository;
 import ru.geekbrains.auth.repositories.specification.ProfileSpecification;
-import web.entity.UserStatus;
-import web.validators.FieldNameChecker;
+import ru.geekbrains.commons.entity.UserStatus;
+import ru.geekbrains.commons.validators.FieldNameChecker;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;

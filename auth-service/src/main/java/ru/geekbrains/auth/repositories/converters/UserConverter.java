@@ -1,7 +1,7 @@
 package ru.geekbrains.auth.repositories.converters;
 
 import org.springframework.stereotype.Component;
-import web.entity.UserDto;
+import ru.geekbrains.commons.entity.UserDto;
 import ru.geekbrains.auth.entityes.User;
 
 @Component
@@ -16,9 +16,5 @@ public class UserConverter {
         out.setEmail(user.getEmail());
         return out;
     }
-
-    public UserConverter() {
-    }
-
 
 }
