@@ -27,7 +27,7 @@ export class ApiService {
   private _CreateLessonTemplate = 'core/api/v1/templates/lessons/create'
   private _CreateStream = 'core/api/v1/streams/'
   private _GetStreamById =  'core/api/v1/streams/get_stream/'
-  private _GetTeachers = 'auth/api/v1/users/teachers'
+  private _GetTeachers = 'auth/api/v1/users/teachers/'
   private _GetStartedStreamById =  'core/api/v1/streams/started/'
 
 
