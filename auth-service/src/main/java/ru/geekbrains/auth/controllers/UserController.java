@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.auth.repositories.converters.UserConverter;
+import ru.geekbrains.commons.entity.ListOfUsersDto;
 import ru.geekbrains.commons.entity.UserDto;
 import ru.geekbrains.auth.service.UserService;
 import ru.geekbrains.commons.entity.UserDtoList;
@@ -45,8 +46,8 @@ public class UserController {
             }
     )
     @GetMapping ("/all")
-    public List<UserDto> getCurrentUsers(@RequestBody List<Long> id) {
-        return userService.findUsersById(id).stream().map(userConverter::entityToDto).collect(Collectors.toList());
+    public List<UserDto> getCurrentUsers(@RequestBody ListOfUsersDto userDtoList) {
+        return userService.findUsersById(userDtoList).stream().map(userConverter::entityToDto).collect(Collectors.toList());
     }
 
     @Operation(

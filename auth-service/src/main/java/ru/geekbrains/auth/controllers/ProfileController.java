@@ -48,6 +48,8 @@ public class ProfileController {
     )
     @GetMapping("/{id}")
     public ProfileDto getProfileById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
+
+//      ToDo: Заменить на вызов бина RoleChecker
         Set<ERole> neededRole = new HashSet<>();
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
@@ -64,6 +66,7 @@ public class ProfileController {
     )
     @PostMapping("/find")
     public Page<ProfileGetAllDtoResponse> getAllUsersWithFilters(@RequestBody ProfileGetAllDtoRequest param, @RequestHeader("roles") Set<ERole> roles) {
+//      ToDo: Заменить на вызов бина RoleChecker
         Set<ERole> neededRole = new HashSet<>();
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
@@ -80,6 +83,7 @@ public class ProfileController {
     )
     @DeleteMapping("/{id}")
     public void deleteProfile(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles ) {
+//      ToDo: Заменить на вызов бина RoleChecker
         Set<ERole> neededRole = new HashSet<>();
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
@@ -97,6 +101,7 @@ public class ProfileController {
 
     @PatchMapping("/{id}/ban")
     public void bannedProfile(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles) {
+        //      ToDo: Заменить на вызов бина RoleChecker
         Set<ERole> neededRole = new HashSet<>();
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
@@ -113,6 +118,7 @@ public class ProfileController {
     )
     @PatchMapping("/{id}/active")
     public void activeProfile(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles) {
+        //      ToDo: Заменить на вызов бина RoleChecker
         HashSet<ERole> neededRole = new HashSet<>();
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);

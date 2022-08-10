@@ -1,30 +1,25 @@
 package ru.geekbrains.auth.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.auth.entityes.Role;
-import ru.geekbrains.auth.repositories.RoleRepository;
-import ru.geekbrains.commons.entity.ERole;
-import ru.geekbrains.commons.entity.UserDto;
 import ru.geekbrains.auth.entityes.User;
+import ru.geekbrains.auth.repositories.RoleRepository;
 import ru.geekbrains.auth.repositories.UserRepository;
-import ru.geekbrains.auth.repositories.converters.UserConverter;
-import ru.geekbrains.commons.entity.UserDtoList;
+import ru.geekbrains.commons.entity.ERole;
+import ru.geekbrains.commons.entity.ListOfUsersDto;
+import ru.geekbrains.commons.entity.UserDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserConverter userConverter;
     private final RoleRepository roleRepository;
 
-    public UserService(UserRepository userRepository, UserConverter userConverter, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.userConverter = userConverter;
-        this.roleRepository = roleRepository;
-    }
 
     public UserDto findUserById(Long id) {
         User user = userRepository.findUserById(id);
@@ -37,8 +32,10 @@ public class UserService {
                 user.getEmail());
     }
 
-    public List<User> findUsersById(List<Long> id) {
-        return userRepository.findAllUsersById(id);
+    public List<User> findUsersById(ListOfUsersDto userDtoList) {
+
+        List<User> userList = userDtoList.getList().stream().map(userRepository::findUserById).collect(Collectors.toList());
+        return userList;
     }
 
 

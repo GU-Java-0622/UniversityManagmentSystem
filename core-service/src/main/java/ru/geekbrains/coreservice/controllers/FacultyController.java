@@ -23,6 +23,7 @@ public class FacultyController {
 
     @PostMapping
     public void createFaculty(@RequestBody FacultyCreateDto facultyCreateDto, @RequestHeader("roles") Set<ERole> roles){
+        //      ToDo: Заменить на вызов бина RoleChecker
         HashSet<ERole> neededRole = new HashSet<>();
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
@@ -31,6 +32,7 @@ public class FacultyController {
 
     @GetMapping("/get_all_faculty")
     public List<FacultyResponseDto> getAllFacultyStreamAndTemplate(@RequestHeader("roles") Set<ERole> roles){
+        //      ToDo: Заменить на вызов бина RoleChecker
         HashSet<ERole> neededRole = new HashSet<>();
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
@@ -38,6 +40,7 @@ public class FacultyController {
     }
     @GetMapping("/get_faculty/{id}")
     public FacultyFullResponseDto getFacultyById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
+        //      ToDo: Заменить на вызов бина RoleChecker
         HashSet<ERole> neededRole = new HashSet<>();
         neededRole.add(ERole.ROLE_ADMIN);
         RoleChecker.roleCheck(roles,neededRole);
