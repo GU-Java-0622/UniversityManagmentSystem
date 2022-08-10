@@ -1,0 +1,61 @@
+.hidden_table_head{
+  height: 5px;
+  visibility: hidden;
+}
+.td_zero{
+  width: 1000px;
+}
+details summary::-webkit-details-marker {
+  display: none
+}
+details{
+  max-width: 500px;
+}
+details > summary {
+  width: 7rem;
+  list-style: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  background: bisque !important;
+  padding: 0.5rem 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+details>summary:hover{
+  opacity: 70%;
+}
+
+details[open].table-scroll-body{
+  height: 54vh !important;
+}
+
+form{
+  background: #f7f7f7;
+  border: 1px solid darkgray;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.group_in_form{
+  display: flex;
+  justify-content: space-between;
+}
+
+.left_side{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form_item{
+  margin-left: 5px;
+}
+.new_lesson{
+  margin-top: 10px;
+}
+button{
+  max-height: 2rem !important;
+}

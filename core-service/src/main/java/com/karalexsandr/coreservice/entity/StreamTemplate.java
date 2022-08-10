@@ -1,6 +1,5 @@
 package com.karalexsandr.coreservice.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,12 +30,10 @@ public class StreamTemplate {
     @JoinTable(name = "programme_template_faculties",
             joinColumns = @JoinColumn(name = "programme_template_id"),
             inverseJoinColumns = @JoinColumn(name = "faculty_id") )
-    @JsonBackReference
     private List<CourseTemplate> courseTemplates;
 
     @ManyToOne
     @JoinColumn(name="facultity_id")
-    @JsonBackReference
     private Faculty faculties;
 
     @CreationTimestamp

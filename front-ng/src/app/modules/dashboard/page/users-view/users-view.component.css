@@ -86,10 +86,10 @@ form em{
   border-right: 1px solid #87CEFA;
 }
 
-#header_table{
+.header_table{
   border-spacing: 0;
 }
-#header_table th{
+.header_table th{
   height: 2.5rem;
 }
 .table-scroll-body{

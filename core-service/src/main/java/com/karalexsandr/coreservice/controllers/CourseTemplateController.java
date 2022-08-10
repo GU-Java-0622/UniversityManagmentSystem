@@ -1,25 +1,23 @@
 package com.karalexsandr.coreservice.controllers;
 
-import com.karalexsandr.coreservice.entity.CourseTemplate;
+import com.karalexsandr.coreservice.dto.request.CourseTemplateCreateDto;
+import com.karalexsandr.coreservice.dto.response.CourseTemplateResponseDto;
 import com.karalexsandr.coreservice.services.template.CourseTemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/template/courses")
+@RequestMapping("api/v1/templates/courses")
 public class CourseTemplateController {
     private final CourseTemplateService courseTemplateService;
 
     @PostMapping
-    public void createCourseTemplate(@RequestBody String title, @RequestBody Long streamId){
-        courseTemplateService.createCourseTemplate(title,streamId);
+    public void createCourseTemplate(@RequestBody CourseTemplateCreateDto dto){
+        courseTemplateService.createCourseTemplate(dto.getTitle());
     }
-
-    @GetMapping
-    public List<CourseTemplate> findAll(){
-        return courseTemplateService.findAll();
+    @GetMapping("/{id}")
+    public CourseTemplateResponseDto getCourseTemplateById(@PathVariable Long id){
+        return courseTemplateService.getCourseTemplateWithLessons(id);
     }
 }

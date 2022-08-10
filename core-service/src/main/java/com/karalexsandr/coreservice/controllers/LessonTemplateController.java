@@ -1,26 +1,23 @@
 package com.karalexsandr.coreservice.controllers;
 
-import com.karalexsandr.coreservice.dto.request.LessonTemplateCreateDto;
-import com.karalexsandr.coreservice.entity.LessonTemplate;
+import com.karalexsandr.coreservice.dto.request.LessonTemplateCreateRequestDto;
 import com.karalexsandr.coreservice.services.template.LessonTemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/template/lessons")
+@RequestMapping("api/v1/templates/lessons")
 public class LessonTemplateController {
     private final LessonTemplateService lessonTemplateService;
 
-    @PostMapping
-    public void createLessonTemplate(@RequestBody LessonTemplateCreateDto dto){
-        lessonTemplateService.createLessonTemplate(dto);
+    @GetMapping("/delete/{id}")
+    public void deleteLessonTemplate(@PathVariable Long id){
+        lessonTemplateService.deleteById(id);
     }
 
-    @GetMapping
-    public List<LessonTemplate> findAll(){
-        return lessonTemplateService.findAll();
+    @PostMapping("/create")
+    public void createLessonTemplate(@RequestBody LessonTemplateCreateRequestDto dto){
+        lessonTemplateService.createLessonTemplate(dto);
     }
 }

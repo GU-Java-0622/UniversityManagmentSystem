@@ -1,15 +1,13 @@
 package com.karalexsandr.coreservice.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -29,13 +27,10 @@ public class CourseTemplate {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "courseTemplate",fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "courseTemplate")
     private List<LessonTemplate> lessonTemplates;
 
     @ManyToMany(mappedBy = "courseTemplates")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JsonManagedReference
     private List<StreamTemplate> streamTemplates;
 
     @CreationTimestamp

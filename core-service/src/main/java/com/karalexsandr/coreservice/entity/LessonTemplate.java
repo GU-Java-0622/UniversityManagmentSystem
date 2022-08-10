@@ -1,7 +1,6 @@
 package com.karalexsandr.coreservice.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,7 +38,6 @@ public class LessonTemplate {
 
     @ManyToOne
     @JoinColumn(name = "course_template_id")
-    @JsonBackReference
     private CourseTemplate courseTemplate;
 
     @CreationTimestamp
@@ -48,4 +46,5 @@ public class LessonTemplate {
 
     @UpdateTimestamp
     @Column(name = "update_at")
-    private LocalDateTime updatedAt;}
+    private LocalDateTime updatedAt;
+}

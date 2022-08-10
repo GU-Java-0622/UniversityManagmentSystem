@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ApiService} from "./api.service";
 import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
+import {UserAppService} from "./user-app.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 export class UserDataService {
 
 
-  constructor(private http: HttpClient, private api: ApiService) { }
+  constructor(private http: HttpClient, private api: ApiService,private userApp:UserAppService) { }
 
   public getAllUsersPaging(page:number|null,size:number,sort_field:string|null,directSort:boolean,
                            search_field:string|null,search_value:string|null, status:Set<string>):Observable<any> {
@@ -46,5 +47,7 @@ export class UserDataService {
     console.log(userDetails)
     return this.http.post<any>(this.api.updateOrSave,userDetails);
   }
-
+  public getUserInfo():Observable<any>{
+    return this.http.get(this.api.GetUserInfo+this.userApp.id);
+  }
 }

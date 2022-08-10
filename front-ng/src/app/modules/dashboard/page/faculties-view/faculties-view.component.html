@@ -1,8 +1,43 @@
 <div class="faculty-container">
   <div class="faculty-header">
-    Факультеты и потоки
+    Факультеты
   </div>
-  <div class="faculty-item" *ngFor="let item of faculty">
+  <div class="table-scroll">
+    <table class="header_table">
+      <thead>
+      <tr>
+        <th class="td_id">ID</th>
+        <th class="td_field">Наименование</th>
+        <th class="td_field">Дата создания</th>
+        <th class="td_field">Дата обновления</th>
+      </tr>
+      </thead>
+    </table>
+    <div class="table-scroll-body">
+      <table class="body-table">
+        <tbody>
+        <tr *ngFor="let item of faculty" (click)="getFacultyById(item.id)">
+          <td class="td_id">{{item.id}}</td>
+          <td class="td_field">{{item.title}}</td>
+          <td class="td_field">{{item.createdAt}}</td>
+          <td class="td_field">{{item.updatedAt}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+  <form id="create_form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-body">
+      <button mat-raised-button class="button_form" type="submit">Создать новый факультет</button>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Новый факультет</mat-label>
+        <input
+          matInput placeholder="Введите наименование"
+          [(ngModel)]="titleNewFaculty" formControlName="titleControl">
+      </mat-form-field>
+    </p>
+</div>
+  </form>
 
-  </div>
 </div>
