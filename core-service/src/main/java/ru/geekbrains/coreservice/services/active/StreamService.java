@@ -3,6 +3,7 @@ package ru.geekbrains.coreservice.services.active;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.geekbrains.commons.entity.ERole;
 import ru.geekbrains.commons.exception.ResourceNotFoundException;
 import ru.geekbrains.coreservice.dto.request.AHZ.AddStudentToStreamDto;
 import ru.geekbrains.coreservice.dto.request.StreamCreateRequestDto;
@@ -37,7 +38,7 @@ public class StreamService {
 
     public void addStudent(AddStudentToStreamDto dto) {
         Stream stream = repository.findById(dto.getStreamId()).orElseThrow(() -> new ResourceNotFoundException("Не найден поток с id: " + dto.getStreamId()));
-        stream.getStudents().add(personService.getStudentById(dto.getStudentId()));
+        stream.getStudents().add(personService.getStudentById(dto.getStudentId(), ERole.ROLE_STUDENT));
         repository.save(stream);
     }
 

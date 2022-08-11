@@ -13,7 +13,7 @@ import ru.geekbrains.commons.entity.ERole;
 import ru.geekbrains.commons.security.RoleChecker;
 import java.util.List;
 import java.util.Set;
-
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -49,7 +49,7 @@ public class FacultyController {
     @GetMapping
     public List<FacultyResponseDto> getAllFacultyStreamAndTemplate(@RequestHeader("roles") Set<ERole> roles){
         roleChecker.adminRoleCheck(roles);
-        return facultyService.getAll();
+        return facultyService.getAll().stream().map(FacultyResponseDto::new).collect(Collectors.toList());
     }
 
     @Operation(
@@ -63,7 +63,7 @@ public class FacultyController {
     @GetMapping("/{id}")
     public FacultyFullResponseDto getFacultyById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
         roleChecker.adminRoleCheck(roles);
-        return facultyService.getById(id);
+        return new FacultyFullResponseDto(facultyService.getById(id));
     }
 }
 
