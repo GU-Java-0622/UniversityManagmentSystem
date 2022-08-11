@@ -7,9 +7,12 @@ import ru.geekbrains.coreservice.dto.response.StreamCreateResponseDto;
 import ru.geekbrains.coreservice.dto.response.StreamResponseDto;
 import ru.geekbrains.coreservice.dto.request.AHZ.AddStudentToStreamDto;
 import ru.geekbrains.coreservice.dto.request.StreamCreateRequestDto;
+import ru.geekbrains.coreservice.repository.converters.StreamConverter;
 import ru.geekbrains.coreservice.services.active.StreamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Сервис работы с созданными потоками", description = "Методы работы с созданными потоками")
 public class StreamController {
     private final StreamService streamService;
+    private final StreamConverter streamConverter;
 
 @Operation(
         summary = "Запрос на создание потока",
@@ -68,6 +72,6 @@ public class StreamController {
     )
     @GetMapping("/{id}")
     public StreamResponseDto getStream(@PathVariable Long id){
-       return streamService.getById(id);
+        return streamConverter.entityToDto(streamService.getById(id));
     }
 }

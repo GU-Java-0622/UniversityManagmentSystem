@@ -4,12 +4,13 @@ package ru.geekbrains.coreservice.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.coreservice.dto.request.StreamTemplateCreateDto;
 import ru.geekbrains.coreservice.dto.request.StreamTemplateUpdateCoursesDto;
 import ru.geekbrains.coreservice.dto.response.StreamTemplateResponseDto;
+import ru.geekbrains.coreservice.repository.converters.StreamTemplateConverter;
 import ru.geekbrains.coreservice.services.template.StreamTemplateService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Сервис работы с шаблонами потоков", description = "Методы работы с шаблонами потоков")
 public class StreamTemplateController {
     private final StreamTemplateService streamTemplateService;
+    private final StreamTemplateConverter streamTemplateConverter;
 
     @Operation(
             summary = "Запрос на создание шаблона потока",
@@ -28,7 +30,7 @@ public class StreamTemplateController {
             }
     )
     @PostMapping
-    public void createStreamTemplate(@RequestBody StreamTemplateCreateDto streamTemplateCreateDto){
+    public void createStreamTemplate(@RequestBody StreamTemplateCreateDto streamTemplateCreateDto) {
         streamTemplateService.createStreamTemplate(streamTemplateCreateDto);
     }
 
@@ -41,8 +43,8 @@ public class StreamTemplateController {
             }
     )
     @GetMapping("/{id}")
-    public StreamTemplateResponseDto getTemplateById(@PathVariable Long id){
-       return streamTemplateService.findById(id);
+    public StreamTemplateResponseDto getTemplateById(@PathVariable Long id) {
+        return streamTemplateConverter.entityToDto(streamTemplateService.findById(id));
     }
 
     @Operation(
@@ -54,8 +56,8 @@ public class StreamTemplateController {
             }
     )
     @PutMapping
-    public StreamTemplateResponseDto updateCoursesInStreamTemplate(@RequestBody StreamTemplateUpdateCoursesDto dto){
-        return streamTemplateService.updateCourses(dto);
+    public StreamTemplateResponseDto updateCoursesInStreamTemplate(@RequestBody StreamTemplateUpdateCoursesDto dto) {
+        return streamTemplateConverter.entityToDto(streamTemplateService.updateCourses(dto));
     }
 
 }
