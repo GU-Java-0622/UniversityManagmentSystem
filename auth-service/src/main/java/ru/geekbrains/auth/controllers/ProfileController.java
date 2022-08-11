@@ -49,7 +49,6 @@ public class ProfileController {
     )
     @GetMapping("/{id}")
     public ProfileDto getProfileById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
-//      ToDo: Заменить на вызов бина RoleChecker
         roleChecker.adminRoleCheck(roles);
         return profileService.getProfileById(id);
     }
@@ -64,7 +63,6 @@ public class ProfileController {
     )
     @PostMapping("/find")
     public Page<ProfileGetAllDtoResponse> getAllUsersWithFilters(@RequestBody ProfileGetAllDtoRequest param, @RequestHeader("roles") Set<ERole> roles) {
-//      ToDo: Заменить на вызов бина RoleChecker
         roleChecker.adminRoleCheck(roles);
         return profileService.getAllUsers(param);
     }
@@ -79,7 +77,6 @@ public class ProfileController {
     )
     @DeleteMapping("/{id}")
     public void deleteProfile(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles ) {
-//      ToDo: Заменить на вызов бина RoleChecker
         roleChecker.adminRoleCheck(roles);
         profileService.changeStatus(id, UserStatus.DELETED);
     }
@@ -95,7 +92,6 @@ public class ProfileController {
 
     @PatchMapping("/{id}/ban")
     public void bannedProfile(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles) {
-        //      ToDo: Заменить на вызов бина RoleChecker
         roleChecker.adminRoleCheck(roles);
         profileService.changeStatus(id, UserStatus.BANNED);
     }
@@ -110,11 +106,9 @@ public class ProfileController {
     )
     @PatchMapping("/{id}/active")
     public void activeProfile(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles) {
-        //      ToDo: Заменить на вызов бина RoleChecker
         roleChecker.adminRoleCheck(roles);
         profileService.changeStatus(id, UserStatus.ACTIVE);
     }
 
-//    ToDo: Сделать adminRoleCheck и упростить код контроллера убрав повторяющийся код
 
 }

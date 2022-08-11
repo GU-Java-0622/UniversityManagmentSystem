@@ -10,7 +10,6 @@ import java.util.Set;
 @Component
 public class RoleChecker {
 
-//    ToDo: 1. Убрать статику; 2. Добавить метод проверки на админство; 3. Сделать бином (сделано)
 
     /*Передаем все роли из заголовка и роль которая должна содержаться*/
     public void adminRoleCheck(Set<ERole> haveRoles){

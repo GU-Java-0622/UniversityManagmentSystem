@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 public class StreamController {
     private final StreamService streamService;
 
-//ToDo: Заменить Long на DTO
 @Operation(
         summary = "Запрос на создание потока",
         responses = {

@@ -34,7 +34,6 @@ public class FacultyController {
     )
     @PostMapping
     public void createFaculty(@RequestBody FacultyCreateDto facultyCreateDto, @RequestHeader("roles") Set<ERole> roles){
-        //      ToDo: Заменить на вызов бина RoleChecker
         roleChecker.adminRoleCheck(roles);
         facultyService.createFaculty(facultyCreateDto);
     }
@@ -49,7 +48,6 @@ public class FacultyController {
     )
     @GetMapping
     public List<FacultyResponseDto> getAllFacultyStreamAndTemplate(@RequestHeader("roles") Set<ERole> roles){
-        //      ToDo: Заменить на вызов бина RoleChecker
         roleChecker.adminRoleCheck(roles);
         return facultyService.getAll();
     }
@@ -64,7 +62,6 @@ public class FacultyController {
     )
     @GetMapping("/{id}")
     public FacultyFullResponseDto getFacultyById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
-        //      ToDo: Заменить на вызов бина RoleChecker
         roleChecker.adminRoleCheck(roles);
         return facultyService.getById(id);
     }
