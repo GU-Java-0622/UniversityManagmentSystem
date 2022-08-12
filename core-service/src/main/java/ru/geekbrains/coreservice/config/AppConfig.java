@@ -1,5 +1,6 @@
 package ru.geekbrains.coreservice.config;
 
+import ru.geekbrains.commons.security.RoleChecker;
 import ru.geekbrains.coreservice.properties.AuthServiceIntegrationProperties;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
@@ -35,5 +36,9 @@ public class AppConfig {
                 .baseUrl(authServiceIntegrationProperties.getUrl())
                 .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
                 .build();
+    }
+    @Bean
+    public RoleChecker getRoleChecker(){
+        return new RoleChecker();
     }
 }

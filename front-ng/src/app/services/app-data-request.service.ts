@@ -41,7 +41,7 @@ export class AppDataRequestService {
       streamTemplateId:streamTemplateId,
       coursesTemplateIds:coursesTemplateIds
     }
-    return  this.http.post(this.api.StreamTemplateUpdateCourses,body);
+    return  this.http.put(this.api.StreamTemplateUpdateCourses,body);
   }
 
   createCourseTemplate(title:string):Observable<any>{

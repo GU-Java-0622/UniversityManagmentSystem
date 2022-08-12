@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AppDataRequestService} from "../../../../services/app-data-request.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
+import {SelectTeacherDialogComponent} from "./select-teacher-dialog/select-teacher-dialog.component";
 
 @Component({
   selector: 'app-started-stream',
@@ -15,7 +16,7 @@ export class StartedStreamComponent implements OnInit {
   teachers: Set<any> = new Set<any>();
   streamResponse:any;
 
-  constructor(private dataRequest: AppDataRequestService,private router:Router,private route: ActivatedRoute,private data:AppDataRequestService,private formBuilder: FormBuilder) {
+  constructor(public dialog: MatDialog,private dataRequest: AppDataRequestService,private router:Router,private route: ActivatedRoute) {
     this.id = parseInt(<string>this.route.snapshot.queryParamMap.get('id'));
     console.log(this.id)
     this.dataRequest.getStreamById(this.id).subscribe((res:any)=>{
@@ -26,7 +27,7 @@ export class StartedStreamComponent implements OnInit {
     this.dataRequest.getTeachers().subscribe((res:any)=>{
       console.log(res)
       this.teachers.clear();
-      res.users.forEach((value:any)=>{
+      res.forEach((value:any)=>{
         this.teachers.add(value);
       })
     })
@@ -63,4 +64,17 @@ export class StartedStreamComponent implements OnInit {
     }
 
   }
+
+  selectTeacher(course:any) {
+    const dialogRef = this.dialog.open(SelectTeacherDialogComponent, {
+      width: '850px',
+      data: {title: course.title, teachers: this.teachers},
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+
+    });
+  }
+
+
 }

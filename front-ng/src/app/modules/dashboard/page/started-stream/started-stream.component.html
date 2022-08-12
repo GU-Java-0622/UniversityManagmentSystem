@@ -1,5 +1,5 @@
 <div class="faculty-container">
-  <div class="faculty-header">
+  <div *ngIf="!(streamResponse.facultyTitle===undefined)" class="faculty-header">
     Поток факультета: {{streamResponse.facultyTitle}}
   </div>
   <div>
@@ -28,6 +28,7 @@
         <th class="td_field">Наименование</th>
         <th class="td_field">Кол-во уроков</th>
         <th class="td_field">Учитель</th>
+        <th class="td_field"></th>
       </tr>
       </thead>
     </table>
@@ -42,44 +43,15 @@
           <td class="td_field">{{item.title}}</td>
           <td class="td_field">{{item.countLesson}}</td>
           <td class="td_field">{{item.teacher}}</td>
+          <td class="td_field">
+            <button mat-raised-button color="primary" (click)="selectTeacher(item)" >...</button>
+          </td>
         </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="table-scroll">
-    <div class="header">
-      <h2>Учителя которых можно назначить</h2>
-    </div>
-    <table class="header_table">
-      <thead>
-      <tr>
-        <th class="td_id">ID</th>
-        <th class="td_field">Фамилия</th>
-        <th class="td_field">Имя</th>
-        <th class="td_field">Отчество</th>
-        <th class="td_field">Email</th>
-      </tr>
-      </thead>
-    </table>
-    <div class="table-scroll-body">
-      <table class="body-table">
-        <tbody>
-        <tr *ngIf="teachers.size===0">
-          <td class="td_field zero_array" colspan="5">Учителей нет</td>
-        </tr>
-        <tr *ngFor="let item of teachers">
-          <td class="td_id">{{item.id}}</td>
-          <td class="td_field">{{item.surname}}</td>
-          <td class="td_field">{{item.firstname}}</td>
-          <td class="td_field">{{item.middlename}}</td>
-          <td class="td_field">{{item.email}}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
 
-  </div>
   <div class="table-scroll">
     <div class="header">
       <h2>Студенты поступившие на поток</h2>

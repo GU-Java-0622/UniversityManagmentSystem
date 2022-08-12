@@ -12,7 +12,7 @@ import { UsersViewComponent } from './page/users-view/users-view.component';
 import { FacultiesViewComponent } from './page/faculties-view/faculties-view.component';
 import { ProfileViewComponent } from './page/profile-view/profile-view.component';
 import { NewsViewComponent } from './page/news-view/news-view.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
@@ -23,6 +23,8 @@ import { StreamByIdViewComponent } from './page/faculties-view/faculty-by-id/str
 import { CourseTemplateViewComponent } from './page/stream-template-view/course-template-view/course-template-view.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { StartedStreamComponent } from './page/started-stream/started-stream.component';
+import {MatRadioModule} from "@angular/material/radio";
+import { SelectTeacherDialogComponent } from './page/started-stream/select-teacher-dialog/select-teacher-dialog.component';
 
 
 
@@ -39,24 +41,27 @@ import { StartedStreamComponent } from './page/started-stream/started-stream.com
     StreamTemplateViewComponent,
     StreamByIdViewComponent,
     CourseTemplateViewComponent,
-    StartedStreamComponent
+    StartedStreamComponent,
+    SelectTeacherDialogComponent,
   ],
-    imports: [
-        CommonModule,
-        DashboardRouting,
-        MatSidenavModule,
-        MatIconModule,
-        MatDividerModule,
-        MatButtonModule,
-        MatToolbarModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatCheckboxModule,
-        MatInputModule,
-        MatPaginatorModule,
+  imports: [
+    CommonModule,
+    DashboardRouting,
+    MatSidenavModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatRadioModule,
+    FormsModule,
 
-    ],
+  ],
   bootstrap: [DashboardViewComponent]
 })
 export class DashboardModule { }

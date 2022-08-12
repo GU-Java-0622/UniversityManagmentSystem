@@ -24,42 +24,15 @@ public class PersonService {
         return repository.getReferenceById(id);
     }
 
-//    ToDo: Замечания на видео с 1 час : 53 минуты (урок 8). 3 метода соединить в один
-    public Person getStudentById(Long id){
+    public Person getStudentById(Long id, ERole role){
         Person person = new Person();
         ProfileDto profileDto = authServiceIntegration.getProfileById(id);
         if (profileDto!=null){
-            if (profileDto.getRoles().contains(ERole.ROLE_STUDENT)){
-                person = repository.findById(id).orElseThrow(()->new ResourceNotFoundException("Не найден студент с id: "+id));;
+            if (profileDto.getRoles().contains(role)){
+                person = repository.findById(id).orElseThrow(()->new ResourceNotFoundException("Не найден студент с id: "+id));
             }
             else {
                 throw new CoreException("Пользователь с ID: " + id + " не студент");
-            }
-        }
-        return person;
-    }
-    public Person getTeacherById(Long id){
-        Person person = new Person();
-        ProfileDto profileDto = authServiceIntegration.getProfileById(id);
-        if (profileDto!=null){
-            if (profileDto.getRoles().contains(ERole.ROLE_TEACHER)){
-                person = repository.getReferenceById(id);
-            }
-            else {
-                throw new CoreException("Пользователь с ID: " + id + " не учитель");
-            }
-        }
-        return person;
-    }
-    public Person getAdminById(Long id){
-        Person person = new Person();
-        ProfileDto profileDto = authServiceIntegration.getProfileById(id);
-        if (profileDto!=null){
-            if (profileDto.getRoles().contains(ERole.ROLE_ADMIN)){
-                person = repository.getReferenceById(id);
-            }
-            else {
-                throw new CoreException("Пользователь с ID: " + id + " не админ");
             }
         }
         return person;

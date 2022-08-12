@@ -30,14 +30,13 @@ public class FacultyService {
         return repository.getReferenceById(id);
     }
 
-    public List<FacultyResponseDto> getAll() {
-       return repository.findAll().stream().map(FacultyResponseDto::new).collect(Collectors.toList());
+    public List<Faculty> getAll() {
+       return repository.findAll();
 
     }
 
-    //ToDO: заменить на работу с оригинальной сущностью, а конвертацию на уровне контроллера
-    public FacultyFullResponseDto getById(Long id) {
-        return new FacultyFullResponseDto(repository.findById(id).orElseThrow(
-                ()->new ResourceNotFoundException("Не найден факультет с id: "+id)));
+    public Faculty getById(Long id) {
+        return repository.findById(id).orElseThrow(
+                ()->new ResourceNotFoundException("Не найден факультет с id: "+id));
     }
 }

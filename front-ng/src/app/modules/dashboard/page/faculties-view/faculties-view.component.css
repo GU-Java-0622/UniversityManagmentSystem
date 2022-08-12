@@ -31,6 +31,7 @@
   border-collapse: collapse;
   border-bottom: 1px solid grey;
   overflow-x: auto;
+  width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -76,6 +77,7 @@ td{
 }
 .td_field{
   max-width: 10rem;
+  min-width: 10rem;
   padding-left: 1vh;
   text-align: center;
 }

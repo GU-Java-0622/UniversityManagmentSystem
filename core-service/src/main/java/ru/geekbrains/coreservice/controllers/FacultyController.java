@@ -11,11 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.commons.entity.ERole;
 import ru.geekbrains.commons.security.RoleChecker;
-
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -24,6 +22,7 @@ import java.util.Set;
 @Tag(name = "Сервис работы с созданными факультетами", description = "Методы работы с созданными факультетами")
 public class FacultyController {
     private final FacultyService facultyService;
+    private final RoleChecker roleChecker;
 
     @Operation(
             summary = "Запрос на создание факультета",
@@ -35,10 +34,7 @@ public class FacultyController {
     )
     @PostMapping
     public void createFaculty(@RequestBody FacultyCreateDto facultyCreateDto, @RequestHeader("roles") Set<ERole> roles){
-        //      ToDo: Заменить на вызов бина RoleChecker
-        HashSet<ERole> neededRole = new HashSet<>();
-        neededRole.add(ERole.ROLE_ADMIN);
-        RoleChecker.roleCheck(roles,neededRole);
+        roleChecker.adminRoleCheck(roles);
         facultyService.createFaculty(facultyCreateDto);
     }
 
@@ -52,11 +48,8 @@ public class FacultyController {
     )
     @GetMapping
     public List<FacultyResponseDto> getAllFacultyStreamAndTemplate(@RequestHeader("roles") Set<ERole> roles){
-        //      ToDo: Заменить на вызов бина RoleChecker
-        HashSet<ERole> neededRole = new HashSet<>();
-        neededRole.add(ERole.ROLE_ADMIN);
-        RoleChecker.roleCheck(roles,neededRole);
-        return facultyService.getAll();
+        roleChecker.adminRoleCheck(roles);
+        return facultyService.getAll().stream().map(FacultyResponseDto::new).collect(Collectors.toList());
     }
 
     @Operation(
@@ -69,11 +62,8 @@ public class FacultyController {
     )
     @GetMapping("/{id}")
     public FacultyFullResponseDto getFacultyById(@PathVariable Long id, @RequestHeader("roles") Set<ERole> roles){
-        //      ToDo: Заменить на вызов бина RoleChecker
-        HashSet<ERole> neededRole = new HashSet<>();
-        neededRole.add(ERole.ROLE_ADMIN);
-        RoleChecker.roleCheck(roles,neededRole);
-        return facultyService.getById(id);
+        roleChecker.adminRoleCheck(roles);
+        return new FacultyFullResponseDto(facultyService.getById(id));
     }
 }
 
