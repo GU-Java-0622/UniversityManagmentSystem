@@ -1,6 +1,6 @@
 package ru.geekbrains.auth.entityes;
 
-import web.entity.ERole;
+import ru.geekbrains.commons.entity.ERole;
 
 import javax.persistence.*;
 

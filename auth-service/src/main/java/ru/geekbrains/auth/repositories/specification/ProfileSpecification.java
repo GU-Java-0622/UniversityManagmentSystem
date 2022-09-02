@@ -3,7 +3,7 @@ package ru.geekbrains.auth.repositories.specification;
 
 import org.springframework.data.jpa.domain.Specification;
 import ru.geekbrains.auth.entityes.User;
-import web.entity.UserStatus;
+import ru.geekbrains.commons.entity.UserStatus;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

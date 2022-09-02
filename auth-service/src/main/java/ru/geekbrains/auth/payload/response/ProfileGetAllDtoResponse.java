@@ -2,7 +2,7 @@ package ru.geekbrains.auth.payload.response;
 
 
 import ru.geekbrains.auth.entityes.User;
-import web.entity.UserStatus;
+import ru.geekbrains.commons.entity.UserStatus;
 
 
 public class ProfileGetAllDtoResponse {

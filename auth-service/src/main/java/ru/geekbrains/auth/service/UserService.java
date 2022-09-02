@@ -1,30 +1,25 @@
 package ru.geekbrains.auth.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.auth.entityes.Role;
-import ru.geekbrains.auth.repositories.RoleRepository;
-import web.entity.ERole;
-import web.entity.UserDto;
 import ru.geekbrains.auth.entityes.User;
+import ru.geekbrains.auth.repositories.RoleRepository;
 import ru.geekbrains.auth.repositories.UserRepository;
-import ru.geekbrains.auth.repositories.converters.UserConverter;
-import web.entity.UserDtoList;
+import ru.geekbrains.commons.entity.ERole;
+import ru.geekbrains.commons.entity.ListOfUsersDto;
+import ru.geekbrains.commons.entity.UserDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserConverter userConverter;
     private final RoleRepository roleRepository;
 
-    public UserService(UserRepository userRepository, UserConverter userConverter, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.userConverter = userConverter;
-        this.roleRepository = roleRepository;
-    }
 
     public UserDto findUserById(Long id) {
         User user = userRepository.findUserById(id);
@@ -37,17 +32,15 @@ public class UserService {
                 user.getEmail());
     }
 
-    public UserDtoList findUsersById(List<Long> id) {
-        return new UserDtoList(userRepository.findAllUsersById(id).stream().map(userConverter::entityToDto).collect(Collectors.toList()));
+    public List<User> findUsersById(ListOfUsersDto userDtoList) {
+
+        List<User> userList = userDtoList.getList().stream().map(userRepository::findUserById).collect(Collectors.toList());
+        return userList;
     }
 
 
-    public UserDtoList getTeachers() {
+    public List<User> getTeachers() {
         Role role = roleRepository.findByName(ERole.ROLE_TEACHER).orElseThrow();
-
-        List<UserDto> users = userRepository.findAllByRolesContaining(role).stream().map(x->new UserDto(
-                x.getId(), x.getFirstname(), x.getSurname(),x.getMiddlename(),x.getEmail()
-        )).collect(Collectors.toList());
-        return new UserDtoList(users);
+        return userRepository.findAllByRolesContaining(role);
     }
 }

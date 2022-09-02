@@ -3,6 +3,7 @@ package ru.geekbrains.auth.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,8 +24,8 @@ import ru.geekbrains.auth.repositories.UserRepository;
 import ru.geekbrains.auth.security.jwt.JwtUtils;
 import ru.geekbrains.auth.security.services.RefreshTokenService;
 import ru.geekbrains.auth.security.services.UserDetailsImpl;
-import web.entity.ERole;
-import web.entity.UserStatus;
+import ru.geekbrains.commons.entity.ERole;
+import ru.geekbrains.commons.entity.UserStatus;
 
 import javax.security.auth.message.AuthException;
 import javax.validation.Valid;
@@ -36,6 +37,7 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("api/v1/auth")
+@RequiredArgsConstructor
 @Tag(name = "Сервис авторизации и аутентификации", description = "Методы работы с сервисом авторизации и аутентификации")
 public class AuthController {
 
@@ -50,15 +52,6 @@ public class AuthController {
     private final JwtUtils jwtUtils;
 
     private final RefreshTokenService refreshTokenService;
-
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils, RefreshTokenService refreshTokenService) {
-        this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.encoder = encoder;
-        this.jwtUtils = jwtUtils;
-        this.refreshTokenService = refreshTokenService;
-    }
 
 
     @Operation(
@@ -105,8 +98,6 @@ public class AuthController {
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
 
-
-        // Create new user's account
         User user = new User(signUpRequest.getFirstname(), signUpRequest.getSurname(), signUpRequest.getMiddlename(),
                 encoder.encode(signUpRequest.getPassword()), signUpRequest.getEmail(), UserStatus.ACTIVE);
 
